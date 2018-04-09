@@ -14,18 +14,55 @@
 		<button @click="nextpage">Next Page</button>
 			<div v-if="page == 1">
 				<h3>Page 1</h3> 
+				<h1>Final Topic</h1>
+        		<h2>Problem</h2>
+        		<p>When you’re out of town or new to town, it’s hard to find a good, reliable barber/hair stylist. College students have to search through Google Maps and Yelp to get ratings, price, and locations - and even then you don’t know if those people have similar preferences as you do. </p>
+				<h2>Solution</h2>
+        		<p>A web application that pools all barbers/hair stylists in an area and shows them on a map for convenience. The user can see the cost, set up an appointment, and get directions. There would be an option open up the location in maps or Uber/Lyft to the barbershop. Ratings would be crowdsourced, and people can upload photos of their cuts from that location - and an Instagram-type feed with photos and links to the barbers. Ratings could be sorted by distance, price, or based on the profiles of the reviewers, like their age. There would be a dashboard for the user (with login) to see their appointment time, past barbers, and transaction history.</p>
 			</div>
 
 			<div v-if="page==2">
 				<h3>Page 2</h3>
+				<h1>Different Modes:</h1>
+				<h3>Guest mode:</h3>
+				 
+				<li>Guests can look at reviews of shops in the area</li>
+				<li>They can look at images that people have submitted</li>
+				<li>They cannot bookmark/save any places until they make an account and save that in their profile</li>
+				<li>Certain features won’t be visible because they’re in guest mode like saving salons, etc </li>
+
+				<h3>User mode:</h3> 
+				<li>Can see posts/reviews made by other people</li>
+				<li>Can save hair salons</li>
+				<li>Choose from available times that the stylists have and make an appointment there</li>
+				<li>Stylist can accept or decline the offer</li>
+				<li> View History</li>
+
+				<h3>Business mode:</h3>
+				<li>Stylists can set times that they are available</li>
+				<li>They can post and view other content</li>
+				<li>They can manually add appointments to the calendar</li>
+
+				<h3>Admin mode:</h3>
+				<li>Supervises events </li>
+				<li>Takes complaints </li>
+				
 			</div>
 
 			<div v-if="page==3">
 				<h3>Page 3</h3>
+				<h1> Wireframes:</h1>
 			</div>
 
 			<div v-if="page==4">
 				<h3>Page 4</h3>
+				<h1> Storing Information (Draft)</h1>
+				<pre> 
+				
+				
+				
+				
+				</pre>
 			</div>
 	</div>
 	
@@ -67,9 +104,10 @@ var app = new Vue({
 
 	body {
 		background-color: lightpink;
-		width: 100%;
+		width: 65%;
 		margin: auto;
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
+		margin-bottom: 35px;
 	}
 	button {
 		position: relative;
