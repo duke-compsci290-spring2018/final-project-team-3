@@ -8,24 +8,24 @@
 	</head>
 
 <body>
-	
+	<h1> Final Project: King's Cuts</h1>
+	<h2> Taylor Albus (tma30) + Cameron King (ck198)</h2>
 	<div id="app">
 		<button @click="nextpage">Next Page</button>
-
 			<div v-if="page == 1">
-				<h1>page 1</h1>
+				<h3>Page 1</h3> 
 			</div>
 
 			<div v-if="page==2">
-				<h1>page 2</h1>
+				<h3>Page 2</h3>
 			</div>
 
 			<div v-if="page==3">
-				<h1>page 3</h1>
+				<h3>Page 3</h3>
 			</div>
 
 			<div v-if="page==4">
-				<h1>page 4</h1>
+				<h3>Page 4</h3>
 			</div>
 	</div>
 	
@@ -37,7 +37,6 @@
 </html>
 
 <script>
-	
 var app = new Vue({
 	el: '#app',
 	data: function () {
@@ -72,21 +71,16 @@ var app = new Vue({
 		margin: auto;
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	}
-	h1 {
-/*		text-align: center;*/
-		position: fixed;
-		left: 2%;
-		top: 15%;
-		
-		
-	}
 	button {
-		position: fixed;
-		height: 15%;
+		position: relative;
+		height: 25%;
 		width: 100%;
 		color: black;
 		background-color: pink;
-		font-size: 40px;
+		font-size: 25px;
+	}
+	h1, h2{
+		text-align: center;
 	}
 
 
