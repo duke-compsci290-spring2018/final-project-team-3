@@ -52,13 +52,17 @@
 			<div v-if="page==3">
 				<h3>Page 3</h3>
 				<h1> Wireframes:</h1>
+				
+				<img src="img/1.jpeg"> 
+				<img src="img/2.jpeg"> 
+				<img src="img/3.jpeg"> 
+				<img src="img/4.jpeg"> 
+				<img src="img/5.jpeg"> 
 			</div>
 
 			<div v-if="page==4">
 				<h3>Page 4</h3>
-				<h1> Storing Information (Draft)</h1>
-				
-				<div id="column1"> 
+				<h1> Storing Information (Draft)</h1> 
 					<h3> Business Side:</h3>
 					<pre> 
 						[
@@ -99,8 +103,7 @@
 
 					]	
 				</pre>
-				</div>
-				<div id="column1"> 
+
 				<h3> User Side:</h3>
 					<pre> 
 					[
@@ -144,9 +147,9 @@
 						}
 
 				]
-				</pre>
-				</div>
+			</pre>
 		</div>
+		
 		<div v-if="page==5">
 			<h3>Page 5</h3> 
 			<h1>Implementation</h1>
@@ -208,10 +211,9 @@ var app = new Vue({
 		text-align: center;
 	}
 	
-	#column1 {
-
+	img{
 		width: 45%;
-		float:left;
+		margin: 10px;
 	}
 	
 
