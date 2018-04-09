@@ -1,0 +1,37 @@
+[
+		{
+			"username": "johnscuts21",
+			"location": "SuperCuts",
+			"address": "111 Street, Durham, NC",
+			"history": [
+				{
+					"customer": "camking",
+					"rating": 9,
+					"image": "link to url"
+				},
+				{
+					"customer": "joejoe1",
+					"rating": 8,
+					"image": "link to url"
+				}
+			]
+		},
+		{
+			"username": "lisassalon",
+			"location": "Beauty Works",
+			"address": "838 Avenue, Durham, NC",
+			"history": [
+				{
+					"customer": "tayloralbus",
+					"rating": 10,
+					"image": "link to url"
+				},
+				{
+					"customer": "joshua8",
+					"rating": 9,
+					"image": "link to url"
+				}
+			]
+		}
+
+]
