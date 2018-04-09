@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Final Project Plan</title>
+<!--    <link rel="stylesheet" type="text/css" href="css/style.css">-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+	</head>
+
+<body>
+	
+	<div id="app">
+		<button @click="nextpage">Next Page</button>
+
+			<div v-if="page == 1">
+				<h1>page 1</h1>
+			</div>
+
+			<div v-if="page==2">
+				<h1>page 2</h1>
+			</div>
+
+			<div v-if="page==3">
+				<h1>page 3</h1>
+			</div>
+
+			<div v-if="page==4">
+				<h1>page 4</h1>
+			</div>
+	</div>
+	
+	
+</body>
+	
+	
+	
+</html>
+
+<script>
+	
+var app = new Vue({
+	el: '#app',
+	data: function () {
+    	return {
+      		page: 1
+    	}
+  	},
+	methods: {
+		nextpage: function() {
+			if (this.page < 4) {
+				this.page++;
+			}
+			else {
+				this.page=1;
+			}
+		}
+	}
+})
+
+</script>
+
+
+<style>
+	
+	* {
+		font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	}
+
+	body {
+		background-color: lightpink;
+		width: 100%;
+		margin: auto;
+		font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	}
+	h1 {
+/*		text-align: center;*/
+		position: fixed;
+		left: 2%;
+		top: 15%;
+		
+		
+	}
+	button {
+		position: fixed;
+		height: 15%;
+		width: 100%;
+		color: black;
+		background-color: pink;
+		font-size: 40px;
+	}
+
+
+
+</style>
