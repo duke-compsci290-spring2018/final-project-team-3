@@ -13,44 +13,67 @@
 	<div id="app">
 		<button @click="nextpage">Next Page</button>
 			<div v-if="page == 1">
-				<h3>Page 1</h3> 
+
+				<h3>Page 1/4</h3> 
+				
+				<h1>Implementation:</h1>
+					<h3>Users:</h3>
+						<li>To log in or create an account, a button will prompt a Vue component that will allow the user to input information, but if they would rather continue as a guest, then they can but with fewer features available.</li>
+						<li>Normal users will be able to create accounts with a username log-in, and their data will be saved in Firebase so that their data may be saved.</li>
+						<li>Hair stylists will also be able to create accounts in Firebase, but their personal data will be different than the normal users' data.</li>
+						<li>Since the user's data is saved in Firebase, they can go to their own profile and see their previous reviews and posts and edit those. Hair stylists can also go to their profile and see the reviews that they were tagged in.</li>
+					<h3>Home Screen:</h3>
+						<li>The initial page will be loaded in a Vue app and different buttons on a navigation bar will trigger different Vue components to display different data pulled through Node.</li>
+						<li>A feed of images of haircuts will be displayed through a v-for loop of images in the user photo submissions part of the Firebase data.</li>
+						<li>The user can filter images by various descriptions that will be in the Firebase for those images.</li>
+						<li>Each image will display the hair stylist and the user, and if those are clicked on, a Vue component will load their profile onto the page.</li>
+						<li>When a user goes to a hair stylist's profile, their available schedule is displayed, and one of us will be experimenting with that during the explore assignment. Google Maps will also display where the salon/barber shop is, and another one of us will work with that for explore.</li>
+						<li>User can add a review of somewhere they recently got their hair cut. If the hair stylist does not have a profile, then the user can add the address and name of the location on their own. This review along with an image will be stored in Firebase, and if the hair stylist does have a profile, then it will be added to their account in Firebase as well.</li>
+				<br>
+				<br>
+				<br>
+				<br>
+
+<!--
 				<h1>Final Topic</h1>
         		<h2>Problem</h2>
         		<p>When you’re out of town or new to town, it’s hard to find a good, reliable barber/hair stylist. College students have to search through Google Maps and Yelp to get ratings, price, and locations - and even then you don’t know if those people have similar preferences as you do. </p>
 				<h2>Solution</h2>
         		<p>A web application that pools all barbers/hair stylists in an area and shows them on a map for convenience. The user can see the cost, set up an appointment, and get directions. There would be an option open up the location in maps or Uber/Lyft to the barbershop. Ratings would be crowdsourced, and people can upload photos of their cuts from that location - and an Instagram-type feed with photos and links to the barbers. Ratings could be sorted by distance, price, or based on the profiles of the reviewers, like their age. There would be a dashboard for the user (with login) to see their appointment time, past barbers, and transaction history.</p>
+		
+-->
 			</div>
 
 			<div v-if="page==2">
-				<h3>Page 2</h3>
+				<h3>Page 2/4</h3>
 				<h1>Different Modes:</h1>
 				<h3>Guest mode:</h3>
 				 
-				<li>Guests can look at reviews of shops in the area</li>
-				<li>They can look at images that people have submitted</li>
-				<li>They cannot bookmark/save any places until they make an account and save that in their profile</li>
-				<li>Certain features won’t be visible because they’re in guest mode like saving salons, etc </li>
+				<li>Guests can look at reviews of shops in the area.</li>
+				<li>They can look at images that people have submitted.</li>
+				<li>They cannot bookmark/save any places until they make an account and save that in their profile.</li>
+				<li>Certain features won’t be visible because they’re in guest mode - like saving salons, etc. </li>
 
 				<h3>User mode:</h3> 
-				<li>Can see posts/reviews made by other people</li>
-				<li>Can save hair salons</li>
-				<li>Choose from available times that the stylists have and make an appointment there</li>
-				<li>Stylist can accept or decline the offer</li>
-				<li> View History</li>
+				<li>Can see posts/reviews made by other people.</li>
+				<li>Can save hair salons.</li>
+				<li>Choose from available times that the stylists have and make an appointment there.</li>
+				<li>Stylist can accept or decline the offer.</li>
+				<li>View their haircut history.</li>
 
-				<h3>Business mode:</h3>
-				<li>Stylists can set times that they are available</li>
-				<li>They can post and view other content</li>
-				<li>They can manually add appointments to the calendar</li>
+				<h3>Hair Stylist mode:</h3>
+				<li>Stylists can set times that they are available.</li>
+				<li>They can make posts and and view content of other stylists, just like normal users.</li>
+				<li>They can manually add appointments to their calendar.</li>
 
 				<h3>Admin mode:</h3>
-				<li>Supervises events </li>
-				<li>Takes complaints </li>
+				<li>Can delete posts or accounts.</li>
+				<li>Have to be appointed by other admins.</li>
 				
 			</div>
 
 			<div v-if="page==3">
-				<h3>Page 3</h3>
+				<h3>Page 3/4</h3>
 				<h1> Wireframes:</h1>
 				
 				<img src="img/1.jpeg"> 
@@ -61,9 +84,9 @@
 			</div>
 
 			<div v-if="page==4">
-				<h3>Page 4</h3>
+				<h3>Page 4/4</h3>
 				<h1> Storing Information (Draft)</h1> 
-					<h3> Business Side:</h3>
+					<h3> Hair Stylist Side:</h3>
 					<pre> 
 	[
 		{
@@ -150,10 +173,12 @@
 			</pre>
 		</div>
 		
+<!--
 		<div v-if="page==5">
 			<h3>Page 5</h3> 
-			<h1>Implementation</h1>
+			<h1>Extra</h1>
 		</div>
+-->
 	</div>
 	
 	
@@ -173,7 +198,7 @@ var app = new Vue({
   	},
 	methods: {
 		nextpage: function() {
-			if (this.page < 5) {
+			if (this.page < 4) {
 				this.page++;
 			}
 			else {
@@ -193,7 +218,7 @@ var app = new Vue({
 	}
 
 	body {
-		background-color: lightpink;
+		background-color: #fffef4;
 		width: 65%;
 		margin: auto;
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -204,7 +229,7 @@ var app = new Vue({
 		height: 25%;
 		width: 100%;
 		color: black;
-		background-color: pink;
+		background-color: #fffbd3;
 		font-size: 25px;
 	}
 	h1, h2, h3{
