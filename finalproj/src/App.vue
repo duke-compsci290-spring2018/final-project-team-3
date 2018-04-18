@@ -1,8 +1,15 @@
 <template>
  	<div id="app">
-
-		<img v-if="picOne" @mouseover="picOne = false" src="./assets/camhead.png">
-		<img v-if="!picOne" @mouseleave="picOne = true" src="./assets/camhead2.png">
+		<div v-if="picOne">
+			<h1>From</h1>
+			<img @mouseover="picOne = false" src="./assets/camhead.png">
+			<h1>scrawn</h1>
+		</div>
+		<div v-if="!picOne">
+			<h1>to</h1>
+			<img @mouseleave="picOne = true" src="./assets/camhead2.png">
+			<h1>jawn</h1>
+		</div>
 		<h1>{{ msg }}</h1>
 	</div>
 </template>
