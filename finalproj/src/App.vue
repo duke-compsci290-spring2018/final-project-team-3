@@ -31,7 +31,7 @@
 				<h2>jawn</h2>
 			</div>
 		</div>
-		
+		<img :src="cam1">
 		<div v-for="pic in pics">
 			<img :src="pic">
 			<img :src="cam1">
