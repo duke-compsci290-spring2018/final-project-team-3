@@ -31,9 +31,14 @@
 				<h2>jawn</h2>
 			</div>
 		</div>
+		
+		<div v-for="pic in pics">
+			<img :src="pic">
+		</div>
+	</div>
 	
 		
-	</div>
+
 </template>
 
 
@@ -52,8 +57,14 @@ export default {
 			msg: "King's Cuts",
 			picOne: true,
 			loggingIn: false,
-			cam1: "dist/camhead.png",
-			cam2: "dist/camhead2.png"
+			cam1: "./src/assets/camhead.png",
+			cam2: "./src/assets/camhead2.png",
+			pics: [
+				"./src/assets/dummypic1.JPG",
+				"./src/assets/dummypic2.JPG",
+				"./src/assets/dummypic3.JPG",
+				"./src/assets/dummypic4.JPG"
+			]
     	}
   	},
 	methods: {
@@ -179,6 +190,10 @@ export default {
 	
 	a:visited {
 		color: #2c3e50;
+	}
+	
+	img {
+		width: 30%;
 	}
 	
 	
