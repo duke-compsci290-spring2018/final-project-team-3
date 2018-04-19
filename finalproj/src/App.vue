@@ -13,6 +13,17 @@
 			<a class="settings" @click="testing">Settings</a>
 			
 		</header>
+		<div v-if="!loggingIn">
+			
+			<div v-if="!scrolledEnough" class="leftBarAbs"> 
+				<p>Why us?</p>
+			</div>
+			<div v-else class="leftBarFixed">
+
+				<p>other</p>
+			</div>
+			
+		</div>
 		
 		<login v-if="loggingIn">
 		</login>
@@ -31,11 +42,11 @@
 				<h2>jawn</h2>
 			</div>
 		</div>
-		<img :src="cam1">
+		
 		<div v-for="pic in pics">
 			<img :src="pic">
-			<img :src="cam1">
 		</div>
+		
 	</div>
 	
 		
@@ -50,6 +61,8 @@
 <script>
 	
 import Login from './components/Login.vue'
+
+//document.getElementById('leftBar').style.top = (scrollTop+30) + 'px';
 	
 export default {
 	name: 'app',
@@ -65,17 +78,27 @@ export default {
 				"./src/assets/dummypic2.JPG",
 				"./src/assets/dummypic3.JPG",
 				"./src/assets/dummypic4.JPG"
-			]
+			],
+			scrolledEnough: false
     	}
   	},
 	methods: {
 		testing: function () {
 			console.log("clicked it!")
+		},
+		handleScroll: function (event) {
+			 this.scrolledEnough = window.scrollY > 90;
 		}
 	},
 	components: {
 		Login
-	}
+	},
+	created: function () {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed: function () {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
 	
 	
 }
@@ -86,6 +109,7 @@ export default {
 
 
 <style lang="scss">
+	
 	#app {
 	  font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	  -webkit-font-smoothing: antialiased;
@@ -134,7 +158,7 @@ export default {
 	
 	h4 {
 		float: right;
-		position: fixed;
+		position: absolute;
 		top: 20px;
 		right: 30px;
 		cursor: pointer;
@@ -166,18 +190,22 @@ export default {
 
 	.feed:hover {
 		background-color: #a4bce8;
+		color: black;
 	}
 	
 	.find:hover {
 		background-color: #a4bce8;
+		color: black;
 	}
 	
 	.share:hover {
 		background-color: #a4bce8;
+		color: black;
 	}
 	
 	.settings:hover {
 		background-color: #a4bce8;
+		color: black;
 	}
 	
 	#href {
@@ -195,6 +223,26 @@ export default {
 	
 	img {
 		width: 30%;
+	}
+	
+	.leftBarAbs {
+		width: 20%;
+		float: left;
+		position: absolute;
+		background: #c2d1ed;
+		top: 40%;
+		height: 50%;
+		left: 2%;
+	}
+	
+	.leftBarFixed {
+		width: 20%;
+		float: left;
+		position: fixed;
+		background: #c2d1ed;
+		top: 20%;
+		height: 50%;
+		left: 2%;
 	}
 	
 	
