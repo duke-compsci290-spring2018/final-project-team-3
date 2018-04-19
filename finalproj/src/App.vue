@@ -34,6 +34,7 @@
 		
 		<div v-for="pic in pics">
 			<img :src="pic">
+			<img :src="cam1">
 		</div>
 	</div>
 	
