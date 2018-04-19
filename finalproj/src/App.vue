@@ -22,12 +22,12 @@
 		<div class="camPic" v-if="!loggingIn">
 			<div v-if="picOne">
 				<h2>From</h2>
-				<img @mouseover="picOne = false" src="assets/camhead.png">
+				<img @mouseover="picOne = false" :src="cam1">
 				<h2>scrawn</h2>
 			</div>
 			<div v-if="!picOne">
 				<h2>to</h2>
-				<img @mouseleave="picOne = true" src="assets/camhead2.png">
+				<img @mouseleave="picOne = true" :src="cam2">
 				<h2>jawn</h2>
 			</div>
 		</div>
@@ -51,7 +51,9 @@ export default {
 		return {
 			msg: "King's Cuts",
 			picOne: true,
-			loggingIn: false
+			loggingIn: false,
+			cam1: "dist/camhead.png",
+			cam2: "dist/camhead2.png"
     	}
   	},
 	methods: {
