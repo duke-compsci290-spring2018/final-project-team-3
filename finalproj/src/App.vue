@@ -1,51 +1,41 @@
 <template>
  	<div id="app">
 		
-		<h1 class="siteName" @click="loggingIn = false">{{ msg }}</h1>
-		
-		<h4 @click="loggingIn = true" v-if="!loggingIn">LOG IN</h4>
-		
-		<header v-if="!loggingIn">
+		<router-link tag="h1" to="/">
+			<h1 class="siteName">{{ msg }}</h1>
+		</router-link>
 			
-			<a class="feed" @click="testing">Feed</a>
-			<a class="find" @click="testing">Find</a>
-			<a class="share" @click="testing">Share</a>
-			<a class="settings" @click="testing">Settings</a>
+		
+
+		<router-link tag="h4" to='/login'>
+			login
+		</router-link>
+
+		
+<!--		<header :style="{ backgroundColor: headerColor }"  >-->
+		<header>
+				
+			<router-link id="a" class="feed" to='/feed'>
+				Feed
+			</router-link>
+			
+			<router-link class="find" to='/find'>
+				Find
+			</router-link>
+			
+			<router-link class="share" to='/share'>
+				Share
+			</router-link>
+			
+			<router-link class="settings" to='/settings'>
+				Settings
+			</router-link>
 			
 		</header>
-		<div v-if="!loggingIn">
-			
-			<div v-if="!scrolledEnough" class="leftBarAbs"> 
-				<p>Why us?</p>
-			</div>
-			<div v-else class="leftBarFixed">
+		
+		<router-view></router-view>
+		
 
-				<p>other</p>
-			</div>
-			
-		</div>
-		
-		<login v-if="loggingIn">
-		</login>
-
-		
-<!--		Picture changes when hovered over-->
-		<div class="camPic" v-if="!loggingIn">
-			<div v-if="picOne">
-				<h2>From</h2>
-				<img @mouseover="picOne = false" :src="cam1">
-				<h2>scrawn</h2>
-			</div>
-			<div v-if="!picOne">
-				<h2>to</h2>
-				<img @mouseleave="picOne = true" :src="cam2">
-				<h2>jawn</h2>
-			</div>
-		</div>
-		
-		<div v-for="pic in pics">
-			<img :src="pic">
-		</div>
 		
 	</div>
 	
@@ -61,16 +51,33 @@
 <script>
 	
 import Login from './components/Login.vue'
+import Home from './components/Home.vue'
+import Feed from './components/Feed.vue'
+import Find from './components/Find.vue'
+import Share from './components/Share.vue'
+import Settings from './components/Settings.vue'
 
-//document.getElementById('leftBar').style.top = (scrollTop+30) + 'px';
+import Firebase from 'firebase'
+
+//var config = {
+//	apiKey: "AIzaSyCw4XyEm2oM0cDHQC0Tqc9IsfO0y8TrT1A",
+//    authDomain: "finalprojdata.firebaseapp.com",
+//    databaseURL: "https://finalprojdata.firebaseio.com",
+//    projectId: "finalprojdata",
+//    storageBucket: "finalprojdata.appspot.com",
+//    messagingSenderId: "898024803449"
+//};
+
+//var app = Firebase.initializeApp(config)
+//var db = app.database()
+//
+//var usersRef = db.ref('users')
 	
 export default {
 	name: 'app',
  	data () {
 		return {
 			msg: "King's Cuts",
-			picOne: true,
-			loggingIn: false,
 			cam1: "./src/assets/camhead.png",
 			cam2: "./src/assets/camhead2.png",
 			pics: [
@@ -78,8 +85,9 @@ export default {
 				"./src/assets/dummypic2.JPG",
 				"./src/assets/dummypic3.JPG",
 				"./src/assets/dummypic4.JPG"
-			],
-			scrolledEnough: false
+			]
+//			db,
+//			usersRef,
     	}
   	},
 	methods: {
@@ -88,17 +96,20 @@ export default {
 		},
 		handleScroll: function (event) {
 			 this.scrolledEnough = window.scrollY > 90;
+		},
+		changeHeader: function (col) {
+			this.headerColor = col;
 		}
 	},
 	components: {
-		Login
+		Login, Home, Feed, Find, Share, Settings
 	},
-	created: function () {
-        window.addEventListener('scroll', this.handleScroll);
-    },
-    destroyed: function () {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
+//	firebase: {
+//		users: usersRef
+//	},
+	logIn: function() {
+		this.$router.push('/login');
+	}
 	
 	
 }
@@ -151,7 +162,7 @@ export default {
 		padding-right: 5%;
 		padding-left:  5%;
 		padding-top: 2vh;
-		background-color: #c2d1ed;
+		background-color: #bee8e7;
 		padding-bottom: 2vh;
 		cursor: pointer;
 	}
@@ -159,8 +170,8 @@ export default {
 	h4 {
 		float: right;
 		position: absolute;
-		top: 20px;
-		right: 30px;
+		top: 1%;
+		right: 3%;
 		cursor: pointer;
 	}
 	
@@ -171,10 +182,11 @@ export default {
 	
 	header {
 		width: 100%;
+		top: 30%;
 		text-align: center;
 /*		padding-top: 2vh;*/
 /*		padding-bottom: 2vh;*/
-		background-color: #c2d1ed;	
+		background-color: #bee8e7;	
 	}
 	
 	.siteName {
@@ -185,26 +197,27 @@ export default {
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
-		width: 50%;
+		width: 40%;
 	}
 
 	.feed:hover {
-		background-color: #a4bce8;
+		background-color: #98cece;
 		color: black;
+		padding: none;
 	}
 	
 	.find:hover {
-		background-color: #a4bce8;
+		background-color: #98cece;
 		color: black;
 	}
 	
 	.share:hover {
-		background-color: #a4bce8;
+		background-color: #98cece;
 		color: black;
 	}
 	
 	.settings:hover {
-		background-color: #a4bce8;
+		background-color: #98cece;
 		color: black;
 	}
 	
@@ -221,15 +234,11 @@ export default {
 		color: #2c3e50;
 	}
 	
-	img {
-		width: 30%;
-	}
-	
 	.leftBarAbs {
 		width: 20%;
 		float: left;
 		position: absolute;
-		background: #c2d1ed;
+		background: #bee8e7;
 		top: 40%;
 		height: 50%;
 		left: 2%;
@@ -239,7 +248,7 @@ export default {
 		width: 20%;
 		float: left;
 		position: fixed;
-		background: #c2d1ed;
+		background: #bee8e7;
 		top: 20%;
 		height: 50%;
 		left: 2%;

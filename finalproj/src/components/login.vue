@@ -11,12 +11,16 @@
 		<div v-if="creating">
 			<button v-on:click="creating=false; clearInfo">Go back</button>
 			<br><br>
+			Username:
+			<br><br>
+			<input v-model="username" placeholder="e.g. johnDoe29">
+			<br>
 			Your email: 
 			<br><br>
-			<input @keyup.enter="createAcc" v-model="email" placeholder="e.g. john.doe@duke.edu">
+			<input @keyup.enter="addUser" v-model="email" placeholder="e.g. john.doe@duke.edu">
 			<br>
 			<br>
-			<button v-on:click="createAcc">Create account</button>
+			<button v-on:click="addUser">Create account</button>
 <!--			<h5 v-if="invalid">Enter a valid email</h5>-->
 			<h5>{{ validated }}</h5>
 		</div>
@@ -24,7 +28,11 @@
 		<div v-if="loggingIn">
 			<button v-on:click="loggingIn=false">Go back</button>
 			<br><br>
-			Your email: 
+			Username:
+			<br><br>
+			<input v-model="username" placeholder="e.g. johnDoe29">
+			<br>
+			Email: 
 			<br><br>
 			<input @keyup.enter="logUserIn" v-model="email" placeholder="e.g. john.doe@duke.edu">
 			<br>
@@ -42,14 +50,18 @@
 </template>
 
 <script>
+	
+	
 
 export default {
 	
 	name: 'login',
+	props: ['db','usersRef'],
 	data () {
 		return {
 			creating: false,
 			loggingIn: false,
+			username: '',
 			email: '',
 			invalid: false,
 			validated: ''
@@ -57,8 +69,8 @@ export default {
 	},
 	methods: {
 		createAcc: function() {
-			if (this.email != '' && this.email.indexOf("@") > -1 && this.email.indexOf(".") > -1) {
-				console.log("valid email")
+			if (this.email != '' && this.email.indexOf("@") > -1 && this.email.indexOf(".") > -1 && this.username.length > 2 && this.username.indexOf(" ") == -1) {
+				console.log("valid email and username")
 				this.validated = "Valid email, you've been added to the system"
 			} else {
 				console.log(this.email)
@@ -75,7 +87,17 @@ export default {
 		},
 		testing: function() {
 			console.log("hey")
+		},
+		addUser: function() {	
+			this.username = this.username.trim();
+			if (this.username) {
+				usersRef.push({
+					name: this.username,
+					email: this.email
+				})
+			}
 		}
+		
 	}
 }
 	
