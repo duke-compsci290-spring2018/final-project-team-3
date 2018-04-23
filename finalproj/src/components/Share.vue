@@ -23,12 +23,9 @@
 		
 		
 		<div class="outerDiv">
-			
 			<div v-for="user in users" class="eachDiv">
 				<button @click="removeUser(user)">x</button>
 				<img :src="user.imageUrl">
-<!--				{{ user.userName }}-->
-<!--				{{ user.imageUrl}}-->
 				<br>
 			</div>
 		</div>
