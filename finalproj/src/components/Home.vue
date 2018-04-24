@@ -16,11 +16,6 @@
 		</div>
 		
 		
-		
-		
-		
-		
-	
 
 		<div v-if="!scrolledEnough" class="leftBarAbs"> 
 			<p>Why us?</p>

@@ -4,13 +4,30 @@
 		
 		
 <!--		<div class="allReviews">-->
+<!--
 			<div class="eachPic" v-for="pic in pics">
 				<img :src="pic.src">
 				<div class="eachReview">
 					<p>{{ pic.review }}</p>
 				</div>
 			</div>
+-->
 <!--		</div>-->
+		
+		<div class="outerDiv">
+			<div v-for="user in reversedUsers" class="eachDiv">
+<!--				<div class="eachPic">-->
+<!--				</div>-->
+<!--				<div class="eachText">-->
+<!--				</div>-->
+				<h3>{{ user.reviewStylist }}</h3>
+				<img :src="user.imageUrl" @click="removeUser(user)">
+				
+				<p>{{ user.reviewText }}</p>
+
+				<br>
+			</div>
+		</div>
 	
 	</div>
 </template>
@@ -20,31 +37,31 @@
 	
 <script>
 	
+import Firebase from 'firebase'
+import { usersRef, storageRef } from '../database'
+	
 export default {
 	name: 'feed',
+	props: ['db', 'usersRef'],
+	firebase: {
+		users: usersRef
+	},
 	data () {
 		return {
-			pics: [
-				{ 
-					src: "./src/assets/dummypic1.JPG", 
-					review: "good job"
-				},
-				{ 
-					src: "./src/assets/dummypic2.JPG", 
-					review: "pic 2!" 
-				},
-				{ 
-					src: "./src/assets/dummypic3.JPG", 
-					review: "good one bob" 
-				},
-				{ 
-					src: "./src/assets/dummypic4.JPG", 
-					review: "hey joey! look at pic 4!" 
-				}
-			],
 			num: 0
 		}
-	}
+	},
+	methods: {
+		removeUser: function(user) {
+			usersRef.child(user['.key']).remove();
+		}
+	},
+	computed: {
+        // get images in reverse order added
+        reversedUsers () {
+            return this.users.reverse();
+        }
+    },
 	
 	
 }
@@ -58,12 +75,9 @@ export default {
 
 	
 	img {
-		width: 50%;
+		width: 40%;
+/*		left: 0;*/
 /*		float: inherit;*/
-	}
-	
-	p {
-		text-align: justify;
 	}
 	
 	h2 {
@@ -75,22 +89,49 @@ export default {
 	}
 	
 	.eachPic {
-		width: 90%;
+		width: 80%;
 		margin-right: auto;
 		margin-left: auto;
 		padding-bottom: 15px;
 		padding-top: 15px;
 /*		text-align: center;*/
+/*		margin-right: 5px;*/
+
+
 	}
 	
-	.eachReview {
-		width: 40%;
-		text-align: right;
-		float: right;
+	.eachText {
+		width: 80%;
+		margin-right: auto;
+		margin-left: auto;
+		
 	}
 	
-	header {
-		background-color: red;
+	.outerDiv {
+		width: 70%;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		padding-bottom: 20px;
+		padding-top: 20px;
+		background-color: yellow;
 	}
+	
+	.eachDiv img {
+/*		float: left;*/
+		padding: 0 25px 25px 0;
+	}
+	
+	.eachDiv {
+		text-align: justify;
+	}
+	
+	p {
+		left: 50%;
+/*		float: right;*/
+	}
+	
+	
+	
 	
 </style>

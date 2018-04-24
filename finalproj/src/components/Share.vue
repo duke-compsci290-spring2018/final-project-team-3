@@ -1,34 +1,47 @@
 <template>
 	<div>
 	
-	
-		<h1>SHARE</h1>
 		<br>
+		<h1>SHARE A REVIEW</h1>
+		<br>
+<!--
 		<input v-model="name" placeholder="add name" @keyup.enter="addName">
 		<button @click="addName">Add!</button>
-		<br><br>
+-->
+		
 
 		
 		<form class="form-inline" @submit.prevent="addImage">
 			<div class="form-group">
-				<label for="title">Title:</label>
-				<input type="text" class="form-control" id="title" v-model="newImageTitle">
-			</div>
-			<div class="form-group">
-				<label for="files">Image:</label>
+				<label for="files">Picture of your hair: </label> 
+				<br>
 				<input type="file" class="form-control" id="files" name="files[]">
 			</div>
-			<input type="submit" class="btn btn-default" value="Add Image" />
+			<br>
+			<div class="form-group">
+				<label for="review">Review of the cut: </label>
+				<textarea type="text" class="form-review" id="review" v-model="newReview" placeholder="e.g. Barber was very personal and obviously knew what they were doing!">
+				</textarea>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="stylist">Who cut your hair: </label>
+				<br>
+				<input type="text" class="form-stylist" id="stylist" v-model="stylist" placeholder="e.g. BobsCuts21">
+			</div>
+			<input type="submit" class="submitButton" value="Submit your review" />
     	</form>
 		
 		
+<!--
 		<div class="outerDiv">
-			<div v-for="user in users" class="eachDiv">
+			<div v-for="user in users" claiss="eachDiv">
 				<button @click="removeUser(user)">x</button>
 				<img :src="user.imageUrl">
 				<br>
 			</div>
 		</div>
+-->
 	
 	
 	</div>
@@ -51,7 +64,8 @@ export default {
 	data() {
 		return {
 			name: '',
-			newImageTitle: ''
+			newReview: '',
+			stylist: ''
 		}
 	},
 	
@@ -77,22 +91,25 @@ export default {
             // get input element user used to select local image
             var input = document.getElementById('files')
             // check that all fields in the form been completed
-            if (this.newImageTitle && input.files.length > 0) {
-				console.log(this.newImageTitle)
+            if (this.newReview && input.files.length > 0) {
+				console.log(this.newReview)
 				console.log(input.files[0])
-                this.storeImage(this.newImageTitle, input.files[0])
+                this.storeImage(this.newReview, input.files[0], this.stylist)
             }
             // reset values displayed in form so user knows to input new data
-            this.newImageTitle = ''
+            this.newReview = ''
             input.value = ''
 		},
-		storeImage (title, imageFile) {
+		storeImage (review, imageFile, stylist) {
 			storageRef.child('images/' + imageFile.name)
 					  .put(imageFile)
 					  .then(snapshot => {
 								var toAdd = {
-									imageUrl: snapshot.downloadURL
-//									caption: `${title} shared by ${this.user.name}`
+									imageUrl: snapshot.downloadURL,
+//									reviewText: this.review,
+									reviewText: `${review}`,
+									reviewStylist: this.stylist
+//									caption: `${review} shared by ${this.user.name}`
 								}
 								// vue-images component does not play nicely with Firebase so need to manually add to both
 								usersRef.push(
@@ -128,14 +145,53 @@ export default {
 	}
 	
 	form {
-		color: firebrick;
+		color: black;
 	}
 	
 	img {
 		width: 80%;
 	}
+	
+	.form-inline {
+		width: 40%;
+		text-align: center;
+		margin-right: auto;
+		margin-left: auto;
+		background-color: aliceblue;
+		padding-bottom: 5%;
+		padding-right: 15%;
+		padding-left: 15%;
+		padding-top: 5%;
+	}
+	
+	.form-group {
+		text-align: center;
+		word-break: break-all;
+	}
+	
+	.form-review {
+		width: 100%;
+		height: 50px;
+		background-color: aliceblue;
+		outline: none;
+		outline-style: none;	
+	}
+	
+	.form-stylist {
+		width: 30%;
+		text-align: center;
+	}
 
-
+	.submitButton {
+		width: 30%;
+		bottom: 90%;
+	}
+	
+	h1 {
+		font-size: 30px;
+		cursor: text;
+	}
+	
 
 
 </style>
