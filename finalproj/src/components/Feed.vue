@@ -114,7 +114,7 @@ export default {
 		margin-right: auto;
 		padding-bottom: 20px;
 		padding-top: 20px;
-		background-color: yellow;
+/*		background-color: yellow;*/
 	}
 	
 	.eachDiv img {
