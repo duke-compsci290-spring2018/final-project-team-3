@@ -13,9 +13,10 @@
 		
 		<form class="form-inline" @submit.prevent="addImage">
 			<div class="form-group">
-				<label for="files">Picture of your hair: </label> 
+				<label for="files">Picture of your hair: </label>
 				<br>
-				<input type="file" class="form-control" id="files" name="files[]">
+				<input type="file" class="form-control" id="files" name="files[]" @change="">
+				<img v-if="isPreview" :src="previewImageUrl">
 			</div>
 			<br>
 			<div class="form-group">
@@ -65,7 +66,9 @@ export default {
 		return {
 			name: '',
 			newReview: '',
-			stylist: ''
+			stylist: '',
+			previewImageUrl: '',
+			isPreview: false
 		}
 	},
 	
@@ -84,10 +87,17 @@ export default {
 			}
 			this.name = '';	
 		},
+		ifImage: function () {
+			var input = document.getElementById('files')
+			if (input.files.length > 0) {
+				isPreview = true
+				this.previewImageUrl = input.files[0]
+			}
+		},
 		removeUser: function(user) {
 			usersRef.child(user['.key']).remove();
 		},
-		addImage () {
+		addImage: function () {
             // get input element user used to select local image
             var input = document.getElementById('files')
             // check that all fields in the form been completed

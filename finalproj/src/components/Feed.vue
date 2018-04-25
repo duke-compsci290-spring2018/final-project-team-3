@@ -20,10 +20,10 @@
 <!--				</div>-->
 <!--				<div class="eachText">-->
 <!--				</div>-->
-				<h3>{{ user.reviewStylist }}</h3>
+				<h3>Stylist: {{ user.reviewStylist }}</h3>
 				<img :src="user.imageUrl" @click="removeUser(user)">
 				
-				<p>{{ user.reviewText }}</p>
+				<p>Review: {{ user.reviewText }}</p>
 
 				<br>
 			</div>
@@ -127,7 +127,8 @@ export default {
 	}
 	
 	p {
-		left: 50%;
+/*		left: 80%;*/
+/*		position: absolute;*/
 /*		float: right;*/
 	}
 	
