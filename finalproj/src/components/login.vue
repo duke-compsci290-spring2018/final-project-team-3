@@ -2,6 +2,44 @@
 	<div id="login">
 		<br>
 		
+		
+		<ul v-if="loggingIn">
+			<h3>Log In</h3>
+			<li>email</li>
+			<input type="text" v-model="email" placeholder="e.g. joeJoe@duke.edu" id="email">
+<!--
+			<li>username</li>
+			<input type="text" placeholder="e.g. taylor29" id="username">
+-->
+			<li>password</li>
+			<input type="text" v-model="pw" placeholder="" id="pw" @keyup.enter="logInAttempt">
+			<br>
+			<button @click="logInAttempt">log in</button>
+			<br><br><br>
+			<h3 @click="loggingIn=false">Don't have an account? Create one here</h3>
+		</ul>
+		
+		
+		<ul v-if="!loggingIn">
+			<h3>Create Account</h3>
+			<li>email</li>
+			<input type="text" v-model="email" placeholder="e.g. joeJoe@duke.edu" id="email">
+			<li>password</li>
+			<input type="text" v-model="pw" placeholder="" id="pw" @keyup.enter="logInAttempt">
+			<br>
+			<button @click="signUp">sign up</button>
+		</ul>
+		
+<!--
+		<ul>
+			<li v-if="user"><a>{{user.name}}</a></li>
+			<li v-if="user" @click="signOut"><a><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+			<li v-else @click="signInPopup"><a><span class="glyphicon glyphicon-user"></span>Sign In</a></li>
+			<div id="firebaseui-auth-container" :class="{ popup: isShown }"></div>
+		</ul>
+-->
+		
+<!--
 		<div v-if="!creating && !loggingIn">
 			<h3 @click="creating = true">Create account</h3>
 
@@ -21,7 +59,6 @@
 			<br>
 			<br>
 			<button v-on:click="addUser">Create account</button>
-<!--			<h5 v-if="invalid">Enter a valid email</h5>-->
 			<h5>{{ validated }}</h5>
 		</div>
 		
@@ -38,9 +75,8 @@
 			<br>
 			<br>
 			<button v-on:click="logUserIn">Log in</button>
-			
-		
 		</div>
+-->
 	
 	</div>
 
@@ -51,7 +87,8 @@
 
 <script>
 	
-	
+import Firebase from 'firebase'
+
 
 export default {
 	
@@ -59,44 +96,56 @@ export default {
 	props: ['db','usersRef'],
 	data () {
 		return {
-			creating: false,
-			loggingIn: false,
 			username: '',
 			email: '',
-			invalid: false,
-			validated: ''
+			pw: '',
+			loggingIn: true
 		}
 	},
 	methods: {
-		createAcc: function() {
-			if (this.email != '' && this.email.indexOf("@") > -1 && this.email.indexOf(".") > -1 && this.username.length > 2 && this.username.indexOf(" ") == -1) {
-				console.log("valid email and username")
-				this.validated = "Valid email, you've been added to the system"
-			} else {
-				console.log(this.email)
-				this.validated = "Please enter a valid email"
-			}
-			this.email = ''
+		signUp: function() {
+			Firebase.auth().createUserWithEmailAndPassword(this.email, this.pw).catch(function(error) {
+				alert(error.message);
+			})
 		},
-		logUserIn: function() {
-			
-		},
-		clearInfo: function() {
-			this.email = ''
-			this.validated = ''
-		},
-		testing: function() {
-			console.log("hey")
-		},
-		addUser: function() {	
-			this.username = this.username.trim();
-			if (this.username) {
-				usersRef.push({
-					name: this.username,
-					email: this.email
-				})
-			}
+		logInAttempt: function() {
+			firebase.auth().signInWithEmailAndPassword(this.email, this.pw).catch(function(error) {
+				alert(error.message);
+			});
 		}
+		
+																					  
+				
+		
+//		createAcc: function() {
+//			if (this.email != '' && this.email.indexOf("@") > -1 && this.email.indexOf(".") > -1 && this.username.length > 2 && this.username.indexOf(" ") == -1) {
+//				console.log("valid email and username")
+//				this.validated = "Valid email, you've been added to the system"
+//			} else {
+//				console.log(this.email)
+//				this.validated = "Please enter a valid email"
+//			}
+//			this.email = ''
+//		},
+//		logUserIn: function() {
+//			
+//		},
+//		clearInfo: function() {
+//			this.email = ''
+//			this.validated = ''
+//		},
+//		testing: function() {
+//			console.log("hey")
+//		},
+//		addUser: function() {	
+//			this.username = this.username.trim();
+//			if (this.username) {
+//				usersRef.push({
+//					name: this.username,
+//					email: this.email
+//				})
+//			}
+//		}
 		
 	}
 }

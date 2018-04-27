@@ -15,7 +15,7 @@
 			<div class="form-group">
 				<label for="files">Picture of your hair: </label>
 				<br>
-				<input type="file" class="form-control" id="files" name="files[]" @change="">
+				<input type="file" class="form-control" id="files" name="files[]">
 				<img v-if="isPreview" :src="previewImageUrl">
 			</div>
 			<br>

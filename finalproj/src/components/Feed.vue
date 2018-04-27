@@ -21,11 +21,13 @@
 <!--				<div class="eachText">-->
 <!--				</div>-->
 				<h3>Stylist: {{ user.reviewStylist }}</h3>
+				<h3>User: </h3>
 				<img :src="user.imageUrl" @click="removeUser(user)">
-				
-				<p>Review: {{ user.reviewText }}</p>
+				<div class="theReview">
+					<p>Review: {{ user.reviewText }}</p>
+				</div>
 
-				<br>
+				
 			</div>
 		</div>
 	
@@ -119,17 +121,18 @@ export default {
 	
 	.eachDiv img {
 /*		float: left;*/
-		padding: 0 25px 25px 0;
+/*		padding: 0 25px 25px 0;*/
 	}
 	
 	.eachDiv {
-		text-align: justify;
+		text-align: center;
+		border-radius: 5px;
+		background-color: #fcdbee;
+		padding: 5px 25px 0 25px;
 	}
 	
-	p {
-/*		left: 80%;*/
-/*		position: absolute;*/
-/*		float: right;*/
+	.theReview {
+
 	}
 	
 	
