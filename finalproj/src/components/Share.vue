@@ -128,6 +128,7 @@ export default {
 									reviewText: `${review}`,
 									reviewStylist: this.stylist,
 									reviewShop: this.shop,
+									imageLikes: 0,
 //									caption: `${review} shared by ${this.user.name}`
 								}
 								// vue-images component does not play nicely with Firebase so need to manually add to both

@@ -21,15 +21,14 @@
 <!--				<div class="eachText">-->
 <!--				</div>-->
 				<h3>Stylist: {{ user.reviewStylist }}</h3>
-
 				<h3>Location: {{ user.reviewShop }}</h3>
-
 				<h3>User: </h3>
 				<img :src="user.imageUrl" @click="removeUser(user)">
 				<div class="theReview">
 					<p>Review: {{ user.reviewText }}</p>
 				</div>
-
+				<button @click="imageLikes">Like</button>
+				<p>{{ user.imageLikes }}</p>
 				
 			</div>
 		</div>
@@ -59,13 +58,25 @@ export default {
 	methods: {
 		removeUser: function(user) {
 			usersRef.child(user['.key']).remove();
+		},
+		
+		likes:  function(user) {
+			if (!imageLikes.includes(user) ) { 
+				this.imageLikes.push(user);
+				this.numLikes = imageLikes.size;
+			}
 		}
+		
 	},
 	computed: {
         // get images in reverse order added
-        reversedUsers () {
+        reversedUsers() {
             return this.users.reverse();
-        }
+        }, 
+		
+//		likes() {
+//			return this.users.imageLikes;
+//		}, 
     },
 	
 	
