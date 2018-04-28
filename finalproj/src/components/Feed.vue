@@ -12,7 +12,6 @@
 				</div>
 			</div>
 -->
-<!--		</div>-->
 		
 		<div class="outerDiv">
 			<div v-for="user in reversedUsers" class="eachDiv">
@@ -27,8 +26,8 @@
 				<div class="theReview">
 					<p>Review: {{ user.reviewText }}</p>
 				</div>
-				<button @click="imageLikes">Like</button>
-				<p>{{ user.imageLikes }}</p>
+				<button @click="likes(user)">Like</button>
+				<p>{{ user.numLikes }}</p>
 				
 			</div>
 		</div>
@@ -52,7 +51,8 @@ export default {
 	},
 	data () {
 		return {
-			num: 0
+			num: 0,
+			numLikes: 0
 		}
 	},
 	methods: {
@@ -60,14 +60,17 @@ export default {
 			usersRef.child(user['.key']).remove();
 		},
 		
-		likes:  function(user) {
-			if (!imageLikes.includes(user) ) { 
-				this.imageLikes.push(user);
-				this.numLikes = imageLikes.size;
-			}
-		}
+		likes: function(user) {
+//			if (! this.imageLikes.includes(user) ) { 
+//				this.imageLikes.push(user);
+//				numLikes = this.imageLikes.size;
+//			}
+			usersRef.child(user['.key']).child('imageLikes').push("heyllo");
+		},
+		
 		
 	},
+	
 	computed: {
         // get images in reverse order added
         reversedUsers() {

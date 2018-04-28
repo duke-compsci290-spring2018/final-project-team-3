@@ -2,6 +2,7 @@
 	<div id="login">
 		<br>
 		
+		<button @click="logOut()">logout</button>
 		
 		<ul v-if="loggingIn">
 			<h3>Log In</h3>
@@ -111,6 +112,7 @@ export default {
 			firebase.auth().onAuthStateChanged(function(user) {
 			  if (user) {
 				  user = firebase.auth().currentUser;
+				  console.log(user.email);
 			  } else {
 				  console.log('failed')
 			  }
@@ -142,7 +144,7 @@ export default {
 			this.$router.push({ path: '/' });
 		},
 		logOut: function() {
-			firebase.auth().signOut().then(function() {
+			Firebase.auth().signOut().then(function() {
 			  // Sign-out successful.
 				console.log("signed out");
 			}).catch(function(error) {
