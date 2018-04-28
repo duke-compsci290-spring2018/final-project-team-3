@@ -4,11 +4,12 @@
 		<router-link tag="h1" to="/">
 			<h1 class="siteName">{{ msg }}</h1>
 		</router-link>
+		<button @click="getUser()"> user ? </button>
 			
 		
 
 		<router-link tag="h4" to='/login'>
-			login
+			<div v-if="!user">login</div>
 		</router-link>
 
 		
@@ -85,9 +86,8 @@ export default {
 				"./src/assets/dummypic2.JPG",
 				"./src/assets/dummypic3.JPG",
 				"./src/assets/dummypic4.JPG"
-			]
-//			db,
-//			usersRef,
+			],
+			user: null
     	}
   	},
 	methods: {
@@ -99,17 +99,28 @@ export default {
 		},
 		changeHeader: function (col) {
 			this.headerColor = col;
-		}
+		},
+		getUser () {
+//			console.log(this.user)
+//            return this.user
+//			var user = firebase.auth().currentUser;
+			console.log(this.user)
+			if(this.user) { 
+				this.name = this.user.displayName; 
+				this.email = this.user.email; 
+				this.userId = this.user.uid;
+        	}
+		},
+        setUser (user) {
+			this.user = firebase.auth().currentUser
+        }
 	},
 	components: {
 		Login, Home, Feed, Find, Share, Settings
-	},
+	}
 //	firebase: {
 //		users: usersRef
 //	},
-	logIn: function() {
-		this.$router.push('/login');
-	}
 	
 	
 }

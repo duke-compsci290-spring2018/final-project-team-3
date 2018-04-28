@@ -7,16 +7,12 @@
 			<h3>Log In</h3>
 			<li>email</li>
 			<input type="text" v-model="email" placeholder="e.g. joeJoe@duke.edu" id="email">
-<!--
-			<li>username</li>
-			<input type="text" placeholder="e.g. taylor29" id="username">
--->
 			<li>password</li>
-			<input type="text" v-model="pw" placeholder="" id="pw" @keyup.enter="logInAttempt">
+			<input type="password" v-model="pw" placeholder="" id="pw" @keyup.enter="logInAttempt">
 			<br>
 			<button @click="logInAttempt">log in</button>
 			<br><br><br>
-			<h3 @click="loggingIn=false">Don't have an account? Create one here</h3>
+			<h3 @click="loggingIn=false; clearText()">Don't have an account? Create one here</h3>
 		</ul>
 		
 		
@@ -24,8 +20,10 @@
 			<h3>Create Account</h3>
 			<li>email</li>
 			<input type="text" v-model="email" placeholder="e.g. joeJoe@duke.edu" id="email">
+			<li>username</li>
+			<input type="text" v-model="username" placeholder="e.g. joesCuts" id="username">
 			<li>password</li>
-			<input type="text" v-model="pw" placeholder="" id="pw" @keyup.enter="logInAttempt">
+			<input type="password" v-model="pw" placeholder="" id="pw" @keyup.enter="logInAttempt">
 			<br>
 			<button @click="signUp">sign up</button>
 		</ul>
@@ -88,6 +86,9 @@
 <script>
 	
 import Firebase from 'firebase'
+import FirebaseUI from 'firebaseui'
+//import FirebaseUI from 'firebaseui'
+import { usersRef, storageRef } from '../database'
 
 
 export default {
@@ -100,18 +101,52 @@ export default {
 			email: '',
 			pw: '',
 			loggingIn: true
+			
 		}
 	},
+	firebase: {
+		users: usersRef
+	},
+	computed: {
+        user () {
+            return this.getUser()
+        }
+    },
 	methods: {
 		signUp: function() {
 			Firebase.auth().createUserWithEmailAndPassword(this.email, this.pw).catch(function(error) {
 				alert(error.message);
+				user = firebase.auth().currentUser;
 			})
+			
+			this.user.updateProfile({
+				displayName: "this.username"
+			}).then(function() {
+				this.clearText();
+				this.$router.push({ path: '/' });
+				console.log('saved name');
+			})
+			
 		},
 		logInAttempt: function() {
-			firebase.auth().signInWithEmailAndPassword(this.email, this.pw).catch(function(error) {
+			Firebase.auth().signInWithEmailAndPassword(this.email, this.pw).catch(function(error) {
 				alert(error.message);
 			});
+			this.clearText();
+			this.$router.push({ path: '/' });
+		},
+		logOut: function() {
+			firebase.auth().signOut().then(function() {
+			  // Sign-out successful.
+				console.log("signed out");
+			}).catch(function(error) {
+			  // An error happened.
+				alert(error.message);
+			});
+		},
+		clearText: function() {
+			this.email = '';
+			this.pw = ''
 		}
 		
 																					  
