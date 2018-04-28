@@ -35,7 +35,7 @@ const routes = [
 	{ path: '/googlemap', component: GoogleMap }
 ]
 
-//const user = null;
+
 //user () {
 //			firebase.auth().onAuthStateChanged(function(user) {
 //			  if (user) {
