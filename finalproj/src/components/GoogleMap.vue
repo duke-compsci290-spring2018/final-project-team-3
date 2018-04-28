@@ -3,6 +3,7 @@
     <div>
 		<h2>FIND A SHOP</h2>
 		<br>
+<!--
       <label>
         <gmap-autocomplete
           @place_changed="setPlace">
@@ -10,6 +11,7 @@
         <button @click="addMarker">Add</button>
       </label>
 		
+-->
       <br/>
 		
     </div>
@@ -62,48 +64,12 @@ export default {
     setPlace(place) {
       this.currentPlace = place;
     },
-	  
-    addMarker() {
-      if (this.currentPlace) {
-        const marker = {
-          lat: this.currentPlace.geometry.location.lat(),
-          lng: this.currentPlace.geometry.location.lng()
-        };
-        this.markers.push({ position: marker });
-        this.places.push(this.currentPlace);
-        this.center = marker;
-        this.currentPlace = null;
-      }
-    },
-	  
-	showShops() {
-		var infowindow;
-		var request = {
-		location: this.center,
-		radius: 10000,
-		types: ['hair_care', 'beauty_salon']
-	  };
-	  infowindow = new google.maps.InfoWindow();
-	  var service = new google.maps.places.PlacesService(map);
-	  service.search(request, callback);
-	}, 
-
-	  callback(results, status) {
-	  if (status == google.maps.places.PlacesServiceStatus.OK) {
-		for (var i = 0; i < results.length; i++) {
-			this.currentPlace = results[i];
-		  	addMarker();
-    }
-  }
-},
-	  
 	changeCenter: function() {
 		if (this.currentPlace) {
 			const newCenter = {
 			  lat: this.currentPlace.geometry.location.lat(),
 			  lng: this.currentPlace.geometry.location.lng()
 			};
-			this.showShops();
 			this.center = newCenter;
 			this.currentPlace = null;
 		}
@@ -122,21 +88,3 @@ export default {
 </script>
 
 
- var request = {
-    location: toronto,
-    radius: 10000,
-    types: ['hair_care', 'beauty_salon']
-  };
-  infowindow = new google.maps.InfoWindow();
-
-  var service = new google.maps.places.PlacesService(map);
-  service.search(request, callback);
-}
-
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
-  }
-}
