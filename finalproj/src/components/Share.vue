@@ -30,6 +30,13 @@
 				<br>
 				<input type="text" class="form-stylist" id="stylist" v-model="stylist" placeholder="e.g. BobsCuts21">
 			</div>
+			
+			<div class="form-group">
+				<label for="shop">Where did you get cut?: </label>
+				<br>
+				<input type="text" class="form-shop" id="shop" v-model="shop" placeholder="e.g. Barber in Demand">
+			</div>
+			
 			<input type="submit" class="submitButton" value="Submit your review" />
     	</form>
 		
@@ -67,6 +74,7 @@ export default {
 			name: '',
 			newReview: '',
 			stylist: '',
+			shop: '',
 			previewImageUrl: '',
 			isPreview: false
 		}
@@ -110,7 +118,7 @@ export default {
             this.newReview = ''
             input.value = ''
 		},
-		storeImage (review, imageFile, stylist) {
+		storeImage (review, imageFile, stylist, shop) {
 			storageRef.child('images/' + imageFile.name)
 					  .put(imageFile)
 					  .then(snapshot => {
@@ -118,7 +126,8 @@ export default {
 									imageUrl: snapshot.downloadURL,
 //									reviewText: this.review,
 									reviewText: `${review}`,
-									reviewStylist: this.stylist
+									reviewStylist: this.stylist,
+									reviewShop: this.shop,
 //									caption: `${review} shared by ${this.user.name}`
 								}
 								// vue-images component does not play nicely with Firebase so need to manually add to both
