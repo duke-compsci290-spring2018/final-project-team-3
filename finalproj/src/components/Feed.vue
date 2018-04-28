@@ -26,8 +26,13 @@
 				<div class="theReview">
 					<p>Review: {{ user.reviewText }}</p>
 				</div>
+<<<<<<< HEAD
 				<button @click="likes(user)">Like</button>
 				<p>{{ user.numLikes }}</p>
+=======
+				<button @click="imageLikes">Like</button>
+				<p> Likes : {{ user.imageLikes }}</p>
+>>>>>>> df00efc7d9d167f5cf64a6fccebbd46e025cb85d
 				
 			</div>
 		</div>
