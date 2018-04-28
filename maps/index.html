@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Store Locator</title>
+    <link rel="stylesheet" href="dist/store-locator1.css">
+  </head>
+  <body>
+    <h1>Store Locator</h1>
+    <div id="my-store-locator">
+      <!-- map will be rendered here-->
+    </div>
+    <script src="dist/store-locator1.js"></script>
+    <script>
+      storeLocator({
+        container: 'my-store-locator',
+        apiKey: 'AIzaSyB9YuLehzAzDIKI9TKDRz1TQ8vp-PVJms8',
+        searchHint: "Barbershops in your area:",
+        stores: [
+          {
+            name: 'Barber In Demand',
+			hours: "4–11:30PM",
+        	phone: "(919) 957-7989",
+            address: '105 W Parrish St, Durham, NC 27701',
+            location: {lat: 35.995588, lng: -78.900566},
+            website: 'barberindemand.com'
+          },
+          {
+            name: 'J&S Barbershop',
+			hours: "9am - 4pm",
+        	phone: "(919) 403-8800",
+            address: "2720 Chapel Hill Rd # F, Durham, NC 27707",
+            location: {lat: 35.975645, lng: -78.936942}
+          },
+          {
+            name: "Poster Cut Boyz",
+			hours: "11am - 7pm",
+        	phone: "(757) 753-2367",
+            address: '908 Fayetteville Street Durham, NC 27701',
+            location: {lat: 35.984529, lng: -78.899194}
+          },
+          {
+            name: 'Groom Room',
+			hours: "9am - 6pm",
+        	phone: "(919) 797-1286",
+            address: '2716 Chapel Hill Rd, Durham, NC 27707',
+            location: {lat: 35.975920, lng: -78.937029}
+          },
+          {
+            name: 'Flashlight Barbershop',
+			hours: "12pm - 6pm",
+			phone: "(919) 286-2375",
+            address: '1058 W Club Blvd (Northgate Mall) Durham, NC 27701',
+            location: {lat: 36.019681, lng: -78.910643}
+          }
+        ]
+      })
+    </script>
+  </body>
+</html>
