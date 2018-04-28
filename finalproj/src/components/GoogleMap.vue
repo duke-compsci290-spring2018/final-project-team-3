@@ -43,8 +43,6 @@ export default {
   name: "GoogleMap",
   data() {
     return {
-      // default to Montreal to keep it simple
-      // change this to whatever makes sense
       center: { lat: 40, lng: 40 },
       markers: [],
       places: [],
@@ -79,6 +77,7 @@ export default {
 			  lat: this.currentPlace.geometry.location.lat(),
 			  lng: this.currentPlace.geometry.location.lng()
 			};
+			
 			this.center = newCenter;
 			this.currentPlace = null;
 		}
