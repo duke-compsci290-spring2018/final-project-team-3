@@ -18,7 +18,8 @@
 		
 
 		<div v-if="!scrolledEnough" class="leftBarAbs"> 
-			<p>Why us?</p>
+			<h3>Why us?</h3>
+			<p>We are disrupting the entire hair industry with our revolutionary web app. With our platform you can find a stylist near you and see real reviews from people just ike you. This perfectly solves the hair stylist needs for most college students.</p>
 		</div>
 		<div v-else class="leftBarFixed">
 
