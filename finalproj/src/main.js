@@ -35,6 +35,17 @@ const routes = [
 	{ path: '/googlemap', component: GoogleMap }
 ]
 
+//const user = null;
+//user () {
+//			firebase.auth().onAuthStateChanged(function(user) {
+//			  if (user) {
+//				  user = firebase.auth().currentUser;
+//			  } else {
+//				  console.log('failed')
+//			  }
+//			});
+//        }
+
 const router = new VueRouter({
 	routes
 })

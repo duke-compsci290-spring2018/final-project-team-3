@@ -2,20 +2,32 @@
   <div>
     <div>
       <h2>Search and add a pin</h2>
+		<h2>hi</h2>
       <label>
         <gmap-autocomplete
           @place_changed="setPlace">
         </gmap-autocomplete>
         <button @click="addMarker">Add</button>
       </label>
+		
       <br/>
-
+		
     </div>
-    <br>
+	  <div>
+		  <h2>Set your location</h2>
+		  <label>
+			<gmap-autocomplete
+			  @place_changed="setPlace">
+			</gmap-autocomplete>
+			<button @click="geolocate">Add</button>
+		  </label>
+		<br>
+	  </div>
+	  
     <gmap-map
       :center="center"
       :zoom="12"
-      style="width:100%;  height: 400px;"
+      style="width:80%;  height: 400px;"
     >
       <gmap-marker
         :key="index"
@@ -34,7 +46,7 @@ export default {
     return {
       // default to Montreal to keep it simple
       // change this to whatever makes sense
-      center: { lat: 45.508, lng: -73.587 },
+      center: { lat: position.coords.latitude, lng: position.coords.longitude },
       markers: [],
       places: [],
       currentPlace: null
@@ -62,6 +74,15 @@ export default {
         this.currentPlace = null;
       }
     },
+	changeCenter: function() {
+		if (this.currentPlace) {
+			const newCenter = {
+			  lat: this.currentPlace.geometry.location.lat(),
+			  lng: this.currentPlace.geometry.location.lng()
+			};
+			this.center = newCenter
+		}
+	},
     geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
         this.center = {
