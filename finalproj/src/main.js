@@ -10,17 +10,19 @@ import Feed from './components/Feed.vue'
 import Find from './components/Find.vue'
 import Share from './components/Share.vue'
 import Settings from './components/Settings.vue'
+import Authentication from './components/Authentication.vue'
 
 Vue.use(VueFire)
 Vue.use(VueRouter)
 
 const routes = [
-	{ path: '/', component: Home},
+	{ path: '/', component: Home },
 	{ path: '/login', component: Login },
 	{ path: '/feed', component: Feed },
 	{ path: '/find', component: Find },
 	{ path: '/share', component: Share },
-	{ path: '/settings', component: Settings }
+	{ path: '/settings', component: Settings },
+	{ path: '/authentication', component: Authentication }
 ]
 
 const router = new VueRouter({
