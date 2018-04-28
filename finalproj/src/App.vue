@@ -20,8 +20,8 @@
 				Feed
 			</router-link>
 			
-			<router-link class="find" to='/find'>
-				Find
+			<router-link class="googlemap" to='/googlemap'>
+				Locator
 			</router-link>
 			
 			<router-link class="share" to='/share'>
@@ -51,13 +51,12 @@
 
 <script>
 	
+import GoogleMap from "./components/GoogleMap";
 import Login from './components/Login.vue'
 import Home from './components/Home.vue'
 import Feed from './components/Feed.vue'
-import Find from './components/Find.vue'
 import Share from './components/Share.vue'
 import Settings from './components/Settings.vue'
-
 import Firebase from 'firebase'
 
 
@@ -129,7 +128,7 @@ export default {
 		}
 	},
 	components: {
-		Login, Home, Feed, Find, Share, Settings
+		Login, Home, Feed, Share, Settings, GoogleMap
 	}
 //	firebase: {
 //		users: usersRef

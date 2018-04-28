@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import * as VueGoogleMaps from "vue2-google-maps";
 import VueFire from 'vuefire'
 import VueRouter from 'vue-router'
 import Login from './components/Login.vue'
@@ -10,11 +9,13 @@ import Find from './components/Find.vue'
 import Share from './components/Share.vue'
 import Settings from './components/Settings.vue'
 import Authentication from './components/Authentication.vue'
+import GoogleMap from './components/GoogleMap.vue'
 
+import * as VueGoogleMaps from "vue2-google-maps";
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: "AIzaSyBV0BRUusEsnhUjHIA5e6rscQDKCf8rxHw",
+    key: "AIzaSyBV0BRUusEsnhUjHIA5e6rscQDKCf8rxHw", //our api key
     libraries: "places" // necessary for places input
   }
 });
@@ -27,10 +28,11 @@ const routes = [
 	{ path: '/', component: Home },
 	{ path: '/login', component: Login },
 	{ path: '/feed', component: Feed },
-	{ path: '/find', component: Find },
+//	{ path: '/find', component: Find },
 	{ path: '/share', component: Share },
 	{ path: '/settings', component: Settings },
-	{ path: '/authentication', component: Authentication }
+	{ path: '/authentication', component: Authentication },
+	{ path: '/googlemap', component: GoogleMap }
 ]
 
 const router = new VueRouter({
