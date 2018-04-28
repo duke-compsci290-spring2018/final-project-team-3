@@ -5,25 +5,27 @@
 		<div class="camPic" v-if="!loggingIn">
 			<div v-if="picOne">
 				<h2>From</h2>
-				<img @mouseover="picOne = false" :src="cam1">
+				<img class="camImg" @mouseover="picOne = false" :src="cam1">
 				<h2>scrawn</h2>
 			</div>
 			<div v-if="!picOne">
 				<h2>to</h2>
-				<img @mouseleave="picOne = true" :src="cam2">
+				<img class="camImg" @mouseleave="picOne = true" :src="cam2">
 				<h2>jawn</h2>
 			</div>
 		</div>
 		
 		
 
-		<div v-if="!scrolledEnough" class="leftBarAbs"> 
-			<h3>Why us?</h3>
-			<p>We are disrupting the entire hair industry with our revolutionary web app. With our platform you can find a stylist near you and see real reviews from people just ike you. This perfectly solves the hair stylist needs for most college students.</p>
+		<div class="whyUs"> 
+			<h3 class="homeTitle">Why us?</h3>
+			<ul class="homeBody">
+				<p class="homeText">We are disrupting the entire hair industry with our revolutionary web app. With our platform you can find a stylist near you and see real reviews from people just like you. This perfectly solves the hair stylist needs for most college students.</p>
+			</ul>
 		</div>
-		<div v-else class="leftBarFixed">
-
-			<p>other</p>
+		<div class="whoAreWe">
+			<h3 class="homeTitle">Who are we?</h3>
+	
 		</div>
 	</div>
 
@@ -55,3 +57,27 @@ export default {
 
 
 </script>
+
+<style>
+	
+	.whyUs {
+		margin-right: auto;
+		margin-left: auto;
+	}
+	
+	.homeTitle {
+		background-color: #98cece;
+		padding: 10px;
+	}
+	
+	.homeBody {
+		width: 70%;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.homeText {
+		font-size: 20px;
+	}
+
+</style>

@@ -59,6 +59,7 @@ import Share from './components/Share.vue'
 import Settings from './components/Settings.vue'
 import Firebase from 'firebase'
 
+
 //var config = {
 //	apiKey: "AIzaSyCw4XyEm2oM0cDHQC0Tqc9IsfO0y8TrT1A",
 //    authDomain: "finalprojdata.firebaseapp.com",
@@ -72,6 +73,8 @@ import Firebase from 'firebase'
 //var db = app.database()
 //
 //var usersRef = db.ref('users')
+
+
 	
 export default {
 	name: 'app',
@@ -86,9 +89,10 @@ export default {
 				"./src/assets/dummypic3.JPG",
 				"./src/assets/dummypic4.JPG"
 			],
-			user: null
+			user: null,
     	}
   	},
+	
 	methods: {
 		testing: function () {
 			console.log("clicked it!")
@@ -112,7 +116,16 @@ export default {
 		},
         setUser (user) {
 			this.user = firebase.auth().currentUser
-        }
+        },
+		ifLoggedIn: function(user) {
+			firebase.auth().onAuthStateChanged(function(user) {
+			  if (user) {
+				// User is signed in.
+			  } else {
+				// No user is signed in.
+			  }
+			});
+		}
 	},
 	components: {
 		Login, Home, Feed, Share, Settings, GoogleMap
@@ -123,6 +136,7 @@ export default {
 	
 	
 }
+
 </script>
 
 
@@ -207,7 +221,11 @@ export default {
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
-		width: 40%;
+		width: 60%;
+	}
+	
+	.camImg {
+		width: 30%;
 	}
 
 	.feed:hover {
@@ -244,13 +262,16 @@ export default {
 		color: #2c3e50;
 	}
 	
-	.leftBarAbs {
+	.leftBar {
 		width: 20%;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-bottom: 10px;
 		float: left;
 		position: absolute;
 		background: #bee8e7;
 		top: 40%;
-		height: 50%;
+		height: 60%;
 		left: 2%;
 	}
 	
@@ -263,6 +284,10 @@ export default {
 		height: 50%;
 		left: 2%;
 	}
+	
+	
+	
+
 	
 	
 </style>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import * as VueGoogleMaps from "vue2-google-maps";
+//import * as VueGoogleMaps from "vue2-google-maps";
 import VueFire from 'vuefire'
 import VueRouter from 'vue-router'
 import Login from './components/Login.vue'
@@ -12,12 +12,21 @@ import Settings from './components/Settings.vue'
 import Authentication from './components/Authentication.vue'
 import GoogleMap from './components/GoogleMap.vue'
 
+<<<<<<< HEAD
 Vue.use(VueGoogleMaps, {
   load: {
     key: "AIzaSyBV0BRUusEsnhUjHIA5e6rscQDKCf8rxHw", //our api key
     libraries: "places" // necessary for places input
   }
 });
+=======
+//Vue.use(VueGoogleMaps, {
+//  load: {
+//    key: "REPLACE-THIS-WITH-YOUR-KEY-FROM-ABOVE",
+//    libraries: "places" // necessary for places input
+//  }
+//});
+>>>>>>> 9b6754e2ad7b3897acfcdba0177b20fdf0418613
 
 
 Vue.use(VueFire)
