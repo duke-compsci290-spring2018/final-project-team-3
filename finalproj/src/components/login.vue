@@ -87,7 +87,6 @@
 	
 import Firebase from 'firebase'
 import FirebaseUI from 'firebaseui'
-//import FirebaseUI from 'firebaseui'
 import { usersRef, storageRef } from '../database'
 
 
@@ -109,7 +108,13 @@ export default {
 	},
 	computed: {
         user () {
-            return this.getUser()
+			firebase.auth().onAuthStateChanged(function(user) {
+			  if (user) {
+				  user = firebase.auth().currentUser;
+			  } else {
+				  console.log('failed')
+			  }
+			});
         }
     },
 	methods: {
@@ -120,8 +125,9 @@ export default {
 			})
 			
 			this.user.updateProfile({
-				displayName: "this.username"
+				displayName: this.username
 			}).then(function() {
+				console.log(this.username)
 				this.clearText();
 				this.$router.push({ path: '/' });
 				console.log('saved name');

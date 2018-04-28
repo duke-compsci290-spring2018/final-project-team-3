@@ -8,10 +8,21 @@
         </gmap-autocomplete>
         <button @click="addMarker">Add</button>
       </label>
+		
       <br/>
-
+		
     </div>
-    <br>
+	  <div>
+		  <h2>Set your location</h2>
+		  <label>
+			<gmap-autocomplete
+			  @place_changed="setPlace">
+			</gmap-autocomplete>
+			<button @click="changeCenter">Add</button>
+		  </label>
+		<br>
+	  </div>
+	  
     <gmap-map
       :center="center"
       :zoom="12"
@@ -29,12 +40,12 @@
 
 <script>
 export default {
-  name: "Find",
+  name: "GoogleMap",
   data() {
     return {
       // default to Montreal to keep it simple
       // change this to whatever makes sense
-      center: { lat: 45.508, lng: -73.587 },
+      center: { lat: 40, lng: 40 },
       markers: [],
       places: [],
       currentPlace: null
@@ -62,6 +73,17 @@ export default {
         this.currentPlace = null;
       }
     },
+	changeCenter: function() {
+		if (this.currentPlace) {
+			const newCenter = {
+			  lat: this.currentPlace.geometry.location.lat(),
+			  lng: this.currentPlace.geometry.location.lng()
+			};
+			this.center = newCenter;
+			this.currentPlace = null;
+		}
+		
+	},
     geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
         this.center = {
