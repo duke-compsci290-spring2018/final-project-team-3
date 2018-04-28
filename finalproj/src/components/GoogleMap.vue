@@ -46,11 +46,7 @@ export default {
     return {
       // default to Montreal to keep it simple
       // change this to whatever makes sense
-<<<<<<< HEAD
       center: {lat: 35.995588, lng: -78.900566},
-=======
-      center: { lat: 40, lng: 40 },
->>>>>>> 9b397614a849ee0137e6a91f3be47f5167e52ef7
       markers: [],
       places: [],
       currentPlace: null
@@ -66,6 +62,7 @@ export default {
     setPlace(place) {
       this.currentPlace = place;
     },
+	  
     addMarker() {
       if (this.currentPlace) {
         const marker = {
@@ -78,12 +75,35 @@ export default {
         this.currentPlace = null;
       }
     },
+	  
+	showShops() {
+		var infowindow;
+		var request = {
+		location: this.center,
+		radius: 10000,
+		types: ['hair_care', 'beauty_salon']
+	  };
+	  infowindow = new google.maps.InfoWindow();
+	  var service = new google.maps.places.PlacesService(map);
+	  service.search(request, callback);
+	}, 
+
+	  callback(results, status) {
+	  if (status == google.maps.places.PlacesServiceStatus.OK) {
+		for (var i = 0; i < results.length; i++) {
+			this.currentPlace = results[i];
+		  	addMarker();
+    }
+  }
+},
+	  
 	changeCenter: function() {
 		if (this.currentPlace) {
 			const newCenter = {
 			  lat: this.currentPlace.geometry.location.lat(),
 			  lng: this.currentPlace.geometry.location.lng()
 			};
+			this.showShops();
 			this.center = newCenter;
 			this.currentPlace = null;
 		}
@@ -100,3 +120,23 @@ export default {
   }
 };
 </script>
+
+
+ var request = {
+    location: toronto,
+    radius: 10000,
+    types: ['hair_care', 'beauty_salon']
+  };
+  infowindow = new google.maps.InfoWindow();
+
+  var service = new google.maps.places.PlacesService(map);
+  service.search(request, callback);
+}
+
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      createMarker(results[i]);
+    }
+  }
+}
