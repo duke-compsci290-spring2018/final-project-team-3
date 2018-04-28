@@ -27,7 +27,7 @@
 				<div class="theReview">
 					<p>Review: {{ user.reviewText }}</p>
 				</div>
-				<button @click="imageLikes">Like</button>
+				<button @click="likes">Like</button>
 				<p> Likes : {{ user.imageLikes }}</p>
 				
 			</div>
