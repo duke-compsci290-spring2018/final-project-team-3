@@ -64,6 +64,44 @@ export default {
     setPlace(place) {
       this.currentPlace = place;
     },
+<<<<<<< HEAD
+=======
+	  
+    addMarker() {
+      if (this.currentPlace) {
+        const marker = {
+          lat: this.currentPlace.geometry.location.lat(),
+          lng: this.currentPlace.geometry.location.lng()
+        };
+        this.markers.push({ position: marker });
+        this.places.push(this.currentPlace);
+        this.center = marker;
+        this.currentPlace = null;
+      }
+    },
+	  
+	showShops() {
+		var infowindow;
+		var request = {
+		location: this.center,
+		radius: 10000,
+		types: ['hair_care', 'beauty_salon']
+	  };
+	  infowindow = new google.maps.InfoWindow();
+	  var service = new google.maps.places.PlacesService(map);
+	  service.search(this.request, this.callback);
+	}, 
+
+	  callback(results, status) {
+	  if (status == google.maps.places.PlacesServiceStatus.OK) {
+		for (var i = 0; i < results.length; i++) {
+			this.currentPlace = results[i];
+		  	addMarker();
+    }
+  }
+},
+	  
+>>>>>>> 777aa5ebce75f5b56012de84f4655d813a523240
 	changeCenter: function() {
 		if (this.currentPlace) {
 			const newCenter = {

@@ -20,7 +20,7 @@
 				Feed
 			</router-link>
 			
-			<router-link class="googlemap" to='/googlemap'>
+			<router-link class="find" to='/googlemap'>
 				Locator
 			</router-link>
 			

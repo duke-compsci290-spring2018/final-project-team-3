@@ -27,7 +27,7 @@ Vue.use(VueRouter)
 const routes = [
 	{ path: '/', component: Home },
 	{ path: '/login', component: Login },
-	{ path: '/feed', component: Feed },
+	{ path: '/feed', component: Feed, meta: {requiresAuth: true}},
 //	{ path: '/find', component: Find },
 	{ path: '/share', component: Share },
 	{ path: '/settings', component: Settings },
