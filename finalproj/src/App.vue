@@ -60,6 +60,7 @@ import Settings from './components/Settings.vue'
 
 import Firebase from 'firebase'
 
+
 //var config = {
 //	apiKey: "AIzaSyCw4XyEm2oM0cDHQC0Tqc9IsfO0y8TrT1A",
 //    authDomain: "finalprojdata.firebaseapp.com",
@@ -73,6 +74,8 @@ import Firebase from 'firebase'
 //var db = app.database()
 //
 //var usersRef = db.ref('users')
+
+
 	
 export default {
 	name: 'app',
@@ -87,9 +90,10 @@ export default {
 				"./src/assets/dummypic3.JPG",
 				"./src/assets/dummypic4.JPG"
 			],
-			user: null
+			user: null,
     	}
   	},
+	
 	methods: {
 		testing: function () {
 			console.log("clicked it!")
@@ -113,7 +117,16 @@ export default {
 		},
         setUser (user) {
 			this.user = firebase.auth().currentUser
-        }
+        },
+		ifLoggedIn: function(user) {
+			firebase.auth().onAuthStateChanged(function(user) {
+			  if (user) {
+				// User is signed in.
+			  } else {
+				// No user is signed in.
+			  }
+			});
+		}
 	},
 	components: {
 		Login, Home, Feed, Find, Share, Settings
@@ -124,6 +137,7 @@ export default {
 	
 	
 }
+
 </script>
 
 
