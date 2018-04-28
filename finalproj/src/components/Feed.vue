@@ -21,15 +21,10 @@
 <!--				<div class="eachText">-->
 <!--				</div>-->
 				<h3>Stylist: {{ user.reviewStylist }}</h3>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 				<h3>Location: {{ user.reviewShop }}</h3>
-=======
+
 				<h3>User: </h3>
->>>>>>> 2cc934345c5818b8748ffdbc1869d152c504a626
-=======
-				<h3>User: </h3>
->>>>>>> 2cc934345c5818b8748ffdbc1869d152c504a626
 				<img :src="user.imageUrl" @click="removeUser(user)">
 				<div class="theReview">
 					<p>Review: {{ user.reviewText }}</p>

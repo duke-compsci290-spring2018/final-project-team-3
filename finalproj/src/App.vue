@@ -208,7 +208,11 @@ export default {
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
-		width: 40%;
+		width: 60%;
+	}
+	
+	.camImg {
+		width: 30%;
 	}
 
 	.feed:hover {
@@ -245,13 +249,16 @@ export default {
 		color: #2c3e50;
 	}
 	
-	.leftBarAbs {
+	.leftBar {
 		width: 20%;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-bottom: 10px;
 		float: left;
 		position: absolute;
 		background: #bee8e7;
 		top: 40%;
-		height: 50%;
+		height: 60%;
 		left: 2%;
 	}
 	
@@ -264,6 +271,10 @@ export default {
 		height: 50%;
 		left: 2%;
 	}
+	
+	
+	
+
 	
 	
 </style>
