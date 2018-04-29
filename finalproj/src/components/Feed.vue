@@ -1,7 +1,9 @@
 <template>
 	<div>
-		<h2>Feed</h2>
-		<h3>Click on a location to be mapped there!</h3>
+
+		<h1>FEED</h1>
+
+<!--		<h2 class="desc">Click on a location to be mapped there!</h2>-->
 		
 
 		
@@ -61,7 +63,13 @@ export default {
 			
 			this.$router.push({
 				name: 'googlemap',
-				params: { item: image.reviewShop, lat: image.reviewLat, lng: image.reviewLng }
+				params: { 
+					item: image.reviewShop, 
+					lat: image.reviewLat, 
+					lng: image.reviewLng, 
+					addr: image.reviewAddress,
+					phone: image.reviewPhone
+				}
 			});
 		}
 	},
@@ -84,6 +92,10 @@ export default {
 	
 <style scoped>
 
+	h1 {
+		font-size: 36px;
+		background-color: #bee8e7;
+	}
 	
 	img {
 		width: 40%;
@@ -136,7 +148,8 @@ export default {
 	.eachDiv {
 		text-align: center;
 		border-radius: 5px;
-		background-color: #fcdbee;
+/*		background-color: #fcdbee;*/
+		background-color: #f9d9c0;
 		padding: 5px 15px 0 15px;
 		margin-bottom: 50px;
 	}
@@ -149,7 +162,14 @@ export default {
 		cursor: pointer;
 	}
 	
+	.desc {
+		font-size: 16px;
+	}
 	
+	h3 {
+		font-family: 'Avenir', Helvetica, Arial, sans-serif;
+		font-weight: 100;
+	}
 	
 	
 </style>

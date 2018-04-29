@@ -1,21 +1,12 @@
 <template>
 	<div>
-		<p>settings</p>
 		
-<!--		<h3>Hello {{ this.user.displayName }} </h3>-->
-		
-<!--
-		<input type="text" v-model="newName" @keyup.enter="changeUsername()">
+		<h1>YOUR ACCOUNT</h1>
 		<br>
-		{{ this.user.displayName }}
-		<br>
-		is that really what you want as your name?
-		<button @click="changeUsername()"></button>
--->
 		
-		<ul v-for="image in images">
+		
+		<div v-for="image in images">
 			<div class="eachOne" v-if="image.reviewer === theEmail">
-<!--			<div v-if="">-->
 				<br>
 				<button @click="removeImg(image)"> remove this image </button>
 				<br><br>
@@ -27,7 +18,7 @@
 				<br>
 				
 			</div>
-		</ul>
+		</div>
 
 	
 	</div>
@@ -45,7 +36,8 @@ export default {
 			user: null,
 			newName: '',
 			theEmail: '',
-			newReview: ''
+			newReview: '',
+			haveNone: true
 		}
 	},
 	created() {
@@ -92,6 +84,15 @@ export default {
 
 
 <style scoped>
+	
+	div {
+		border-radius: 5px;
+	}
+	
+	h1 {
+		font-size: 36px;
+		background-color: #bee8e7;
+	}
 
 	img {
 		width: 30%;
@@ -102,12 +103,16 @@ export default {
 	}
 	
 	.eachOne {
-		width: 50%;
+		width: 40%;
+		padding-right: 15%;
+		padding-left: 15%;
+		padding-top: 5px;
 		margin-right: auto;
 		margin-left: auto;
 		margin-bottom: 20px;
-		background-color: #e0f3ff;
-		padding: 2px 15px 2px 15px;
+/*		background-color: #e0f3ff;*/
+		background-color: #f9d9c0;
+/*		padding: 2px 15px 2px 15px;*/
 	}
 	
 	textarea {

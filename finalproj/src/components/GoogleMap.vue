@@ -1,9 +1,18 @@
 <template>
 	<div>
-		<div>
+		<h1>FIND LOCATIONS</h1>
+		<br>
+		
+		<div class="firstDiv">
 <!--		<h2>FIND A SHOP </h2>-->
-			<h2 @click="test">Shop you chose: <span class="theShop"> {{ item }} </span> </h2>
-			<br>
+			<h3 @click="test">
+				<br>
+				Shop you chose: <span class="theShop"> {{ item }} </span> <br>
+				Their address: <span class="theShop"> {{ addr }} </span> <br>
+				Their phone number: <span class="theShop"> {{ phone }} </span> <br>
+	
+			</h3>
+			
 <!--
       <label>
         <gmap-autocomplete
@@ -15,15 +24,16 @@
 -->
 			<br/>
 		</div>
+<!--
 		<div>
 			<label>
 				<gmap-autocomplete @place_changed="setPlace">
 				</gmap-autocomplete>
-<!--				<button @click="changeCenter">Change Center</button>-->
 				<button @click="addMarker()">Add a Marker</button>
 			</label>
 			<br>
 		</div>
+-->
 	  
 		<gmap-map 
 				  :center="center"
@@ -46,7 +56,7 @@ import theLoc from '../components/Feed.vue'
 	
 export default {
 	name: "GoogleMap",
-	props: [ 'item','lat','lng' ],
+	props: [ 'item', 'lat', 'lng', 'addr', 'phone' ],
 	data() {
 		return {
 			theLat: 36.0014, 
@@ -110,6 +120,12 @@ export default {
 
 <style scoped>
 
+	div {
+
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+	}
+	
 	.theShop {
 		color: red;
 	}
@@ -123,8 +139,29 @@ export default {
 		margin-right: auto;
 		margin-left: auto;
 		height: 400px;
+		border-radius: 5px;
 	}
 
+	.firstDiv {
+		text-align: center;
+		width: 40%;
+		margin-left: auto;
+		margin-right: auto;
+/*		background-color: #e1e1f4;*/
+		background-color: #f9d9c0;
+		padding-right: 15%;
+		padding-left: 15%;
+	}
+	
+	h3 {
+		text-align: justify;
+		font-weight: 200;
+	}
+	
+	h1 {
+		font-size: 36px;
+		background-color: #bee8e7;
+	}
 
 </style>
 

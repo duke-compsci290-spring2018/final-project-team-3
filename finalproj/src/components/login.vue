@@ -12,7 +12,7 @@
 			<input type="password" v-model="pw" placeholder="" id="pw" @keyup.enter="logInAttempt">
 			<br>
 			<button @click="logInAttempt">log in</button>
-			<br><br><br>
+			<br><br>
 			<h3 @click="loggingIn=false; clearText()">Don't have an account? Create one here</h3>
 		</ul>
 		
@@ -167,7 +167,10 @@ export default {
 	
 	h3 {
 		cursor: pointer;
+		background-color: #f9d9c0;
+		padding: 10px
 	}
+	
 	
 
 </style>

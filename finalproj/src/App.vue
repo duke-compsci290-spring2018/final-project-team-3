@@ -25,7 +25,7 @@
 			</router-link>
 			
 			<router-link class="find" to='/map'>
-				Locator
+				Locations
 			</router-link>
 			
 			<router-link class="share" to='/share'>
@@ -33,7 +33,7 @@
 			</router-link>
 			
 			<router-link class="settings" to='/settings'>
-				Settings
+				Account
 			</router-link>
 			
 		</header>

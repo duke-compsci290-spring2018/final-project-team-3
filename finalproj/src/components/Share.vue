@@ -1,7 +1,7 @@
 <template>
 	<div>
 	
-		<br>
+
 		<h1>SHARE A REVIEW</h1>
 		<br>
 
@@ -129,8 +129,10 @@ export default {
                 this.storeImage(this.newReview, input.files[0], this.stylist, this.shop)
             }
             // reset values displayed in form so user knows to input new data
-            this.newReview = ''
-            input.value = ''
+            this.newReview = '',
+//			this.stylist = '',
+            input.value = '',
+			this.currentPlace = null
 		},
 		storeImage (review, imageFile, stylist, shop) {
 			storageRef.child('images/' + imageFile.name)
@@ -145,6 +147,8 @@ export default {
 									reviewShop: this.shop.name,
 									reviewLat: this.shop.geometry.location.lat(),
 									reviewLng: this.shop.geometry.location.lng(),
+									reviewAddress: this.shop.formatted_address,
+									reviewPhone: this.shop.formatted_phone_number,
 									imageLikes: 0
 //									caption: `${review} shared by ${this.user.name}`
 								}
@@ -168,21 +172,19 @@ export default {
 	input {
 		width: 50%;
 	}
-	
-	h1 {
-		font-size: 36px;
-	}
+
 	
 	.outerDiv {
 		width: 40%;
 		text-align: center;
 		margin-left: auto;
 		margin-right: auto;
+		border-radius: 5px;
 	}
 	
 	.eachDiv {
 		text-align: left;
-		
+		border-radius: 5px;
 	}
 	
 	form {
@@ -198,11 +200,13 @@ export default {
 		text-align: center;
 		margin-right: auto;
 		margin-left: auto;
-		background-color: aliceblue;
+/*		background-color: aliceblue;*/
+		background-color: #f9d9c0;
 		padding-bottom: 5%;
 		padding-right: 15%;
 		padding-left: 15%;
 		padding-top: 5%;
+		border-radius: 5px;
 	}
 	
 	.form-group {
@@ -229,8 +233,9 @@ export default {
 	}
 	
 	h1 {
-		font-size: 30px;
+		font-size: 36px;
 		cursor: text;
+		background-color: #bee8e7;
 	}
 	
 

@@ -68,6 +68,7 @@ export default {
 	.homeTitle {
 		background-color: #98cece;
 		padding: 10px;
+		font-weight: 500;
 	}
 	
 	.homeBody {
@@ -78,6 +79,9 @@ export default {
 
 	.homeText {
 		font-size: 20px;
+		font-weight: 200;
 	}
+	
+	
 
 </style>
