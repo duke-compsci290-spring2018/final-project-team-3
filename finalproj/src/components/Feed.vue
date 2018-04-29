@@ -8,7 +8,7 @@
 
 		
 		<div class="outerDiv">
-			<div v-for="image in reversedUsers" class="eachDiv">
+			<div v-for="image in reversedUsers" class="eachDiv" :alreadyLiked="alreadyLiked">
 				<h3>Stylist: {{ image.reviewStylist }}</h3>
 				<h3 @click="setLocation(image)" class="locText">Location: {{ image.reviewShop }}</h3> 
 				<h3>User: {{ image.reviewer }}</h3>
@@ -18,7 +18,7 @@
 				</div>
 				
 				<p>{{ image.imageLikes }} likes!</p>
-				<button v-if="!alreadyLiked" @click="likes(image)">Like</button>
+				<button @click="likes(image)">Like</button>
 				
 			</div>
 		</div>
@@ -169,6 +169,10 @@ export default {
 	h3 {
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
 		font-weight: 100;
+		padding-top: 0;
+		padding-bottom: 0;
+		margin-top: 4px;
+		margin-bottom: 4px;
 	}
 	
 	

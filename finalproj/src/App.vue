@@ -20,7 +20,7 @@
 <!--		<header :style="{ backgroundColor: headerColor }"  >-->
 		<header>
 				
-			<router-link id="a" class="feed" to='/feed'>
+			<router-link class="feed" to='/feed'>
 				Feed
 			</router-link>
 			
@@ -32,7 +32,7 @@
 				Share
 			</router-link>
 			
-			<router-link class="settings" to='/settings'>
+			<router-link class="settings" to='/account'>
 				Account
 			</router-link>
 			

@@ -62,51 +62,31 @@ export default {
 			
 		}
 	},
-	created () {
-		console.log('created', this);
-	},
 
 	methods: {
 		
 		signUp: function() {
-			console.log('created', this);
 			const _this = this;
 			Firebase.auth().createUserWithEmailAndPassword(this.email, this.pw)
 			.then(function () {
-				
-//				console.log('created', this);
 				_this.user = Firebase.auth().currentUser;
 //				console.log(_this.username);
 			})
-//			this.user.updateProfile({
-//				displayName: this.username
 			.then(function() {
-//				console.log(_this.username);
-				
 				_this.clearText()
-
-//				console.log('saved name')
 			})
 			.catch(function(error) {
 				alert(error.message);
-//				_this.user = Firebase.auth().currentUser;
 				console.log('created', this);
 			})
-//			.then(function () {
-//				this.user = Firebase.auth().currentUser;
-//			})
 			
 		},
 																					  
 		logInAttempt: function() {
-//			Firebase.auth().signInWithEmailAndPassword(this.email, this.pw).catch(function(error) {
 			Firebase.auth().signInWithEmailAndPassword(this.email, this.pw).catch((error) => {
 
 				this.signedIn = false;
-//				this.$router.push('login');
 				console.log(this.signedIn);
-//				this.theRouting(Firebase.auth().currentUser);
-//				alert(error.message);
 				
 			});
 				
@@ -123,16 +103,6 @@ export default {
 		setUser (user) {
 			this.user = user
         },
-		
-//		theRouting: function(helpMe) {
-//			if (this.helpMe) {
-//				this.$router.push('/');
-//				console.log("hey");
-//			} else {
-//				this.$router.push('/login');
-//				console.log('nope');
-//			}
-//		},
 //		logOut: function() {
 //			Firebase.auth().signOut().then(function() {
 //			  // Sign-out successful.
