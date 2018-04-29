@@ -37,7 +37,9 @@ export default {
 			newName: '',
 			theEmail: '',
 			newReview: '',
-			haveNone: true
+			haveNone: true, 
+			name:null, 
+			homeTown:null, 
 		}
 	},
 	created() {

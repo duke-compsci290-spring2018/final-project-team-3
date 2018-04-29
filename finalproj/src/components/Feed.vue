@@ -10,7 +10,7 @@
 		<div class="outerDiv">
 			<div v-for="image in reversedUsers" class="eachDiv" :alreadyLiked="alreadyLiked">
 				<h3>Stylist: {{ image.reviewStylist }}</h3>
-				<h3 @click="setLocation(image)" class="locText">Location: {{ image.reviewShop }}</h3> 
+				<h3 @click="setLocation(image)" class="locText">Location: <strong>{{ image.reviewShop }}</strong></h3>  
 				<h3>User: {{ image.reviewer }}</h3>
 				<img :src="image.imageUrl" @click="removeUser(image)">
 				<div class="theReview">
