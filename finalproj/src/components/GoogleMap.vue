@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-		<h2>FIND A SHOP</h2>
+		<h2>FIND A SHOP </h2>
 		<br>
 <!--
       <label>
@@ -13,10 +13,10 @@
 		
 -->
       <br/>
-		
     </div>
 	  <div>
 		  <h2>Set your location</h2>
+		  <p> {{ this.ourLoc }}</p>
 		  <label>
 			<gmap-autocomplete
 			  @place_changed="setPlace">
@@ -45,6 +45,7 @@
 <script>
 export default {
   name: "GoogleMap",
+	props: ['theLoc'],
   data() {
     return {
       // default to Montreal to keep it simple
@@ -53,6 +54,7 @@ export default {
       markers: [],
       places: [],
       currentPlace: null,
+		ourLoc: this.theLoc
     };
   },
 

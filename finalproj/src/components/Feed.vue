@@ -7,7 +7,8 @@
 		<div class="outerDiv">
 			<div v-for="user in reversedUsers" class="eachDiv">
 				<h3>Stylist: {{ user.reviewStylist }}</h3>
-				<h3>Location: {{ user.reviewShop }}</h3>
+<!--				 <h3>Location: {{ user.reviewShop }}</h3> -->
+				<router-link to='/googlemap' tag="h3" :theLoc="setLocation()"> Location: {{ user.reviewShop }} </router-link>
 				<h3>User: </h3>
 				<img :src="user.imageUrl" @click="removeUser(user)">
 				<div class="theReview">
@@ -40,7 +41,8 @@ export default {
 	data () {
 		return {
 			num: 0,
-			alreadyLiked: false
+			alreadyLiked: false, 
+			theLoc: null
 		}
 	},
 	methods: {
@@ -52,15 +54,21 @@ export default {
 			this.alreadyLiked = true;
 			usersRef.child(user['.key']).child('imageLikes').set(user.imageLikes + 1);
 		},
-		
-		
+//		setLocation(user) {
+//			console.log(user.reviewShop);
+//			this.theLoc = user.reviewShop;
+//		}
 	},
 	
 	computed: {
         // get images in reverse order added
         reversedUsers() {
             return this.users.reverse();
-        }
+        },
+		setLocation() {
+			return this.user.reviewShop;
+		}
+		
     },
 	
 	
