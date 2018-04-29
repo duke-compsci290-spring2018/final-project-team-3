@@ -1,14 +1,13 @@
 <template>
 	<div>
-
 		<h1>FEED</h1>
-
-<h2 class="desc">Get inspired!</h2>
-		
-
-		
+		<h2 class="desc">Get inspired!</h2>
+		<div class="form-group">
+      		<input type=search placeholder=Search class=form-control v-model="search" />
+		</div>
 		<div class="outerDiv">
 			<div v-for="image in reversedUsers" class="eachDiv" :alreadyLiked="alreadyLiked">
+<!--				<div v-for="image in reversedUsers | filterBy search in reviewShop "> -->
 				<h3>Stylist: {{ image.reviewStylist }}</h3>
 				<h3 @click="setLocation(image)" class="locText">Location: <strong>{{ image.reviewShop }}</strong></h3>  
 				<h3>User: {{ image.reviewer }}</h3>
@@ -19,10 +18,9 @@
 				
 				<p>{{ image.imageLikes }} likes!</p>
 				<button @click="likes(image)">Like</button>
-				
-			</div>
+				</div>
+<!--			</div>-->
 		</div>
-	
 	</div>
 </template>
 	
