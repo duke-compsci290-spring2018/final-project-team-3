@@ -25,9 +25,7 @@
 		  </label>
 		<br>
 	  </div>
-	  
-	  
-	  
+
 	    <div>
 		  <h2>Add Markery</h2>
 		  <label>
