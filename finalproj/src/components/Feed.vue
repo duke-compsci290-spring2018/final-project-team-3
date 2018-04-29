@@ -2,23 +2,10 @@
 	<div>
 		<h2>Feed</h2>
 		
-		
-<!--		<div class="allReviews">-->
-<!--
-			<div class="eachPic" v-for="pic in pics">
-				<img :src="pic.src">
-				<div class="eachReview">
-					<p>{{ pic.review }}</p>
-				</div>
-			</div>
--->
+
 		
 		<div class="outerDiv">
 			<div v-for="user in reversedUsers" class="eachDiv">
-<!--				<div class="eachPic">-->
-<!--				</div>-->
-<!--				<div class="eachText">-->
-<!--				</div>-->
 				<h3>Stylist: {{ user.reviewStylist }}</h3>
 				<h3>Location: {{ user.reviewShop }}</h3>
 				<h3>User: </h3>
@@ -26,13 +13,9 @@
 				<div class="theReview">
 					<p>Review: {{ user.reviewText }}</p>
 				</div>
-<<<<<<< HEAD
-				<button @click="likes(user)">Like</button>
-				<p>{{ user.numLikes }}</p>
-=======
-				<button @click="imageLikes">Like</button>
-				<p> Likes : {{ user.imageLikes }}</p>
->>>>>>> df00efc7d9d167f5cf64a6fccebbd46e025cb85d
+				<button v-if="!alreadyLiked" @click="likes(user)">Like</button>
+				<p>{{ user.imageLikes }} likes!</p>
+
 				
 			</div>
 		</div>
@@ -57,7 +40,7 @@ export default {
 	data () {
 		return {
 			num: 0,
-			numLikes: 0
+			alreadyLiked: false
 		}
 	},
 	methods: {
@@ -66,11 +49,8 @@ export default {
 		},
 		
 		likes: function(user) {
-//			if (! this.imageLikes.includes(user) ) { 
-//				this.imageLikes.push(user);
-//				numLikes = this.imageLikes.size;
-//			}
-			usersRef.child(user['.key']).child('imageLikes').push("heyllo");
+			this.alreadyLiked = true;
+			usersRef.child(user['.key']).child('imageLikes').set(user.imageLikes + 1);
 		},
 		
 		
@@ -80,11 +60,7 @@ export default {
         // get images in reverse order added
         reversedUsers() {
             return this.users.reverse();
-        }, 
-		
-//		likes() {
-//			return this.users.imageLikes;
-//		}, 
+        }
     },
 	
 	

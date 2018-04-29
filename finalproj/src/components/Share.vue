@@ -112,7 +112,7 @@ export default {
             if (this.newReview && input.files.length > 0) {
 				console.log(this.newReview)
 				console.log(input.files[0])
-                this.storeImage(this.newReview, input.files[0], this.stylist)
+                this.storeImage(this.newReview, input.files[0], this.stylist, this.shop)
             }
             // reset values displayed in form so user knows to input new data
             this.newReview = ''
@@ -125,7 +125,7 @@ export default {
 								var toAdd = {
 									imageUrl: snapshot.downloadURL,
 //									reviewText: this.review,
-									reviewText: `${review}`,
+									reviewText: `${this.user.name} says ${review}`,
 									reviewStylist: this.stylist,
 									reviewShop: this.shop,
 									imageLikes: 0
