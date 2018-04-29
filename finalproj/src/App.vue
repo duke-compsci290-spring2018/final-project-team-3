@@ -77,7 +77,7 @@ export default {
 	name: 'app',
  	data () {
 		return {
-			msg: "King's Cuts",
+			msg: "Kingbus's Cuts",
 			cam1: "./src/assets/camhead.png",
 			cam2: "./src/assets/camhead2.png",
 			pics: [

@@ -3,7 +3,7 @@
 
 		<h1>FEED</h1>
 
-<!--		<h2 class="desc">Click on a location to be mapped there!</h2>-->
+<h2 class="desc">Get inspired!</h2>
 		
 
 		
