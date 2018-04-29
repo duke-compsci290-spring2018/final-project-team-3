@@ -13,9 +13,9 @@
 				<div class="theReview">
 					<p>Review: {{ user.reviewText }}</p>
 				</div>
-				<button v-if="!alreadyLiked" @click="likes(user)">Like</button>
+				
 				<p>{{ user.imageLikes }} likes!</p>
-
+				<button v-if="!alreadyLiked" @click="likes(user)">Like</button>
 				
 			</div>
 		</div>

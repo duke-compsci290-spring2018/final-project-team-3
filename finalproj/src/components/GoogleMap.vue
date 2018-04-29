@@ -52,8 +52,6 @@ export default {
       markers: [],
       places: [],
       currentPlace: null,
-	  infowindow: null,
-		map: null
     };
   },
 
@@ -66,53 +64,19 @@ export default {
     setPlace(place) {
       this.currentPlace = place;
     },
-	  
-	  
-	initMap(){ 
 	
-		var infowindow = new google.maps.InfoWindow();
-  	var service = new google.maps.places.PlacesService(map);
-  	service.nearbySearch({
-    location: pyrmont,
-    radius: 500,
-    type: ['store']
-  		}, callback);
-},
-
-	  callback(results, status) {
-  if (status === google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
-  }
-},
-
-	  createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
-
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
-  });
-},
-	  
-	  
 	changeCenter: function() {
 		if (this.currentPlace) {
 			const newCenter = {
 			  lat: this.currentPlace.geometry.location.lat(),
 			  lng: this.currentPlace.geometry.location.lng()
 			};
-			this.initMap();
 			this.center = newCenter;
 			this.currentPlace = null;
 		}
 		
 	},
+	  
     geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
         this.center = {
