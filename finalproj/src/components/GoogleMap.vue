@@ -22,19 +22,7 @@
 			  @place_changed="setPlace">
 			</gmap-autocomplete>
 			<button @click="changeCenter">Add</button>
-		  </label>
-		<br>
-	  </div>
-	  
-	  
-	  
-	    <div>
-		  <h2>Add Markery</h2>
-		  <label>
-			<gmap-autocomplete
-			  @place_changed="setPlace">
-			</gmap-autocomplete>
-			<button @click="addMarker">Add</button>
+			  <button @click="addMarker">Add</button>
 		  </label>
 		<br>
 	  </div>
