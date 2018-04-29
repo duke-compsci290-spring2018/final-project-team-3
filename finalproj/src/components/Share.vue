@@ -34,8 +34,13 @@
 			<div class="form-group">
 				<label for="shop">Where did you get cut?: </label>
 				<br>
-				<input type="text" class="form-shop" id="shop" v-model="shop" placeholder="e.g. Barber in Demand">
+<!--				<input type="text" class="form-shop" id="shop" v-model="shop" placeholder="e.g. Barber in Demand">-->
+				<gmap-autocomplete v-model="shop"> 
+					<p>where u do it</p>
+				</gmap-autocomplete>
 			</div>
+			
+			<br>
 			
 			<input type="submit" class="submitButton" value="Submit your review" />
     	</form>
@@ -71,7 +76,7 @@ export default {
 //	},
 	data() {
 		return {
-			name: '',
+			uName: '',
 			newReview: '',
 			stylist: '',
 			shop: '',
@@ -86,14 +91,13 @@ export default {
 	
 	methods: {
 		addName: function() {
-			this.name = this.name.trim()
-			if (this.name) {
+			this.uName = this.uName.trim()
+			if (this.uName) {
 				usersRef.push({
-					userName: this.name,
-					theirNum: this.name.length
+					userName: this.uName
 				})
 			}
-			this.name = '';	
+			this.uName = '';	
 		},
 		ifImage: function () {
 			var input = document.getElementById('files')
