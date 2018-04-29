@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueFire from 'vuefire'
 import VueRouter from 'vue-router'
+import Firebase from 'firebase'
+import * as VueGoogleMaps from "vue2-google-maps"
 import Login from './components/Login.vue'
 import Home from './components/Home.vue'
 import Feed from './components/Feed.vue'
@@ -10,8 +12,7 @@ import Share from './components/Share.vue'
 import Settings from './components/Settings.vue'
 import Authentication from './components/Authentication.vue'
 import GoogleMap from './components/GoogleMap.vue'
-import Firebase from 'firebase'
-import * as VueGoogleMaps from "vue2-google-maps";
+
 
 Vue.use(VueGoogleMaps, {
   load: {
