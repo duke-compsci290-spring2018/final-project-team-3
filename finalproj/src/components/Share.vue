@@ -4,11 +4,7 @@
 		<br>
 		<h1>SHARE A REVIEW</h1>
 		<br>
-<!--
-		<input v-model="name" placeholder="add name" @keyup.enter="addName">
-		<button @click="addName">Add!</button>
--->
-		
+
 
 		
 		<form class="form-inline" @submit.prevent="addImage">
@@ -35,14 +31,17 @@
 				<label for="shop">Where did you get cut?: </label>
 				<br>
 <!--				<input type="text" class="form-shop" id="shop" v-model="shop" placeholder="e.g. Barber in Demand">-->
-				<gmap-autocomplete v-model="shop"> 
-					<p>where u do it</p>
+				
+				<gmap-autocomplete @place_changed="setPlace" class="form-control" style="width: 100%">
 				</gmap-autocomplete>
+
+
 			</div>
 			
 			<br>
 			
 			<input type="submit" class="submitButton" value="Submit your review" />
+			
     	</form>
 		
 		
@@ -80,10 +79,15 @@ export default {
 			newReview: '',
 			stylist: '',
 			shop: '',
+			shopName: '',
 			previewImageUrl: '',
-			isPreview: false
+			isPreview: false,
+			theShop: null,
+			
+
 		}
 	},
+	
 	
 	firebase: {
 		users: usersRef
@@ -98,6 +102,12 @@ export default {
 				})
 			}
 			this.uName = '';	
+		},
+		setPlace: function(place) {
+			this.shop = place;
+			this.shopName = place.name
+			console.log(place.name);
+			console.log(place);
 		},
 		ifImage: function () {
 			var input = document.getElementById('files')
@@ -130,9 +140,11 @@ export default {
 									imageUrl: snapshot.downloadURL,
 //									reviewText: this.review,
 									reviewText: `${review}`,
-									reviewer: `${this.userName}`,
+									reviewer: `${Firebase.auth().currentUser.email}`,
 									reviewStylist: this.stylist,
-									reviewShop: this.shop,
+									reviewShop: this.shop.name,
+									reviewLat: this.shop.geometry.location.lat(),
+									reviewLng: this.shop.geometry.location.lng(),
 									imageLikes: 0
 //									caption: `${review} shared by ${this.user.name}`
 								}
@@ -153,6 +165,10 @@ export default {
 
 <style scoped="true">
 
+	input {
+		width: 50%;
+	}
+	
 	h1 {
 		font-size: 36px;
 	}

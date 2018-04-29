@@ -17,6 +17,7 @@ export const db = fbApp.database()
 export const storageRef = fbApp.storage().ref()
 // create useful endpoints within the database
 export const usersRef = db.ref('users')
+//export var user = user;
 
 
 Firebase.auth().onAuthStateChanged(function(user) {
@@ -24,6 +25,6 @@ Firebase.auth().onAuthStateChanged(function(user) {
 		user = Firebase.auth().currentUser;
 		console.log(user.email);
 	} else {
-		console.log('failed')
+		console.log('not signed in')
 	}
 });

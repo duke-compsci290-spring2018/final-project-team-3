@@ -4,14 +4,18 @@
 		<router-link tag="h1" to="/">
 			<h1 class="siteName">{{ msg }}</h1>
 		</router-link>
-		<button @click="getUser()"> user ? </button>
 			
 		
 
-		<router-link tag="h4" to='/login'>
-			<div v-if="!user">login</div>
+		<router-link v-if="!user" tag="h4" to='/login'>
+			<div v-if="!user">log in</div>
 		</router-link>
-
+		<div tag="h4" v-else @click="signOut">
+			<h4> log out <br> {{ user.email }}<br>{{ user.displayName }} </h4>
+		</div>
+			
+		
+		
 		
 <!--		<header :style="{ backgroundColor: headerColor }"  >-->
 		<header>
@@ -20,7 +24,7 @@
 				Feed
 			</router-link>
 			
-			<router-link class="find" to='/googlemap'>
+			<router-link class="find" to='/map'>
 				Locator
 			</router-link>
 			
@@ -67,7 +71,7 @@ import Firebase from 'firebase'
 //
 //var usersRef = db.ref('users')
 
-
+//import user from './database'
 	
 export default {
 	name: 'app',
@@ -82,10 +86,29 @@ export default {
 				"./src/assets/dummypic3.JPG",
 				"./src/assets/dummypic4.JPG"
 			],
-			user: null,
+			curUser: null,
+			theEmail: null,
+			user: null
     	}
   	},
 	
+	created () {
+//		this.curUser = Firebase.auth().currentUser;
+//		this.theEmail = Firebase.auth().currentUser.email;
+//		console.log(this.curUser);
+		
+//		created: function() {
+		Firebase.auth().onAuthStateChanged(user => {
+			if(user) {
+				this.signIn(user);
+				this.$router.push('/');
+			} else {
+				this.$router.push('/login')
+			}
+			console.log("changing");
+		});
+//	},
+	},
 	methods: {
 		testing: function () {
 			console.log("clicked it!")
@@ -96,33 +119,53 @@ export default {
 		changeHeader: function (col) {
 			this.headerColor = col;
 		},
-		getUser () {
+//		getUser () {
+////			console.log(this.user)
+////            return this.user
+////			var user = firebase.auth().currentUser;
 //			console.log(this.user)
-//            return this.user
-//			var user = firebase.auth().currentUser;
-			console.log(this.user)
-			if(this.user) { 
-				this.name = this.user.displayName; 
-				this.email = this.user.email; 
-				this.userId = this.user.uid;
-        	}
+//			if(this.user) { 
+//				this.name = this.user.displayName; 
+//				this.email = this.user.email; 
+//				this.userId = this.user.uid;
+//        	}
+//		},
+		getUser () {
+			return this.user;
 		},
         setUser (user) {
-			this.user = firebase.auth().currentUser
+//			this.user = firebase.auth().currentUser
+			this.user = user
         },
-		ifLoggedIn: function(user) {
-			firebase.auth().onAuthStateChanged(function(user) {
-			  if (user) {
-				// User is signed in.
-			  } else {
-				// No user is signed in.
-			  }
-			});
-		}
+		
+		signIn (user) {
+			this.setUser({
+				name: user.displayName,
+				email: user.email,
+				uid: user.uid
+			})
+		},
+		
+		signOut () {
+            Firebase.auth().signOut()
+            this.setUser(null)
+        }
 	},
+	
 	components: {
 		Login, Home, Feed, Share, Settings, GoogleMap
 	}
+	
+	
+	
+//	mounted() {
+//		Firebase.auth().onAuthStateChanged(authState => {
+//            if (authState) {
+//                this.signIn(authState)
+//            }
+//			console.log("changing")
+//        })
+//	}
 //	firebase: {
 //		users: usersRef
 //	},

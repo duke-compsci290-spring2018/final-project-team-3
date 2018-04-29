@@ -1,22 +1,22 @@
 <template>
 	<div>
 		<h2>Feed</h2>
+		<h3>Click on a location to be mapped there!</h3>
 		
 
 		
 		<div class="outerDiv">
-			<div v-for="user in reversedUsers" class="eachDiv">
-				<h3>Stylist: {{ user.reviewStylist }}</h3>
-<!--				 <h3>Location: {{ user.reviewShop }}</h3> -->
-				<router-link to='/googlemap' tag="h3" :theLoc="setLocation()"> Location: {{ user.reviewShop }} </router-link>
-				<h3>User: </h3>
-				<img :src="user.imageUrl" @click="removeUser(user)">
+			<div v-for="image in reversedUsers" class="eachDiv">
+				<h3>Stylist: {{ image.reviewStylist }}</h3>
+				<h3 @click="setLocation(image)" class="locText">Location: {{ image.reviewShop }}</h3> 
+				<h3>User: {{ image.reviewer }}</h3>
+				<img :src="image.imageUrl" @click="removeUser(image)">
 				<div class="theReview">
-					<p>Review: {{ user.reviewText }}</p>
+					<p>Review: {{ image.reviewText }}</p>
 				</div>
 				
-				<p>{{ user.imageLikes }} likes!</p>
-				<button v-if="!alreadyLiked" @click="likes(user)">Like</button>
+				<p>{{ image.imageLikes }} likes!</p>
+				<button v-if="!alreadyLiked" @click="likes(image)">Like</button>
 				
 			</div>
 		</div>
@@ -42,31 +42,34 @@ export default {
 		return {
 			num: 0,
 			alreadyLiked: false, 
-			theLoc: null
+			theLoc: null,
+			hey: "howdy"
 		}
 	},
 	methods: {
-		removeUser: function(user) {
-			usersRef.child(user['.key']).remove();
+		removeUser: function(image) {
+			usersRef.child(image['.key']).remove();
 		},
 		
-		likes: function(user) {
+		likes: function(image) {
 			this.alreadyLiked = true;
-			usersRef.child(user['.key']).child('imageLikes').set(user.imageLikes + 1);
+			usersRef.child(image['.key']).child('imageLikes').set(image.imageLikes + 1);
 		},
-//		setLocation(user) {
-//			console.log(user.reviewShop);
-//			this.theLoc = user.reviewShop;
-//		}
+		setLocation(image) {
+			console.log(image.reviewShop);
+			this.theLoc = image.reviewShop;
+			
+			this.$router.push({
+				name: 'googlemap',
+				params: { item: image.reviewShop, lat: image.reviewLat, lng: image.reviewLng }
+			});
+		}
 	},
 	
 	computed: {
         // get images in reverse order added
         reversedUsers() {
             return this.users.reverse();
-        },
-		setLocation() {
-			return this.user.reviewShop;
 		}
 		
     },
@@ -134,11 +137,16 @@ export default {
 		text-align: center;
 		border-radius: 5px;
 		background-color: #fcdbee;
-		padding: 5px 25px 0 25px;
+		padding: 5px 15px 0 15px;
+		margin-bottom: 50px;
 	}
 	
 	.theReview {
 
+	}
+	
+	.locText {
+		cursor: pointer;
 	}
 	
 	

@@ -2,7 +2,7 @@
 	<div id="login">
 		<br>
 		
-		<button @click="logOut()">logout</button>
+<!--		<button @click="logOut()">logout</button>-->
 		
 		<ul v-if="loggingIn">
 			<h3>Log In</h3>
@@ -21,61 +21,17 @@
 			<h3>Create Account</h3>
 			<li>email</li>
 			<input type="text" v-model="email" placeholder="e.g. joeJoe@duke.edu" id="email">
+<!--
 			<li>username</li>
 			<input type="text" v-model="username" placeholder="e.g. joesCuts" id="username">
+-->
 			<li>password</li>
-			<input type="password" v-model="pw" placeholder="" id="pw" @keyup.enter="logInAttempt">
+			<input type="password" v-model="pw" placeholder="" id="pw" @keyup.enter="signUp">
 			<br>
 			<button @click="signUp">sign up</button>
 		</ul>
 		
-<!--
-		<ul>
-			<li v-if="user"><a>{{user.name}}</a></li>
-			<li v-if="user" @click="signOut"><a><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
-			<li v-else @click="signInPopup"><a><span class="glyphicon glyphicon-user"></span>Sign In</a></li>
-			<div id="firebaseui-auth-container" :class="{ popup: isShown }"></div>
-		</ul>
--->
 		
-<!--
-		<div v-if="!creating && !loggingIn">
-			<h3 @click="creating = true">Create account</h3>
-
-			<h3 @click="loggingIn = true">Log in</h3>
-		</div>
-		
-		<div v-if="creating">
-			<button v-on:click="creating=false; clearInfo">Go back</button>
-			<br><br>
-			Username:
-			<br><br>
-			<input v-model="username" placeholder="e.g. johnDoe29">
-			<br>
-			Your email: 
-			<br><br>
-			<input @keyup.enter="addUser" v-model="email" placeholder="e.g. john.doe@duke.edu">
-			<br>
-			<br>
-			<button v-on:click="addUser">Create account</button>
-			<h5>{{ validated }}</h5>
-		</div>
-		
-		<div v-if="loggingIn">
-			<button v-on:click="loggingIn=false">Go back</button>
-			<br><br>
-			Username:
-			<br><br>
-			<input v-model="username" placeholder="e.g. johnDoe29">
-			<br>
-			Email: 
-			<br><br>
-			<input @keyup.enter="logUserIn" v-model="email" placeholder="e.g. john.doe@duke.edu">
-			<br>
-			<br>
-			<button v-on:click="logUserIn">Log in</button>
-		</div>
--->
 	
 	</div>
 
@@ -100,95 +56,99 @@ export default {
 			username: '',
 			email: '',
 			pw: '',
-			loggingIn: true
+			loggingIn: true,
+			signedIn: true,
+			user: null
 			
 		}
 	},
-	firebase: {
-		users: usersRef
+	created () {
+		console.log('created', this);
 	},
-	computed: {
-        user () {
-			firebase.auth().onAuthStateChanged(function(user) {
-			  if (user) {
-				  user = firebase.auth().currentUser;
-				  console.log(user.email);
-			  } else {
-				  console.log('failed')
-			  }
-			});
-        }
-    },
+
 	methods: {
+		
 		signUp: function() {
-			Firebase.auth().createUserWithEmailAndPassword(this.email, this.pw).catch(function(error) {
+			console.log('created', this);
+			const _this = this;
+			Firebase.auth().createUserWithEmailAndPassword(this.email, this.pw)
+			.then(function () {
+				
+//				console.log('created', this);
+				_this.user = Firebase.auth().currentUser;
+//				console.log(_this.username);
+			})
+//			this.user.updateProfile({
+//				displayName: this.username
+			.then(function() {
+//				console.log(_this.username);
+				
+				_this.clearText()
+
+//				console.log('saved name')
+			})
+			.catch(function(error) {
 				alert(error.message);
-				user = firebase.auth().currentUser;
+//				_this.user = Firebase.auth().currentUser;
+				console.log('created', this);
 			})
-			
-			this.user.updateProfile({
-				displayName: this.username
-			}).then(function() {
-				console.log(this.username)
-				this.clearText();
-				this.$router.push({ path: '/' });
-				console.log('saved name');
-			})
+//			.then(function () {
+//				this.user = Firebase.auth().currentUser;
+//			})
 			
 		},
+																					  
 		logInAttempt: function() {
-			Firebase.auth().signInWithEmailAndPassword(this.email, this.pw).catch(function(error) {
-				alert(error.message);
+//			Firebase.auth().signInWithEmailAndPassword(this.email, this.pw).catch(function(error) {
+			Firebase.auth().signInWithEmailAndPassword(this.email, this.pw).catch((error) => {
+
+				this.signedIn = false;
+//				this.$router.push('login');
+				console.log(this.signedIn);
+//				this.theRouting(Firebase.auth().currentUser);
+//				alert(error.message);
+				
 			});
+				
+//			this.theRouting(Firebase.auth().currentUser);
 			this.clearText();
-			this.$router.push({ path: '/' });
+			console.log('attempted sign in !');
+			if (this.signedIn) {
+				console.log("should i route");
+//				this.$router.push('/');
+			}
+			
 		},
-		logOut: function() {
-			Firebase.auth().signOut().then(function() {
-			  // Sign-out successful.
-				console.log("signed out");
-			}).catch(function(error) {
-			  // An error happened.
-				alert(error.message);
-			});
-		},
+		
+		setUser (user) {
+			this.user = user
+        },
+		
+//		theRouting: function(helpMe) {
+//			if (this.helpMe) {
+//				this.$router.push('/');
+//				console.log("hey");
+//			} else {
+//				this.$router.push('/login');
+//				console.log('nope');
+//			}
+//		},
+//		logOut: function() {
+//			Firebase.auth().signOut().then(function() {
+//			  // Sign-out successful.
+//				console.log("signed out");
+//
+//				
+//			}).catch(function(error) {
+//			  // An error happened.
+//				alert(error.message);
+//			});
+//			this.setUser(null)
+//		},
 		clearText: function() {
 			this.email = '';
 			this.pw = ''
 		}
-		
-																					  
-				
-		
-//		createAcc: function() {
-//			if (this.email != '' && this.email.indexOf("@") > -1 && this.email.indexOf(".") > -1 && this.username.length > 2 && this.username.indexOf(" ") == -1) {
-//				console.log("valid email and username")
-//				this.validated = "Valid email, you've been added to the system"
-//			} else {
-//				console.log(this.email)
-//				this.validated = "Please enter a valid email"
-//			}
-//			this.email = ''
-//		},
-//		logUserIn: function() {
-//			
-//		},
-//		clearInfo: function() {
-//			this.email = ''
-//			this.validated = ''
-//		},
-//		testing: function() {
-//			console.log("hey")
-//		},
-//		addUser: function() {	
-//			this.username = this.username.trim();
-//			if (this.username) {
-//				usersRef.push({
-//					name: this.username,
-//					email: this.email
-//				})
-//			}
-//		}
 		
 	}
 }

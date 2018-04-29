@@ -27,12 +27,12 @@ Vue.use(VueRouter)
 const routes = [
 	{ path: '/', component: Home },
 	{ path: '/login', component: Login },
-	{ path: '/feed', component: Feed, meta: {requiresAuth: true}},
+	{ path: '/feed', component: Feed, props: true},
 //	{ path: '/find', component: Find },
 	{ path: '/share', component: Share },
 	{ path: '/settings', component: Settings },
 	{ path: '/authentication', component: Authentication },
-	{ path: '/googlemap', component: GoogleMap }
+	{ path: '/map', component: GoogleMap, name: 'googlemap', props: true}
 ]
 
 
