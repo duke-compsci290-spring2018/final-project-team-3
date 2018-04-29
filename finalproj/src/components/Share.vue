@@ -129,7 +129,8 @@ export default {
 								var toAdd = {
 									imageUrl: snapshot.downloadURL,
 //									reviewText: this.review,
-									reviewText: `${this.user.name} says ${review}`,
+									reviewText: `${review}`,
+									reviewer: `${this.userName}`,
 									reviewStylist: this.stylist,
 									reviewShop: this.shop,
 									imageLikes: 0
