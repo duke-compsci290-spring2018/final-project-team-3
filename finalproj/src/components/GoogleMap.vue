@@ -26,6 +26,19 @@
 		<br>
 	  </div>
 	  
+	  
+	  
+	    <div>
+		  <h2>Add Markery</h2>
+		  <label>
+			<gmap-autocomplete
+			  @place_changed="setPlace">
+			</gmap-autocomplete>
+			<button @click="addMarker">Add</button>
+		  </label>
+		<br>
+	  </div>
+	  
     <gmap-map
       :center="center"
       :zoom="12"
@@ -39,6 +52,7 @@
       ></gmap-marker>
     </gmap-map>
   </div>
+	<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 </template>
 
 <script>
@@ -76,6 +90,21 @@ export default {
 		}
 		
 	},
+	  
+	  
+	  
+	  addMarker() {
+      if (this.currentPlace) {
+        const marker = {
+          lat: this.currentPlace.geometry.location.lat(),
+          lng: this.currentPlace.geometry.location.lng()
+        };
+        this.markers.push({ position: marker });
+        this.places.push(this.currentPlace);
+        this.center = marker;
+        this.currentPlace = null;
+      }
+    },
 	  
     geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
