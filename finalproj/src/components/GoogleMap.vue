@@ -25,7 +25,9 @@
 		  </label>
 		<br>
 	  </div>
-
+	  
+	  
+	  
 	    <div>
 		  <h2>Add Markery</h2>
 		  <label>
@@ -50,7 +52,6 @@
       ></gmap-marker>
     </gmap-map>
   </div>
-	<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 </template>
 
 <script>
@@ -88,9 +89,6 @@ export default {
 		}
 		
 	},
-	  
-	  
-	  
 	  addMarker() {
       if (this.currentPlace) {
         const marker = {
