@@ -3,7 +3,7 @@
 		
 		<h1>YOUR ACCOUNT</h1>
 		<br>
-		
+		<h2> Review your previous posts</h2>
 		
 		<div v-for="image in images">
 			<div class="eachOne" v-if="image.reviewer === theEmail">

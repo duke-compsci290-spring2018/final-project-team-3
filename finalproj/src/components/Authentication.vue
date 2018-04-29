@@ -1,42 +1,5 @@
 <template>
-  <div>
-    <div>
-      <h2>Search and add a pin</h2>
-		<h2>hi</h2>
-      <label>
-        <gmap-autocomplete
-          @place_changed="setPlace">
-        </gmap-autocomplete>
-        <button @click="addMarker">Add</button>
-      </label>
-		
-      <br/>
-		
-    </div>
-	  <div>
-		  <h2>Set your location</h2>
-		  <label>
-			<gmap-autocomplete
-			  @place_changed="setPlace">
-			</gmap-autocomplete>
-			<button @click="geolocate">Add</button>
-		  </label>
-		<br>
-	  </div>
-	  
-    <gmap-map
-      :center="center"
-      :zoom="12"
-      style="width:80%;  height: 400px;"
-    >
-      <gmap-marker
-        :key="index"
-        v-for="(m, index) in markers"
-        :position="m.position"
-        @click="center=m.position"
-      ></gmap-marker>
-    </gmap-map>
-  </div>
+<div></div>
 </template>
 
 <script>
