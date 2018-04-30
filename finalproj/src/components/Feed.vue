@@ -73,6 +73,9 @@
 				<div class="theReview">
 					<p>Review: {{ image.reviewText }}</p>
 				</div>
+				<p> {{ image.rating }}</p>
+				<p> {{ image.cost }}</p>
+				<p> {{ image.type }}</p>
 				<p>{{ image.imageLikes }} likes!</p>
 				<button @click="likes(image)">Like</button>
 				</div>
@@ -140,14 +143,32 @@ export default {
 		filteredUsers: function () {
 		var self = this
 		return self.reversedUsers.filter(function (user) {
-		  return user.reviewAddress.indexOf(self.city) !== -1
+		  return  user.reviewAddress.indexOf(self.city) !== -1 
 		})
 	  }
 	},
 	
-	
 }
-	
+//	
+//		filteredPeople: function() {
+//			var vm = this;
+//			var category = vm.selectedCategory;
+//			var gender = vm.selectedGender;
+//
+//			if(category === "All" && gender === "All") {
+//				//save performance, juste return the default array:
+//				return vm.people;
+//			} else {
+//				return vm.people.filter(function(person) {
+//					//return the array after passimng it through the filter function:
+//					return  (category === 'All' || person.category === category) && (gender === 'All'  || person.gender === gender);	 
+//
+//				});
+//			}
+//		}
+//	}
+//});
+//	
 	
 	
 	
