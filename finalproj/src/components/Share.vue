@@ -165,21 +165,6 @@ export default {
 		users: usersRef
 	},
 	
-	computed: {
-		
-//		makeTypeList: function(mylist) {
-//			for (var i = 0; i < mylist.length; i++) {
-//				if (this.selected.indexOf(mylist[i]) !== -1) {
-//					this.newSelected.push(true)
-//				} else {
-//					this.newSelected.push(false)
-//				}
-//			}
-//			console.log(this.newSelected)
-//			return this.newSelected
-//			
-//		}
-	},
 	
 	methods: {
 		addName: function() {
@@ -282,50 +267,6 @@ export default {
 								usersRef.push(
 									toAdd
 								)
-//								.then(function(image) {
-//									usersRef.child(image['.key']).child('types').push({
-//										short: this.selected[0],
-//										long: this.selected[1],
-//										medium: this.selected[2],
-//										curly: this.selected[3],
-//										wavy: this.selected[4],
-//										straight: this.selected[5],
-//										kinky: this.selected[6],
-//										black: this.selected[7],
-//										blonde: this.selected[8],
-//										brunette: this.selected[9],
-//										red: this.selected[10],
-//										fade: this.selected[11],
-//										mohawk: this.selected[12],
-//										bearded: this.selected[13],
-//										bun: this.selected[14],
-//										pixie: this.selected[15],
-//										part: this.selected[16]
-//										
-//										
-//									});
-//								})
-//								usersRef.child(image['.key']).child('types').push({
-//									short: this.newSelected[0],
-//									long: this.newSelected[1],
-//									medium: this.newSelected[2],
-//									curly: this.newSelected[3],
-//									wavy: this.newSelected[4],
-//									straight: this.newSelected[5],
-//									kinky: this.newSelected[6],
-//									black: this.newSelected[7],
-//									blonde: this.newSelected[8],
-//									brunette: this.newSelected[9],
-//									red: this.newSelected[10],
-//									fade: this.newSelected[11],
-//									mohawk: this.newSelected[12],
-//									bearded: this.newSelected[13],
-//									bun: this.newSelected[14],
-//									pixie: this.newSelected[15],
-//									part: this.newSelected[16]
-//										
-//										
-//								})
 								
 								this.users.push(
 									toAdd
