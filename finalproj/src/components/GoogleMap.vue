@@ -4,7 +4,6 @@
 		<br>
 		
 		<div class="firstDiv">
-<!--		<h2>FIND A SHOP </h2>-->
 			<h3 @click="test">
 				<br>
 				Shop you chose: <span class="theShop"> {{ item }} </span> <br>
@@ -12,29 +11,8 @@
 				Their phone number: <span class="theShop"> {{ phone }} </span> <br>
 	
 			</h3>
-			
-<!--
-      <label>
-        <gmap-autocomplete
-          @place_changed="setPlace">
-        </gmap-autocomplete>
-        <button @click="addMarker">Add</button>
-      </label>
-		
--->
 			<br/>
 		</div>
-<!--
-		<div>
-			<label>
-				<gmap-autocomplete @place_changed="setPlace">
-				</gmap-autocomplete>
-				<button @click="addMarker()">Add a Marker</button>
-			</label>
-			<br>
-		</div>
--->
-	  
 		<gmap-map 
 				  :center="center"
 				  :zoom="12"
