@@ -2,10 +2,67 @@
 	<div>
 		<h1>FEED</h1>
 		<h2 class="desc">Get inspired!</h2>
+		
+		<!--- Filters --->
 		<div class="form-group">
 			<p> Filter by Location:
       		<input type=search placeholder=Search class=form-control v-model="city" /> </p>
+			
+			<p> Filter by Cost:
+			<label for="one">$</label>
+      		<input type="checkbox" id="one" value="One" v-model="picked">
+			<label for="two">$$</label>
+			<input type="checkbox" id="two" value="Two" v-model="picked">
+			<label for="two">$$$</label>
+			<input type="checkbox" id="two" value="Two" v-model="picked">
+			<br>
+			<span>Picked: {{ picked }}</span>
+			
+			<p> Filter by Rating:
+			<input type="radio" id="one" value="One" v-model="picked">
+			<label for="one">5 Star</label>
+			<input type="radio" id="two" value="Two" v-model="picked">
+			<label for="two">4 Star</label>
+			<input type="radio" id="two" value="Two" v-model="picked">
+			<label for="two">3 Star</label>
+			<input type="radio" id="two" value="Two" v-model="picked">
+			<label for="two">2 Star</label>
+			<input type="radio" id="two" value="Two" v-model="picked">
+			<label for="two">1 Star</label>
+			<br>
+			<span>Picked: {{ picked }}</span>
+			
+			
+			<p> Filter by Hair Type: </p>	
+
+			<select  v-model="selected" multiple>
+				<option>Short (length)</option>
+				<option>Long (length)</option>
+				<option>Medium (length)</option>
+				<option>Curly</option>
+				<option>Wavy</option>
+				<option>Straight</option>
+				<option>Kinky</option>
+				<option>Black</option>
+				<option>Blonde</option>
+				<option>Brunette</option>
+				<option>Red</option>
+				<option>Fade</option>
+				<option>Mohawk</option>
+				<option>Bearded</option>
+				<option>Bun</option>
+				<option>Pixie</option>
+				<option>Part (middle, side, etc)</option>
+				</select>
+
+				<br><br>
+			<span> Selected: {{ selected }}</span>
+			
 		</div>
+		
+		
+		
+		<!-- Feed-->
 		<div class="outerDiv">
 <!--		<div v-for="image in reversedUsers" class="eachDiv" :alreadyLiked="alreadyLiked">-->
 			<div class="eachDiv" v-for="image in filteredUsers">
@@ -44,7 +101,8 @@ export default {
 			alreadyLiked: false, 
 			theLoc: null,
 			hey: "howdy",
-			city: "",  
+			city: "", 
+			selected: []
 		}
 	},
 	methods: {
@@ -89,6 +147,7 @@ export default {
 	
 	
 }
+	
 	
 	
 	
