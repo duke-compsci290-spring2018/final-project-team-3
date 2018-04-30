@@ -10,6 +10,7 @@
 				<h2>scrawn</h2>
 			</div>
 			<div v-if="!picOne">
+				<p> hover over me!</p>
 				<h2>to</h2>
 				<img class="camImg" @mouseleave="picOne = true" :src="cam2">
 				<h2>jawn</h2>
