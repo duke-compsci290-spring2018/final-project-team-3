@@ -4006,7 +4006,7 @@ process.umask = function() { return 0; };
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_GoogleMap_vue__ = __webpack_require__(20);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5b9bad5a_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_GoogleMap_vue__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_49d9a77a_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_GoogleMap_vue__ = __webpack_require__(64);
 function injectStyle (ssrContext) {
   __webpack_require__(49)
 }
@@ -4021,12 +4021,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-5b9bad5a"
+var __vue_scopeId__ = "data-v-49d9a77a"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_GoogleMap_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5b9bad5a_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_GoogleMap_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_49d9a77a_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_GoogleMap_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -4042,6 +4042,7 @@ var Component = normalizeComponent(
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Feed_vue__ = __webpack_require__(10);
+//
 //
 //
 //
@@ -16843,7 +16844,7 @@ var content = __webpack_require__(50);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("ff26f034", content, true, {});
+var update = __webpack_require__(3)("a087828a", content, true, {});
 
 /***/ }),
 /* 50 */
@@ -16854,7 +16855,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "div[data-v-5b9bad5a]{border-top-left-radius:5px;border-top-right-radius:5px}.theShop[data-v-5b9bad5a]{color:red}input[data-v-5b9bad5a]{width:40%}.map[data-v-5b9bad5a]{width:80%;margin-right:auto;margin-left:auto;height:400px;border-radius:5px}.firstDiv[data-v-5b9bad5a]{text-align:center;width:40%;margin-left:auto;margin-right:auto;background-color:#f9d9c0;padding-right:15%;padding-left:15%}h3[data-v-5b9bad5a]{text-align:justify;font-weight:200}h1[data-v-5b9bad5a]{font-size:36px;background-color:#bee8e7}", ""]);
+exports.push([module.i, "div[data-v-49d9a77a]{border-top-left-radius:5px;border-top-right-radius:5px}.theShop[data-v-49d9a77a]{color:red}input[data-v-49d9a77a]{width:40%}.map[data-v-49d9a77a]{width:80%;margin-right:auto;margin-left:auto;height:400px;border-radius:5px}.firstDiv[data-v-49d9a77a]{text-align:center;width:40%;margin-left:auto;margin-right:auto;background-color:#f9d9c0;padding-right:15%;padding-left:15%}h3[data-v-49d9a77a]{text-align:justify;font-weight:200}h1[data-v-49d9a77a]{font-size:36px;background-color:#bee8e7}", ""]);
 
 // exports
 
@@ -39577,7 +39578,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("FIND LOCATIONS")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('div',{staticClass:"firstDiv"},[_c('h3',{on:{"click":_vm.test}},[_c('br'),_vm._v("\n\t\t\tShop you chose: "),_c('span',{staticClass:"theShop"},[_vm._v(" "+_vm._s(_vm.item)+" ")]),_vm._v(" "),_c('br'),_vm._v("\n\t\t\tTheir address: "),_c('span',{staticClass:"theShop"},[_vm._v(" "+_vm._s(_vm.addr)+" ")]),_vm._v(" "),_c('br'),_vm._v("\n\t\t\tTheir phone number: "),_c('span',{staticClass:"theShop"},[_vm._v(" "+_vm._s(_vm.phone)+" ")]),_vm._v(" "),_c('br')]),_vm._v(" "),_c('br')]),_vm._v(" "),_c('gmap-map',{staticClass:"map",attrs:{"center":_vm.center,"zoom":12}},_vm._l((_vm.markers),function(m,index){return _c('gmap-marker',{key:index,attrs:{"position":m.position},on:{"click":function($event){_vm.center=m.position}}})}))],1)}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("FIND LOCATIONS")]),_vm._v(" "),_c('h2',[_vm._v("To load a shop, go to feed and click on a location")]),_vm._v(" "),_c('div',{staticClass:"firstDiv"},[_c('h3',{on:{"click":_vm.test}},[_c('br'),_vm._v("\n\t\t\t\tShop you chose: "),_c('span',{staticClass:"theShop"},[_vm._v(" "+_vm._s(_vm.item)+" ")]),_vm._v(" "),_c('br'),_vm._v("\n\t\t\t\tTheir address: "),_c('span',{staticClass:"theShop"},[_vm._v(" "+_vm._s(_vm.addr)+" ")]),_vm._v(" "),_c('br'),_vm._v("\n\t\t\t\tTheir phone number: "),_c('span',{staticClass:"theShop"},[_vm._v(" "+_vm._s(_vm.phone)+" ")]),_vm._v(" "),_c('br')]),_vm._v(" "),_c('br')]),_vm._v(" "),_c('gmap-map',{staticClass:"map",attrs:{"center":_vm.center,"zoom":12}},_vm._l((_vm.markers),function(m,index){return _c('gmap-marker',{key:index,attrs:{"position":m.position},on:{"click":function($event){_vm.center=m.position}}})}))],1)}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
