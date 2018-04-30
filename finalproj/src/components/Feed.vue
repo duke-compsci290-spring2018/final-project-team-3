@@ -145,32 +145,13 @@ export default {
             return this.users.reverse();
 		}, 
 		
-		combinedList() {
-			var newArray = this.costSort.concat(this.rateSort);
-			return newArray
-		},
-		
 		filteredUsers: function () {
 			var self = this
 			return self.reversedUsers.filter(function (user) {
 				return user.reviewAddress.indexOf(self.city) !== -1
 			})
-		},
-		
-		filterType: function() {
-			var self = this
-			console.log(this.selected)
-			return self.reversedUsers.filter(function (user) {
-				for (var i = 0; i < self.selected.length; i++) {
-					console.log(`user.${self.selected[i]}.val()`)
-					return `user.${self.selected[i]}` === true
-				}
-			})
 		}
-	},
-	
-	
-	
+	}
 	
 </script>
 	
