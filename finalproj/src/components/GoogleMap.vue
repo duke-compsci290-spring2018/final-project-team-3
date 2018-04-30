@@ -1,7 +1,8 @@
 <template>
 	<div>
 		<h1>FIND LOCATIONS</h1>
-		<br>
+		<h2>To load a shop, go to feed and click on a location</h2>
+<!--		<br>-->
 		<div class="firstDiv">
 			<h3 @click="test">
 				<br>
