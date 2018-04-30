@@ -11,15 +11,27 @@
 			
 			<p> Filter by Cost:
 			<label for="one">$</label>
+<<<<<<< HEAD
       		<input type="checkbox" id="$" value="One" v-model="costSort">
+=======
+
+      		<input type="checkbox" id="$" value="$" v-model="costSort">
+>>>>>>> ac64b7d799ebc84cb37825f7a19e80beb130268e
 			<label for="two">$$</label>
 			<input type="checkbox" id="$$" value="Two" v-model="costSort">
 			<label for="two">$$$</label>
+<<<<<<< HEAD
 			<input type="checkbox" id="$$$" value="Three" v-model="costSort">
+=======
+			<input type="checkbox" id="$$$" value="$$$" v-model="costSort">
+
+
+>>>>>>> ac64b7d799ebc84cb37825f7a19e80beb130268e
 			<br>
 			<span>Picked: {{ costSort }}</span>
 			
 			<p> Filter by Rating:
+<<<<<<< HEAD
 			<input type="radio" id="one" value="5 Star" v-model="rateSort">
 			<label for="one">5 Star</label>
 			<input type="radio" id="two" value="4 Star" v-model="rateSort">
@@ -29,6 +41,19 @@
 			<input type="radio" id="two" value="2 Star" v-model="rateSort">
 			<label for="two">2 Star</label>
 			<input type="radio" id="two" value="1 Star" v-model="rateSort">
+=======
+
+			<input type="radio" id="one" value="★ ★ ★ ★ ★" v-model="rateSort">
+			<label for="one">5 Star</label>
+			<input type="radio" id="two" value="★ ★ ★ ★ " v-model="rateSort">
+			<label for="two">4 Star</label>
+			<input type="radio" id="two" value="★ ★ ★ " v-model="rateSort">
+			<label for="two">3 Star</label>
+			<input type="radio" id="two" value="★ ★ " v-model="rateSort">
+			<label for="two">2 Star</label>
+			<input type="radio" id="two" value="★ " v-model="rateSort">
+
+>>>>>>> ac64b7d799ebc84cb37825f7a19e80beb130268e
 			<label for="two">1 Star</label>
 			<br>
 			<span>Picked: {{ rateSort }}</span>
@@ -99,6 +124,7 @@ export default {
 	firebase: {
 		users: usersRef
 	},
+	
 	data () {
 		return {
 			num: 0,
@@ -111,6 +137,7 @@ export default {
 			rateSort:[]
 		}
 	},
+	
 	methods: {
 		removeUser: function(image) {
 			usersRef.child(image['.key']).remove();
@@ -141,7 +168,7 @@ export default {
         // get images in reverse order added
         reversedUsers() {
             return this.users.reverse();
-		}, 
+		},
 		
 		combinedList() {
 			var newArray = this.costSort.concat(this.rateSort);
@@ -153,7 +180,19 @@ export default {
 			return self.reversedUsers.filter(function (user) {
 				return user.reviewAddress.indexOf(self.city) !== -1
 			})
+		},
+		
+		filterType: function() {
+			var self = this
+			console.log(this.selected)
+			return self.reversedUsers.filter(function (user) {
+				for (var i = 0; i < self.selected.length; i++) {
+//					console.log(`user.${self.selected[i]}.val()`)
+					return `user.${self.selected[i]}` == true
+				}
+			})
 		}
+<<<<<<< HEAD
 }
 //	
 //		filteredPeople: function() {
@@ -177,10 +216,18 @@ export default {
 //	
 	
 	
+=======
+
+
+
+	}
+}
+
+>>>>>>> ac64b7d799ebc84cb37825f7a19e80beb130268e
 	
+
+
 </script>
-	
-	
 <style scoped>
 	h1 {
 		font-size: 36px;
