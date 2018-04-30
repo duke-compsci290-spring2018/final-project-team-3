@@ -3,106 +3,69 @@
 		<h1>FEED</h1>
 		<br>
 		<h2 >Get inspired!</h2>
-		
 		<!--- Filters --->
-		<div class="form-group">
-			<p> Filter by <strong> Location</strong>:
-      		<input type=search placeholder=Search class=form-control v-model="city" /> </p>
-			 <p> *Use State Initials (capitalized) or Town/City Names</p>
-			<br>
-			<p> Filter by <strong> Cost</strong>: </p>
-			<label for="one">$</label>
-
-      		<input type="radio" id="$" value="$" v-model="costSort">
-			<label for="two">$$</label>
-			<input type="radio" id="$$" value="$$" v-model="costSort">
-			<label for="three">$$$</label>
-			<input type="radio" id="$$$" value="$$$" v-model="costSort">
-			<label for="all">all</label>
-			<input checked type="radio" id="all" value="" v-model="costSort">
-
-			<br>
-<!--			<span>Picked: {{ costSort }}</span>-->
-			
-			<p> Filter by  <strong> Rating</strong>:</p>
-
-<!--			<input type="radio" id="five" value="&#9733;&#9733;&#9733;&#9733;&#9733;" v-model="rateSort">-->
-			<input type="radio" id="five" value="5" v-model="rateSort">
-			<label for="five">5 Star</label>
-<!--			<input type="radio" id="four" value="&#9733;&#9733;&#9733;&#9733;&#9734;" v-model="rateSort">-->
+		<div class="form-group"> 
+		  <div class="row">
+			  <div class="column">
+				<h3>Filter by <strong>Location</strong>:</h3>
+				<input type=search placeholder=Search class=form-control v-model="city"/> 
+				 <p> *Use State Initials (capitalized) or Town/City Names</p>
+		  </div>
+		  <div class="column">
+			<h3>Filter by <strong>Cost</strong>:</h3>
+			 <ul> 
+      		<input type="radio" id="$" value="$" v-model="costSort"><label for="one">$</label><br>
+			<input type="radio" id="$$" value="$$" v-model="costSort"><label for="two">$$</label><br>
+			<input type="radio" id="$$$" value="$$$" v-model="costSort"><label for="three">$$$</label><br>
+			<input checked type="radio" id="all" value="" v-model="costSort"><label for="all"> See all</label><br>
+			</ul>
+		  </div>
+		  <div class="column">
+			<h3>Filter by <strong>Rating</strong>:</h3>
+			<ul> 
+			<input type="radio" id="five" value="5" v-model="rateSort"> 
+			<label for="five">5 Star</label> <br>
 			<input type="radio" id="four" value="4" v-model="rateSort">
-			<label for="four">4 Star</label>
+			<label for="four">4 Star</label> <br>
 			<input type="radio" id="three" value="3" v-model="rateSort">
-			<label for="three">3 Star</label>
+			<label for="three">3 Star</label> <br>
 			<input type="radio" id="two" value="2" v-model="rateSort">
-			<label for="two">2 Star</label>
+			<label for="two">2 Star</label> <br>
 			<input type="radio" id="one" value="1" v-model="rateSort">
-			<label for="one">1 Star</label>
+			<label for="one">1 Star</label> <br>
 			<input type="radio" id="all" value="all" v-model="rateSort">
 			<label for="one">See all</label>
-			<br>
-<!--			<span>Rating chosen: {{ rateSort }}</span>-->
-			
-<!--
-			<p> Filter by Hair Type: </p>	
-
-			<select  v-model="selected" multiple>
-				<option>Short</option>
-				<option>Long</option>
-				<option>Medium</option>
-				<option>Curly</option>
-				<option>Wavy</option>
-				<option>Straight</option>
-				<option>Kinky</option>
-				<option>Black</option>
-				<option>Blonde</option>
-				<option>Brunette</option>
-				<option>Red</option>
-				<option>Fade</option>
-				<option>Mohawk</option>
-				<option>Bearded</option>
-				<option>Bun</option>
-				<option>Pixie</option>
-				<option>Part</option>
-				</select>
-
-				<br><br>
-			<span> Selected: {{ selected }}</span>
--->
-			
+			</ul>
+		  </div>
 		</div>
-		
-		
-		
+	</div>
 		<!-- Feed-->
 		<div class="outerDiv">
-<!--		<div v-for="image in reversedUsers" class="eachDiv" :alreadyLiked="alreadyLiked">-->
-<!--			<div class="eachDiv" v-for="image in filteredUsers">-->
-<!--			<div class="eachDiv" v-for="image in filterType">-->
 			<div class="eachDiv" v-for="image in filteredCost">
-				<h3>Stylist: {{ image.reviewStylist }}</h3>
-				<h3 @click="setLocation(image)" class="locText">Location: <strong>{{ image.reviewShop }}</strong></h3>  
+				<button v-if= "isAdmin" @click="removeUser(image)">Delete Post</button>
+				<div class="post"> 
 				<h3>User: {{ image.reviewer }}</h3>
-				<img :src="image.imageUrl" @click="removeUser(image)">
-				<div class="theReview">
-					<p><strong>Review:</strong> {{ image.reviewText }}</p>
+				<img :src="image.imageUrl">				
 				</div>
-				<p> User rated this {{ image.rating }} stars</p>
-				<p> {{ image.cost }}</p>
-				<p> {{ image.type }}</p>
-				<p> {{ image.imageLikes }} likes!</p>
-				<button @click="likes(image)">Like</button>
+				<div class="post"> 
+					<div class="theReview">
+						<h3>Stylist: {{ image.reviewStylist }}</h3>
+						<h3 @click="setLocation(image)" class="locText">Location: <strong>{{ image.reviewShop }}</strong></h3>  
+						<p><strong>Review:</strong> {{ image.reviewText }}</p>
+					</div>
+					<p> User rated style: <br>
+					<strong>{{ image.rating }}</strong> / 5 stars <br>
+					<strong>{{ image.cost }}</strong> / $$$ </p>
+					<p> <strong>{{ image.imageLikes }} likes!</strong></p>
+					<button @click="likes(image)">Like</button>
 				</div>
+			</div>
 		</div>
-<!--		</div>-->
 	</div>
 </template>
 	
-	
-	
-	
+
 <script>
-	
 import Firebase from 'firebase'
 import { usersRef, storageRef } from '../database'
 	
@@ -113,7 +76,7 @@ export default {
 		users: usersRef
 	},
 	
-	data () {
+	data() {
 		return {
 			num: 0,
 			alreadyLiked: false, 
@@ -122,8 +85,23 @@ export default {
 			city: "", 
 			selected: [], 
 			rateSort: [], 
-			costSort:[]
+			costSort:[],
+			admin: "admin@admin.com",
+			isAdmin: false
 		}
+	},
+	
+	created() { 
+		var _this = this;
+		Firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+				user = Firebase.auth().currentUser;
+			if (user.email == "admin@admin.com"){
+				console.log("ADMIN IS IN LOGGED IN")
+				_this.isAdmin = true;
+				}
+			} 
+		});
 	},
 	
 	methods: {
@@ -183,48 +161,14 @@ export default {
 					return true
 				} else if (self.costSort.length == 0) {
 					return self.users.reverse()
-				}
-					
+				}	
 			})
 		}
-		
-		
-//		filterType: function() {
-//			var self = this
-//			console.log('should')
-////			console.log(user.this.kinky.val())
-//			return self.reversedUsers.filter(function (user) {
-//				
-////				console.log(user.`${self.selected[0]}`.val())
-//
-//				for (var i = 0; i < self.selected.length; i++) {
-////					var theType = `${self.selected[i]}`.toLowerCase()
-//					var theType = self.selected[i].toLowerCase()
-//					console.log(theType)
-////					console.log(user.theType)
-//
-////					var otherType = user.`${theType}`
-////					console.log(otherType)
-////					console.log(`${user.theType}`)
-////					console.log(`user.${self.selected[i]}.val()`)
-////					return `user.${self.selected[i]}.val()`
-//					return user.{{theType}} == true
-//					
-////					return `user.${self.selected[i]}`.val()
-//					
-//				}
-//			})
-//		}
-
-
-
 	}
 }
-
-	
-
-
 </script>
+
+
 <style scoped>
 
 	h1 {
@@ -232,8 +176,43 @@ export default {
 		background-color: #bee8e7;
 	}
 	
+	
+	.column {
+	display: inline-table;
+    width: 30%;
+    padding: 10px;
+    height: 200px; 
+	margin: auto;
+	justify-content: center;
+	background-color:#ccc;
+}
+	
+		.post {
+	display: inline-table;
+    width: 42%;
+    padding: 10px;
+    height: 200px; 
+	margin: auto;
+	justify-content: center;
+}
+	
+	
+	ul{
+		align-content: center;
+		text-align: left;
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+	
 	img {
-		width: 40%;
+		width: 75%
 /*		left: 0;*/
 /*		float: inherit;*/
 	}
