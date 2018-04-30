@@ -1,11 +1,10 @@
 <template>
 	<div>
-	
-
+		
 		<h1>SHARE A REVIEW</h1>
 		<br>
-
-
+		
+		<h2> Ratings</h2>
 		
 		<form class="form-inline" @submit.prevent="addImage">
 			<div class="form-group">
@@ -14,9 +13,54 @@
 				<input type="file" class="form-control" id="files" name="files[]">
 				<img v-if="isPreview" :src="previewImageUrl">
 			</div>
+			
+			<br> 
+			<p>Rating + Cost:</p>
+			<select v-model="selected">
+			  <option disabled value="">Rating?</option>
+			  <option> &#9733;</option>
+			  <option> &#9733;  &#9733;</option>
+			  <option> &#9733;  &#9733;  &#9733;</option>
+			  <option>  &#9733;  &#9733; &#9733; &#9733; </option>
+			  <option> &#9733; &#9733; &#9733; &#9733; &#9733; </option>
+			</select>
+			
+			
+			<select v-model="ratings">
+			  <option disabled value="">Cost?</option>
+			  <option>$</option>
+			  <option>$$</option>
+			  <option>$$$</option>
+			</select>
+			
+			<br> <br> 
+			<p>Hair Type: (hold cmd to click multiple)</p>
+			
+			<select class= "checkboxes" v-model="selected" multiple>
+				<option>Short (length)</option>
+				<option>Long (length)</option>
+				<option>Medium (length)</option>
+				<option>Curly</option>
+				<option>Wavy</option>
+				<option>Straight</option>
+				<option>Kinky</option>
+				<option>Black</option>
+				<option>Blonde</option>
+				<option>Brunette</option>
+				<option>Red</option>
+				<option>Fade</option>
+				<option>Mohawk</option>
+				<option>Bearded</option>
+				<option>Bun</option>
+				<option>Pixie</option>
+				<option>Part (middle, side, etc)</option>
+				</select>
+				<br><br>
+			<span>Selected: {{ selected.toString() }}</span>
+			<br> 
 			<br>
 			<div class="form-group">
-				<label for="review">Review of the cut: </label>
+				<label for="review">Write a review: </label>
 				<textarea type="text" class="form-review" id="review" v-model="newReview" placeholder="e.g. Barber was very personal and obviously knew what they were doing!">
 				</textarea>
 			</div>
@@ -25,6 +69,13 @@
 				<label for="stylist">Who cut your hair: </label>
 				<br>
 				<input type="text" class="form-stylist" id="stylist" v-model="stylist" placeholder="e.g. BobsCuts21">
+			</div>
+			
+			
+			<div class="form-group">
+				<label for="stylist">How much did it cost?: </label>
+				<br>
+				<input type="text" class="form-stylist" id="stylist" v-model="stylist" placeholder="e.g. $$$">
 			</div>
 			
 			<div class="form-group">
@@ -83,6 +134,7 @@ export default {
 			previewImageUrl: '',
 			isPreview: false,
 			theShop: null,
+			selected: []
 			
 
 		}
@@ -191,6 +243,11 @@ export default {
 		color: black;
 	}
 	
+	.checkboxes{
+		width: 50%;
+		border: none;
+		height: 180px;
+	}
 	img {
 		width: 80%;
 	}

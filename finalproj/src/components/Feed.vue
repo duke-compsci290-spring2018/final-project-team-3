@@ -3,7 +3,8 @@
 		<h1>FEED</h1>
 		<h2 class="desc">Get inspired!</h2>
 		<div class="form-group">
-      		<input type=search placeholder=Search class=form-control v-model="city" />
+			<p> Filter by Location:
+      		<input type=search placeholder=Search class=form-control v-model="city" /> </p>
 		</div>
 		<div class="outerDiv">
 <!--		<div v-for="image in reversedUsers" class="eachDiv" :alreadyLiked="alreadyLiked">-->
