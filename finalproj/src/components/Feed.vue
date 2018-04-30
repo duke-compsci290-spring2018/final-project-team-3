@@ -23,8 +23,7 @@
 			<span>Picked: {{ picked }}</span>
 			
 			<p> Filter by Rating:
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 			<input type="radio" id="one" value="★ ★ ★ ★ ★" v-model="rateSort">
 			<label for="one">5 Star</label>
 			<input type="radio" id="two" value="★ ★ ★ ★ " v-model="rateSort">
