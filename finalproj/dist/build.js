@@ -1368,7 +1368,7 @@ __WEBPACK_IMPORTED_MODULE_0_firebase___default.a.auth().onAuthStateChanged(funct
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Feed_vue__ = __webpack_require__(21);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4826aebc_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Feed_vue__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a6a721cc_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Feed_vue__ = __webpack_require__(63);
 function injectStyle (ssrContext) {
   __webpack_require__(51)
 }
@@ -1383,12 +1383,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-4826aebc"
+var __vue_scopeId__ = "data-v-a6a721cc"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Feed_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4826aebc_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Feed_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a6a721cc_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Feed_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -4213,30 +4213,6 @@ var Component = normalizeComponent(
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 
@@ -4247,6 +4223,7 @@ var Component = normalizeComponent(
 	firebase: {
 		users: __WEBPACK_IMPORTED_MODULE_1__database__["b" /* usersRef */]
 	},
+
 	data: function data() {
 		return {
 			num: 0,
@@ -4255,10 +4232,25 @@ var Component = normalizeComponent(
 			hey: "howdy",
 			city: "",
 			selected: [],
-			picked: [],
-			picked1: []
+			rateSort: [],
+			costSort: [],
+			admin: "admin@admin.com",
+			isAdmin: false
 		};
 	},
+	created: function created() {
+		var _this = this;
+		__WEBPACK_IMPORTED_MODULE_0_firebase___default.a.auth().onAuthStateChanged(function (user) {
+			if (user) {
+				user = __WEBPACK_IMPORTED_MODULE_0_firebase___default.a.auth().currentUser;
+				if (user.email == "admin@admin.com") {
+					console.log("ADMIN IS IN LOGGED IN");
+					_this.isAdmin = true;
+				}
+			}
+		});
+	},
+
 
 	methods: {
 		removeUser: function removeUser(image) {
@@ -4298,29 +4290,30 @@ var Component = normalizeComponent(
 			return self.reversedUsers.filter(function (user) {
 				return user.reviewAddress.indexOf(self.city) !== -1;
 			});
+		},
+
+		filteredOther: function filteredOther() {
+			var self = this;
+			return self.filteredUsers.filter(function (user) {
+				if (self.rateSort != "all") {
+					return user.rating.indexOf(self.rateSort) !== -1;
+				} else {
+					return self.users.reverse();
+				}
+			});
+		},
+
+		filteredCost: function filteredCost() {
+			var self = this;
+			return self.filteredOther.filter(function (user) {
+				if (self.costSort.length === user.cost.length) {
+					return true;
+				} else if (self.costSort.length == 0) {
+					return self.users.reverse();
+				}
+			});
 		}
 	}
-	//	
-	//		filteredPeople: function() {
-	//			var vm = this;
-	//			var category = vm.selectedCategory;
-	//			var gender = vm.selectedGender;
-	//
-	//			if(category === "All" && gender === "All") {
-	//				//save performance, juste return the default array:
-	//				return vm.people;
-	//			} else {
-	//				return vm.people.filter(function(person) {
-	//					//return the array after passimng it through the filter function:
-	//					return  (category === 'All' || person.category === category) && (gender === 'All'  || person.gender === gender);	 
-	//
-	//				});
-	//			}
-	//		}
-	//	}
-	//});
-	//	
-
 });
 
 /***/ }),
@@ -4377,7 +4370,7 @@ __webpack_require__(55);
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Login_vue__ = __webpack_require__(25);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_590fe179_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a9fd86c2_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__ = __webpack_require__(69);
 function injectStyle (ssrContext) {
   __webpack_require__(65)
 }
@@ -4392,12 +4385,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-a9fd86c2"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Login_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_590fe179_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a9fd86c2_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -4555,7 +4548,7 @@ module.exports = function() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Home_vue__ = __webpack_require__(28);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5b5e0e30_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_03aaea80_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__ = __webpack_require__(72);
 function injectStyle (ssrContext) {
   __webpack_require__(70)
 }
@@ -4575,7 +4568,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Home_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5b5e0e30_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_03aaea80_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -4657,7 +4650,7 @@ var Component = normalizeComponent(
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Share_vue__ = __webpack_require__(30);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_d1c3812a_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Share_vue__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9880485e_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Share_vue__ = __webpack_require__(75);
 function injectStyle (ssrContext) {
   __webpack_require__(73)
 }
@@ -4672,12 +4665,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-d1c3812a"
+var __vue_scopeId__ = "data-v-9880485e"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Share_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_d1c3812a_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Share_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9880485e_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Share_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -4695,6 +4688,11 @@ var Component = normalizeComponent(
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database__ = __webpack_require__(9);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4830,9 +4828,9 @@ var Component = normalizeComponent(
 			shopName: '',
 			previewImageUrl: '',
 			isPreview: false,
-			theShop: null,
-			ratings: null,
-			cost: null,
+			theShop: '',
+			ratings: 0,
+			cost: 0,
 			selected: [],
 			totalList: ['Short', 'Long', 'Medium', 'Curly', 'Wavy', 'Straight', 'Kinky', 'Black', 'Blonde', 'Brunette', 'Red', 'Fade', 'Mohawk', 'Bearded', 'Bun', 'Pixie', 'Part'],
 
@@ -4936,23 +4934,23 @@ var Component = normalizeComponent(
 					reviewPhone: _this.shop.formatted_phone_number,
 					imageLikes: 0,
 					//									types: 0,
-					short: _this.newSelected[0],
-					long: _this.newSelected[1],
-					medium: _this.newSelected[2],
-					curly: _this.newSelected[3],
-					wavy: _this.newSelected[4],
-					straight: _this.newSelected[5],
-					kinky: _this.newSelected[6],
-					black: _this.newSelected[7],
-					blonde: _this.newSelected[8],
-					brunette: _this.newSelected[9],
-					red: _this.newSelected[10],
-					fade: _this.newSelected[11],
-					mohawk: _this.newSelected[12],
-					bearded: _this.newSelected[13],
-					bun: _this.newSelected[14],
-					pixie: _this.newSelected[15],
-					part: _this.newSelected[16],
+					//									short: this.newSelected[0],
+					//									long: this.newSelected[1],
+					//									medium: this.newSelected[2],
+					//									curly: this.newSelected[3],
+					//									wavy: this.newSelected[4],
+					//									straight: this.newSelected[5],
+					//									kinky: this.newSelected[6],
+					//									black: this.newSelected[7],
+					//									blonde: this.newSelected[8],
+					//									brunette: this.newSelected[9],
+					//									red: this.newSelected[10],
+					//									fade: this.newSelected[11],
+					//									mohawk: this.newSelected[12],
+					//									bearded: this.newSelected[13],
+					//									bun: this.newSelected[14],
+					//									pixie: this.newSelected[15],
+					//									part: this.newSelected[16],
 					rating: _this.ratings,
 					cost: _this.cost
 
@@ -4974,7 +4972,7 @@ var Component = normalizeComponent(
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Settings_vue__ = __webpack_require__(32);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2271d93a_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Settings_vue__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1e178eda_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Settings_vue__ = __webpack_require__(78);
 function injectStyle (ssrContext) {
   __webpack_require__(76)
 }
@@ -4989,12 +4987,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-2271d93a"
+var __vue_scopeId__ = "data-v-1e178eda"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Settings_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2271d93a_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Settings_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1e178eda_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Settings_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -5037,6 +5035,8 @@ var Component = normalizeComponent(
 //
 //
 //
+//
+//
 
 
 
@@ -5052,7 +5052,8 @@ var Component = normalizeComponent(
 			newReview: '',
 			haveNone: true,
 			name: null,
-			homeTown: null
+			homeTown: null,
+			isAdmin: false
 		};
 	},
 	created: function created() {
@@ -5060,6 +5061,10 @@ var Component = normalizeComponent(
 		__WEBPACK_IMPORTED_MODULE_0_firebase___default.a.auth().onAuthStateChanged(function (user) {
 			if (user) {
 				user = __WEBPACK_IMPORTED_MODULE_0_firebase___default.a.auth().currentUser;
+				if (user.email === "admin@admin.com") {
+					console.log("ADMIN IS IN");
+					_this.isAdmin = true;
+				}
 				console.log('user in settings');
 				console.log(user.email);
 				_this.theEmail = user.email;
@@ -5532,12 +5537,18 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 	}
 });
 
+var admin = "admin@admin.com";
+
 var isUser;
+var isAdmin;
 
 __WEBPACK_IMPORTED_MODULE_4_firebase___default.a.auth().onAuthStateChanged(function (user) {
 	if (user) {
 		//		this.$router.push('/');
 		isUser = true;
+		if (user.email === admin) {
+			isAdmin = true;
+		}
 	} else {
 		//		this.$router.push('/login')
 		isUser = false;
@@ -5547,13 +5558,13 @@ __WEBPACK_IMPORTED_MODULE_4_firebase___default.a.auth().onAuthStateChanged(funct
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_2_vuefire___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_3_vue_router__["a" /* default */]);
 
-var routes = [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_Home_vue__["a" /* default */] }, { path: '/login', component: __WEBPACK_IMPORTED_MODULE_6__components_Login_vue__["a" /* default */] }, { path: '/feed', component: __WEBPACK_IMPORTED_MODULE_8__components_Feed_vue__["a" /* default */], props: true },
-//	{ path: '/find', component: Find },
-{ path: '/share', component: __WEBPACK_IMPORTED_MODULE_10__components_Share_vue__["a" /* default */], meta: {
+var routes = [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_Home_vue__["a" /* default */] }, { path: '/login', component: __WEBPACK_IMPORTED_MODULE_6__components_Login_vue__["a" /* default */] }, { path: '/feed', component: __WEBPACK_IMPORTED_MODULE_8__components_Feed_vue__["a" /* default */], props: true, meta: {
+		requiresAuth: true } }, { path: '/share', component: __WEBPACK_IMPORTED_MODULE_10__components_Share_vue__["a" /* default */], meta: {
 		requiresAuth: true
 	} }, { path: '/account', component: __WEBPACK_IMPORTED_MODULE_11__components_Settings_vue__["a" /* default */], meta: {
 		requiresAuth: true
-	} }, { path: '/authentication', component: __WEBPACK_IMPORTED_MODULE_12__components_Authentication_vue__["a" /* default */] }, { path: '/map', component: __WEBPACK_IMPORTED_MODULE_13__components_GoogleMap_vue__["a" /* default */], name: 'googlemap', props: true }];
+	} }, { path: '/authentication', component: __WEBPACK_IMPORTED_MODULE_12__components_Authentication_vue__["a" /* default */] }, { path: '/map', component: __WEBPACK_IMPORTED_MODULE_13__components_GoogleMap_vue__["a" /* default */], name: 'googlemap', props: true, meta: {
+		requiresAuth: true } }];
 
 //user () {
 //			firebase.auth().onAuthStateChanged(function(user) {
@@ -16859,7 +16870,7 @@ var content = __webpack_require__(52);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("46a6851c", content, true, {});
+var update = __webpack_require__(3)("37bee162", content, true, {});
 
 /***/ }),
 /* 52 */
@@ -16870,7 +16881,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "h1[data-v-4826aebc]{font-size:36px;background-color:#bee8e7}img[data-v-4826aebc]{width:40%}h2[data-v-4826aebc]{font-size:30px}.allReviews[data-v-4826aebc]{width:80%}.eachPic[data-v-4826aebc]{padding-bottom:15px;padding-top:15px}.eachPic[data-v-4826aebc],.eachText[data-v-4826aebc]{width:80%;margin-right:auto;margin-left:auto}.outerDiv[data-v-4826aebc]{width:70%;text-align:center;margin-left:auto;margin-right:auto;padding-bottom:20px;padding-top:20px}.eachDiv[data-v-4826aebc]{text-align:center;border-radius:5px;background-color:#f9d9c0;padding:5px 15px 0;margin-bottom:50px}.locText[data-v-4826aebc]{cursor:pointer}.desc[data-v-4826aebc]{font-size:16px}h3[data-v-4826aebc]{font-family:Avenir,Helvetica,Arial,sans-serif;font-weight:100;padding-top:0;padding-bottom:0;margin-top:4px;margin-bottom:4px}", ""]);
+exports.push([module.i, "h1[data-v-a6a721cc]{font-size:36px;background-color:#bee8e7}.column[data-v-a6a721cc]{width:30%;background-color:#ccc}.column[data-v-a6a721cc],.post[data-v-a6a721cc]{display:inline-table;padding:10px;height:200px;margin:auto;justify-content:center}.post[data-v-a6a721cc]{width:42%}ul[data-v-a6a721cc]{align-content:center;text-align:left;width:50%;margin-left:auto;margin-right:auto}.row[data-v-a6a721cc]:after{content:\"\";display:table;clear:both}img[data-v-a6a721cc]{width:75%}h2[data-v-a6a721cc]{font-size:30px}.allReviews[data-v-a6a721cc]{width:80%}.eachPic[data-v-a6a721cc]{padding-bottom:15px;padding-top:15px}.eachPic[data-v-a6a721cc],.eachText[data-v-a6a721cc]{width:80%;margin-right:auto;margin-left:auto}.outerDiv[data-v-a6a721cc]{width:70%;text-align:center;margin-left:auto;margin-right:auto;padding-bottom:20px;padding-top:20px}.eachDiv[data-v-a6a721cc]{text-align:center;border-radius:5px;background-color:#f9d9c0;padding:5px 15px 0;margin-bottom:50px}.locText[data-v-a6a721cc]{cursor:pointer}.desc[data-v-a6a721cc]{font-size:16px}h3[data-v-a6a721cc]{font-family:Avenir,Helvetica,Arial,sans-serif;font-weight:100;padding-top:0;padding-bottom:0;margin-top:4px;margin-bottom:4px}select[data-v-a6a721cc]{width:10%;height:80px}", ""]);
 
 // exports
 
@@ -39556,8 +39567,8 @@ registerStorage(__WEBPACK_IMPORTED_MODULE_0__firebase_app__["default"]);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("FEED")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('h2',[_vm._v("Get inspired!")]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('p',[_vm._v(" Filter by Location:\n      \t\t"),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.city),expression:"city"}],staticClass:"form-control",attrs:{"type":"search","placeholder":"Search"},domProps:{"value":(_vm.city)},on:{"input":function($event){if($event.target.composing){ return; }_vm.city=$event.target.value}}})]),_vm._v(" "),_c('p',[_vm._v(" Filter by Cost:\n\t\t\t"),_c('label',{attrs:{"for":"one"}},[_vm._v("$")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.picked),expression:"picked"}],attrs:{"type":"checkbox","id":"$","value":"One"},domProps:{"checked":Array.isArray(_vm.picked)?_vm._i(_vm.picked,"One")>-1:(_vm.picked)},on:{"change":function($event){var $$a=_vm.picked,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v="One",$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.picked=$$a.concat([$$v]))}else{$$i>-1&&(_vm.picked=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.picked=$$c}}}}),_vm._v(" "),_c('label',{attrs:{"for":"two"}},[_vm._v("$$")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.picked),expression:"picked"}],attrs:{"type":"checkbox","id":"$$","value":"Two"},domProps:{"checked":Array.isArray(_vm.picked)?_vm._i(_vm.picked,"Two")>-1:(_vm.picked)},on:{"change":function($event){var $$a=_vm.picked,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v="Two",$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.picked=$$a.concat([$$v]))}else{$$i>-1&&(_vm.picked=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.picked=$$c}}}}),_vm._v(" "),_c('label',{attrs:{"for":"two"}},[_vm._v("$$$")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.picked),expression:"picked"}],attrs:{"type":"checkbox","id":"$$$","value":"Three"},domProps:{"checked":Array.isArray(_vm.picked)?_vm._i(_vm.picked,"Three")>-1:(_vm.picked)},on:{"change":function($event){var $$a=_vm.picked,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v="Three",$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.picked=$$a.concat([$$v]))}else{$$i>-1&&(_vm.picked=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.picked=$$c}}}}),_vm._v(" "),_c('br'),_vm._v(" "),_c('span',[_vm._v("Picked: "+_vm._s(_vm.picked))])]),_c('p',[_vm._v(" Filter by Rating:\n\t\t\t"),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.picked1),expression:"picked1"}],attrs:{"type":"radio","id":"one","value":"5 Star"},domProps:{"checked":_vm._q(_vm.picked1,"5 Star")},on:{"change":function($event){_vm.picked1="5 Star"}}}),_vm._v(" "),_c('label',{attrs:{"for":"one"}},[_vm._v("5 Star")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.picked1),expression:"picked1"}],attrs:{"type":"radio","id":"two","value":"4 Star"},domProps:{"checked":_vm._q(_vm.picked1,"4 Star")},on:{"change":function($event){_vm.picked1="4 Star"}}}),_vm._v(" "),_c('label',{attrs:{"for":"two"}},[_vm._v("4 Star")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.picked1),expression:"picked1"}],attrs:{"type":"radio","id":"two","value":"3 Star"},domProps:{"checked":_vm._q(_vm.picked1,"3 Star")},on:{"change":function($event){_vm.picked1="3 Star"}}}),_vm._v(" "),_c('label',{attrs:{"for":"two"}},[_vm._v("3 Star")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.picked1),expression:"picked1"}],attrs:{"type":"radio","id":"two","value":"2 Star"},domProps:{"checked":_vm._q(_vm.picked1,"2 Star")},on:{"change":function($event){_vm.picked1="2 Star"}}}),_vm._v(" "),_c('label',{attrs:{"for":"two"}},[_vm._v("2 Star")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.picked1),expression:"picked1"}],attrs:{"type":"radio","id":"two","value":"1 Star"},domProps:{"checked":_vm._q(_vm.picked1,"1 Star")},on:{"change":function($event){_vm.picked1="1 Star"}}}),_vm._v(" "),_c('label',{attrs:{"for":"two"}},[_vm._v("1 Star")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('span',[_vm._v("Picked: "+_vm._s(_vm.picked1))])]),_c('p',[_vm._v(" Filter by Hair Type: ")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.selected),expression:"selected"}],attrs:{"multiple":""},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.selected=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',[_vm._v("Short (length)")]),_vm._v(" "),_c('option',[_vm._v("Long (length)")]),_vm._v(" "),_c('option',[_vm._v("Medium (length)")]),_vm._v(" "),_c('option',[_vm._v("Curly")]),_vm._v(" "),_c('option',[_vm._v("Wavy")]),_vm._v(" "),_c('option',[_vm._v("Straight")]),_vm._v(" "),_c('option',[_vm._v("Kinky")]),_vm._v(" "),_c('option',[_vm._v("Black")]),_vm._v(" "),_c('option',[_vm._v("Blonde")]),_vm._v(" "),_c('option',[_vm._v("Brunette")]),_vm._v(" "),_c('option',[_vm._v("Red")]),_vm._v(" "),_c('option',[_vm._v("Fade")]),_vm._v(" "),_c('option',[_vm._v("Mohawk")]),_vm._v(" "),_c('option',[_vm._v("Bearded")]),_vm._v(" "),_c('option',[_vm._v("Bun")]),_vm._v(" "),_c('option',[_vm._v("Pixie")]),_vm._v(" "),_c('option',[_vm._v("Part (middle, side, etc)")])]),_vm._v(" "),_c('br'),_c('br'),_vm._v(" "),_c('span',[_vm._v(" Selected: "+_vm._s(_vm.selected))])]),_vm._v(" "),_c('div',{staticClass:"outerDiv"},_vm._l((_vm.filteredUsers),function(image){return _c('div',{staticClass:"eachDiv"},[_c('h3',[_vm._v("Stylist: "+_vm._s(image.reviewStylist))]),_vm._v(" "),_c('h3',{staticClass:"locText",on:{"click":function($event){_vm.setLocation(image)}}},[_vm._v("Location: "),_c('strong',[_vm._v(_vm._s(image.reviewShop))])]),_vm._v(" "),_c('h3',[_vm._v("User: "+_vm._s(image.reviewer))]),_vm._v(" "),_c('img',{attrs:{"src":image.imageUrl},on:{"click":function($event){_vm.removeUser(image)}}}),_vm._v(" "),_c('div',{staticClass:"theReview"},[_c('p',[_vm._v("Review: "+_vm._s(image.reviewText))])]),_vm._v(" "),_c('p',[_vm._v(" "+_vm._s(image.rating))]),_vm._v(" "),_c('p',[_vm._v(" "+_vm._s(image.cost))]),_vm._v(" "),_c('p',[_vm._v(" "+_vm._s(image.type))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(image.imageLikes)+" likes!")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.likes(image)}}},[_vm._v("Like")])])}))])}
-var staticRenderFns = []
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("FEED")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('h2',[_vm._v("Get inspired!")]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('div',{staticClass:"row"},[_c('div',{staticClass:"column"},[_vm._m(0),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.city),expression:"city"}],staticClass:"form-control",attrs:{"type":"search","placeholder":"Search"},domProps:{"value":(_vm.city)},on:{"input":function($event){if($event.target.composing){ return; }_vm.city=$event.target.value}}}),_vm._v(" "),_c('p',[_vm._v(" *Use State Initials (capitalized) or Town/City Names")])]),_vm._v(" "),_c('div',{staticClass:"column"},[_vm._m(1),_vm._v(" "),_c('ul',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.costSort),expression:"costSort"}],attrs:{"type":"radio","id":"$","value":"$"},domProps:{"checked":_vm._q(_vm.costSort,"$")},on:{"change":function($event){_vm.costSort="$"}}}),_c('label',{attrs:{"for":"one"}},[_vm._v("$")]),_c('br'),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.costSort),expression:"costSort"}],attrs:{"type":"radio","id":"$$","value":"$$"},domProps:{"checked":_vm._q(_vm.costSort,"$$")},on:{"change":function($event){_vm.costSort="$$"}}}),_c('label',{attrs:{"for":"two"}},[_vm._v("$$")]),_c('br'),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.costSort),expression:"costSort"}],attrs:{"type":"radio","id":"$$$","value":"$$$"},domProps:{"checked":_vm._q(_vm.costSort,"$$$")},on:{"change":function($event){_vm.costSort="$$$"}}}),_c('label',{attrs:{"for":"three"}},[_vm._v("$$$")]),_c('br'),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.costSort),expression:"costSort"}],attrs:{"checked":"","type":"radio","id":"all","value":""},domProps:{"checked":_vm._q(_vm.costSort,"")},on:{"change":function($event){_vm.costSort=""}}}),_c('label',{attrs:{"for":"all"}},[_vm._v(" See all")]),_c('br')])]),_vm._v(" "),_c('div',{staticClass:"column"},[_vm._m(2),_vm._v(" "),_c('ul',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.rateSort),expression:"rateSort"}],attrs:{"type":"radio","id":"five","value":"5"},domProps:{"checked":_vm._q(_vm.rateSort,"5")},on:{"change":function($event){_vm.rateSort="5"}}}),_vm._v(" "),_c('label',{attrs:{"for":"five"}},[_vm._v("5 Star")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.rateSort),expression:"rateSort"}],attrs:{"type":"radio","id":"four","value":"4"},domProps:{"checked":_vm._q(_vm.rateSort,"4")},on:{"change":function($event){_vm.rateSort="4"}}}),_vm._v(" "),_c('label',{attrs:{"for":"four"}},[_vm._v("4 Star")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.rateSort),expression:"rateSort"}],attrs:{"type":"radio","id":"three","value":"3"},domProps:{"checked":_vm._q(_vm.rateSort,"3")},on:{"change":function($event){_vm.rateSort="3"}}}),_vm._v(" "),_c('label',{attrs:{"for":"three"}},[_vm._v("3 Star")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.rateSort),expression:"rateSort"}],attrs:{"type":"radio","id":"two","value":"2"},domProps:{"checked":_vm._q(_vm.rateSort,"2")},on:{"change":function($event){_vm.rateSort="2"}}}),_vm._v(" "),_c('label',{attrs:{"for":"two"}},[_vm._v("2 Star")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.rateSort),expression:"rateSort"}],attrs:{"type":"radio","id":"one","value":"1"},domProps:{"checked":_vm._q(_vm.rateSort,"1")},on:{"change":function($event){_vm.rateSort="1"}}}),_vm._v(" "),_c('label',{attrs:{"for":"one"}},[_vm._v("1 Star")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.rateSort),expression:"rateSort"}],attrs:{"type":"radio","id":"all","value":"all"},domProps:{"checked":_vm._q(_vm.rateSort,"all")},on:{"change":function($event){_vm.rateSort="all"}}}),_vm._v(" "),_c('label',{attrs:{"for":"one"}},[_vm._v("See all")])])])])]),_vm._v(" "),_c('div',{staticClass:"outerDiv"},_vm._l((_vm.filteredCost),function(image){return _c('div',{staticClass:"eachDiv"},[(_vm.isAdmin)?_c('button',{on:{"click":function($event){_vm.removeUser(image)}}},[_vm._v("Delete Post")]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"post"},[_c('h3',[_vm._v("User: "+_vm._s(image.reviewer))]),_vm._v(" "),_c('img',{attrs:{"src":image.imageUrl}})]),_vm._v(" "),_c('div',{staticClass:"post"},[_c('div',{staticClass:"theReview"},[_c('h3',[_vm._v("Stylist: "+_vm._s(image.reviewStylist))]),_vm._v(" "),_c('h3',{staticClass:"locText",on:{"click":function($event){_vm.setLocation(image)}}},[_vm._v("Location: "),_c('strong',[_vm._v(_vm._s(image.reviewShop))])]),_vm._v(" "),_c('p',[_c('strong',[_vm._v("Review:")]),_vm._v(" "+_vm._s(image.reviewText))])]),_vm._v(" "),_c('p',[_vm._v(" User rated style: "),_c('br'),_vm._v(" "),_c('strong',[_vm._v(_vm._s(image.rating))]),_vm._v(" / 5 stars "),_c('br'),_vm._v(" "),_c('strong',[_vm._v(_vm._s(image.cost))]),_vm._v(" / $$$ ")]),_vm._v(" "),_c('p',[_c('strong',[_vm._v(_vm._s(image.imageLikes)+" likes!")])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.likes(image)}}},[_vm._v("Like")])])])}))])}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('h3',[_vm._v("Filter by "),_c('strong',[_vm._v("Location")]),_vm._v(":")])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('h3',[_vm._v("Filter by "),_c('strong',[_vm._v("Cost")]),_vm._v(":")])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('h3',[_vm._v("Filter by "),_c('strong',[_vm._v("Rating")]),_vm._v(":")])}]
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
 
@@ -39582,7 +39593,7 @@ var content = __webpack_require__(66);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("1afc480c", content, true, {});
+var update = __webpack_require__(3)("59060584", content, true, {});
 
 /***/ }),
 /* 66 */
@@ -39593,7 +39604,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "input{width:20%;text-align:center}h3{cursor:pointer;background-color:#f9d9c0;padding:10px}", ""]);
+exports.push([module.i, "input[data-v-a9fd86c2]{width:20%;text-align:center}h3[data-v-a9fd86c2]{cursor:pointer;background-color:#f9d9c0;padding:10px}", ""]);
 
 // exports
 
@@ -40730,7 +40741,7 @@ var content = __webpack_require__(71);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("7c900b39", content, true, {});
+var update = __webpack_require__(3)("0d3566f1", content, true, {});
 
 /***/ }),
 /* 71 */
@@ -40752,7 +40763,7 @@ exports.push([module.i, ".whyUs{margin-right:auto;margin-left:auto}.homeTitle{ba
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(!_vm.loggingIn)?_c('div',{staticClass:"camPic"},[(_vm.picOne)?_c('div',[_c('p',[_vm._v(" hover over me!")]),_vm._v(" "),_c('h2',[_vm._v("From")]),_vm._v(" "),_c('img',{staticClass:"camImg",attrs:{"src":_vm.cam1},on:{"mouseover":function($event){_vm.picOne = false}}}),_vm._v(" "),_c('h2',[_vm._v("scrawn")])]):_vm._e(),_vm._v(" "),(!_vm.picOne)?_c('div',[_c('p',[_vm._v(" hover over me!")]),_vm._v(" "),_c('h2',[_vm._v("to")]),_vm._v(" "),_c('img',{staticClass:"camImg",attrs:{"src":_vm.cam2},on:{"mouseleave":function($event){_vm.picOne = true}}}),_vm._v(" "),_c('h2',[_vm._v("jawn")])]):_vm._e()]):_vm._e(),_vm._v(" "),_vm._m(0)])}
-var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home"}},[_c('div',{staticClass:"whyUs"},[_c('h3',{staticClass:"homeTitle"},[_vm._v("Why us?")]),_vm._v(" "),_c('p',{staticClass:"homeText"},[_vm._v("We are disrupting the entire hair industry with our revolutionary web app. With our platform you can find a stylist near you and see real reviews from people just like you. This perfectly solves the hair stylist needs for most college students.")])]),_vm._v(" "),_c('div',{staticClass:"whoAreWe"},[_c('h3',{staticClass:"homeTitle"},[_vm._v("Who are we?")]),_vm._v(" "),_c('p',{staticClass:"homeText"},[_vm._v("We are two sophomores studying computer science at Duke University. This is our final project for CS290: Web Development. King's Cuts is an app to help solve the issue of knowing where to get your hair cut in unfamiliar environments. With an instagram-like feed, we are offering a refreshing way to review barbers and get inspired.")])]),_vm._v(" "),_c('div',[_c('h3',{staticClass:"homeTitle"},[_vm._v(" How it Works: ")]),_vm._v(" "),_c('p',{staticClass:"homeText"},[_vm._v("First, create an account. Then, scroll through the \"Feed\" to get inspired and like other users' reviews. Posts will first be sorted by most recent posts, then by most liked. Filter through the review posts to find stylists best fitted for you. ")])])])}]
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home"}},[_c('div',{staticClass:"whyUs"},[_c('h3',{staticClass:"homeTitle"},[_vm._v("Why us?")]),_vm._v(" "),_c('p',{staticClass:"homeText"},[_vm._v("We are disrupting the entire hair industry with our revolutionary web app. With our platform you can find a stylist near you and see real reviews from people just like you. This perfectly solves the hair stylist needs for most college students.")])]),_vm._v(" "),_c('div',{staticClass:"whoAreWe"},[_c('h3',{staticClass:"homeTitle"},[_vm._v("Who are we?")]),_vm._v(" "),_c('p',{staticClass:"homeText"},[_vm._v("We are two sophomores studying computer science at Duke University. This is our final project for CS290: Web Development. Kingbus's Cuts is an app to help solve the issue of knowing where to get your hair cut in unfamiliar environments. With an instagram-like feed, we are offering a refreshing way to review barbers and get inspired.")])]),_vm._v(" "),_c('div',[_c('h3',{staticClass:"homeTitle"},[_vm._v(" How it Works")]),_vm._v(" "),_c('p',{staticClass:"homeText"},[_vm._v("First, create an account. Then, scroll through the \"Feed\" to get inspired and like other users' reviews. Posts will first be sorted by most recent posts, then by most liked. Filter through the review posts to find stylists best fitted for you. ")])])])}]
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
 
@@ -40767,7 +40778,7 @@ var content = __webpack_require__(74);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("784d42c6", content, true, {});
+var update = __webpack_require__(3)("4859ec8c", content, true, {});
 
 /***/ }),
 /* 74 */
@@ -40778,7 +40789,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "input[data-v-d1c3812a]{width:50%}.outerDiv[data-v-d1c3812a]{width:40%;text-align:center;margin-left:auto;margin-right:auto;border-radius:5px}.eachDiv[data-v-d1c3812a]{text-align:left;border-radius:5px}form[data-v-d1c3812a]{color:#000}.checkboxes[data-v-d1c3812a]{width:50%;border:none;height:180px}img[data-v-d1c3812a]{width:80%}.form-inline[data-v-d1c3812a]{width:40%;text-align:center;margin-right:auto;margin-left:auto;background-color:#f9d9c0;padding:5% 15%;border-radius:5px}.form-group[data-v-d1c3812a]{text-align:center;word-break:break-all}.form-review[data-v-d1c3812a]{width:100%;height:50px;background-color:#f0f8ff;outline:none;outline-style:none}.form-stylist[data-v-d1c3812a]{width:30%;text-align:center}.submitButton[data-v-d1c3812a]{width:30%;bottom:90%}h1[data-v-d1c3812a]{font-size:36px;cursor:text;background-color:#bee8e7}", ""]);
+exports.push([module.i, "input[data-v-9880485e]{width:50%}.outerDiv[data-v-9880485e]{width:40%;text-align:center;margin-left:auto;margin-right:auto;border-radius:5px}.eachDiv[data-v-9880485e]{text-align:left;border-radius:5px}form[data-v-9880485e]{color:#000}.checkboxes[data-v-9880485e]{width:50%;border:none;height:180px}img[data-v-9880485e]{width:80%}.form-inline[data-v-9880485e]{width:40%;text-align:center;margin-right:auto;margin-left:auto;background-color:#f9d9c0;padding:5% 15%;border-radius:5px}.form-group[data-v-9880485e]{text-align:center;word-break:break-all}.form-review[data-v-9880485e]{width:100%;height:50px;background-color:#f0f8ff;outline:none;outline-style:none}.form-stylist[data-v-9880485e]{width:30%;text-align:center}.submitButton[data-v-9880485e]{width:30%;bottom:90%}h1[data-v-9880485e]{font-size:36px;cursor:text;background-color:#bee8e7}", ""]);
 
 // exports
 
@@ -40788,7 +40799,7 @@ exports.push([module.i, "input[data-v-d1c3812a]{width:50%}.outerDiv[data-v-d1c38
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("SHARE A REVIEW")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('h2',[_vm._v(" Ratings")]),_vm._v(" "),_c('form',{staticClass:"form-inline",on:{"submit":function($event){$event.preventDefault();return _vm.addImage($event)}}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"files"}},[_vm._v("Picture of your hair: ")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('input',{staticClass:"form-control",attrs:{"type":"file","id":"files","name":"files[]"}}),_vm._v(" "),(_vm.isPreview)?_c('img',{attrs:{"src":_vm.previewImageUrl}}):_vm._e()]),_vm._v(" "),_c('br'),_vm._v(" "),_c('p',[_vm._v("Rating + Cost:")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.ratings),expression:"ratings"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.ratings=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"disabled":"","value":""}},[_vm._v("Rating?")]),_vm._v(" "),_c('option',[_vm._v(" ★")]),_vm._v(" "),_c('option',[_vm._v(" ★  ★")]),_vm._v(" "),_c('option',[_vm._v(" ★  ★  ★")]),_vm._v(" "),_c('option',[_vm._v("  ★  ★ ★ ★ ")]),_vm._v(" "),_c('option',[_vm._v(" ★ ★ ★ ★ ★ ")])]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.cost),expression:"cost"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.cost=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"disabled":"","value":""}},[_vm._v("Cost?")]),_vm._v(" "),_c('option',[_vm._v("$")]),_vm._v(" "),_c('option',[_vm._v("$$")]),_vm._v(" "),_c('option',[_vm._v("$$$")])]),_vm._v(" "),_c('br'),_vm._v(" "),_c('br'),_vm._v(" "),_c('p',[_vm._v("Hair Type: (hold cmd to click multiple)")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.selected),expression:"selected"}],staticClass:"checkboxes",attrs:{"multiple":""},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.selected=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',[_vm._v("Short")]),_vm._v(" "),_c('option',[_vm._v("Long")]),_vm._v(" "),_c('option',[_vm._v("Medium")]),_vm._v(" "),_c('option',[_vm._v("Curly")]),_vm._v(" "),_c('option',[_vm._v("Wavy")]),_vm._v(" "),_c('option',[_vm._v("Straight")]),_vm._v(" "),_c('option',[_vm._v("Kinky")]),_vm._v(" "),_c('option',[_vm._v("Black")]),_vm._v(" "),_c('option',[_vm._v("Blonde")]),_vm._v(" "),_c('option',[_vm._v("Brunette")]),_vm._v(" "),_c('option',[_vm._v("Red")]),_vm._v(" "),_c('option',[_vm._v("Fade")]),_vm._v(" "),_c('option',[_vm._v("Mohawk")]),_vm._v(" "),_c('option',[_vm._v("Bearded")]),_vm._v(" "),_c('option',[_vm._v("Bun")]),_vm._v(" "),_c('option',[_vm._v("Pixie")]),_vm._v(" "),_c('option',[_vm._v("Part")])]),_vm._v(" "),_c('br'),_c('br'),_vm._v(" "),_c('span',[_vm._v("Selected: "+_vm._s(_vm.selected.toString()))]),_vm._v(" "),_c('br'),_vm._v(" "),_c('br'),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"review"}},[_vm._v("Write a review: ")]),_vm._v(" "),_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.newReview),expression:"newReview"}],staticClass:"form-review",attrs:{"type":"text","id":"review","placeholder":"e.g. Barber was very personal and obviously knew what they were doing!"},domProps:{"value":(_vm.newReview)},on:{"input":function($event){if($event.target.composing){ return; }_vm.newReview=$event.target.value}}})]),_vm._v(" "),_c('br'),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"stylist"}},[_vm._v("Who cut your hair: ")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.stylist),expression:"stylist"}],staticClass:"form-stylist",attrs:{"type":"text","id":"stylist","placeholder":"e.g. BobsCuts21"},domProps:{"value":(_vm.stylist)},on:{"input":function($event){if($event.target.composing){ return; }_vm.stylist=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"shop"}},[_vm._v("Where did you get cut?: ")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('gmap-autocomplete',{staticClass:"form-control",staticStyle:{"width":"100%"},on:{"place_changed":_vm.setPlace}})],1),_vm._v(" "),_c('br'),_vm._v(" "),_c('input',{staticClass:"submitButton",attrs:{"type":"submit","value":"Submit your review"}})])])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("SHARE A REVIEW")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('h2',[_vm._v(" Ratings")]),_vm._v(" "),_c('form',{staticClass:"form-inline",on:{"submit":function($event){$event.preventDefault();return _vm.addImage($event)}}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"files"}},[_vm._v("Picture of your hair: ")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('input',{staticClass:"form-control",attrs:{"type":"file","id":"files","name":"files[]"}}),_vm._v(" "),(_vm.isPreview)?_c('img',{attrs:{"src":_vm.previewImageUrl}}):_vm._e()]),_vm._v(" "),_c('br'),_vm._v(" "),_c('p',[_vm._v("Rating + Cost:")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.ratings),expression:"ratings"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.ratings=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"disabled":"","value":""}},[_vm._v("Rating?")]),_vm._v(" "),_c('option',[_vm._v("1")]),_vm._v(" "),_c('option',[_vm._v("2")]),_vm._v(" "),_c('option',[_vm._v("3")]),_vm._v(" "),_c('option',[_vm._v("4")]),_vm._v(" "),_c('option',[_vm._v("5")])]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.cost),expression:"cost"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.cost=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"disabled":"","value":""}},[_vm._v("Cost?")]),_vm._v(" "),_c('option',[_vm._v("$")]),_vm._v(" "),_c('option',[_vm._v("$$")]),_vm._v(" "),_c('option',[_vm._v("$$$")])]),_vm._v(" "),_c('br'),_vm._v(" "),_c('br'),_vm._v(" "),_c('p',[_vm._v("Hair Type: (hold cmd to click multiple)")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.selected),expression:"selected"}],staticClass:"checkboxes",attrs:{"multiple":""},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.selected=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',[_vm._v("Short")]),_vm._v(" "),_c('option',[_vm._v("Long")]),_vm._v(" "),_c('option',[_vm._v("Medium")]),_vm._v(" "),_c('option',[_vm._v("Curly")]),_vm._v(" "),_c('option',[_vm._v("Wavy")]),_vm._v(" "),_c('option',[_vm._v("Straight")]),_vm._v(" "),_c('option',[_vm._v("Kinky")]),_vm._v(" "),_c('option',[_vm._v("Black")]),_vm._v(" "),_c('option',[_vm._v("Blonde")]),_vm._v(" "),_c('option',[_vm._v("Brunette")]),_vm._v(" "),_c('option',[_vm._v("Red")]),_vm._v(" "),_c('option',[_vm._v("Fade")]),_vm._v(" "),_c('option',[_vm._v("Mohawk")]),_vm._v(" "),_c('option',[_vm._v("Bearded")]),_vm._v(" "),_c('option',[_vm._v("Bun")]),_vm._v(" "),_c('option',[_vm._v("Pixie")]),_vm._v(" "),_c('option',[_vm._v("Part")])]),_vm._v(" "),_c('br'),_c('br'),_vm._v(" "),_c('span',[_vm._v("Selected: "+_vm._s(_vm.selected.toString()))]),_vm._v(" "),_c('br'),_vm._v(" "),_c('br'),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"review"}},[_vm._v("Write a review: ")]),_vm._v(" "),_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.newReview),expression:"newReview"}],staticClass:"form-review",attrs:{"type":"text","id":"review","placeholder":"e.g. Barber was very personal and obviously knew what they were doing!"},domProps:{"value":(_vm.newReview)},on:{"input":function($event){if($event.target.composing){ return; }_vm.newReview=$event.target.value}}})]),_vm._v(" "),_c('br'),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"stylist"}},[_vm._v("Who cut your hair: ")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.stylist),expression:"stylist"}],staticClass:"form-stylist",attrs:{"type":"text","id":"stylist","placeholder":"e.g. BobsCuts21"},domProps:{"value":(_vm.stylist)},on:{"input":function($event){if($event.target.composing){ return; }_vm.stylist=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"shop"}},[_vm._v("Where did you get cut?: ")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('gmap-autocomplete',{staticClass:"form-control",staticStyle:{"width":"100%"},on:{"place_changed":_vm.setPlace}})],1),_vm._v(" "),_c('br'),_vm._v(" "),_c('input',{staticClass:"submitButton",attrs:{"type":"submit","value":"Submit your review"}})])])}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -40804,7 +40815,7 @@ var content = __webpack_require__(77);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("58a3a3cc", content, true, {});
+var update = __webpack_require__(3)("02b49cf3", content, true, {});
 
 /***/ }),
 /* 77 */
@@ -40815,7 +40826,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "div[data-v-2271d93a]{border-radius:5px}h1[data-v-2271d93a]{font-size:36px;background-color:#bee8e7}button[data-v-2271d93a],img[data-v-2271d93a]{width:30%}.eachOne[data-v-2271d93a]{width:40%;padding-right:15%;padding-left:15%;padding-top:5px;margin-right:auto;margin-left:auto;margin-bottom:20px;background-color:#f9d9c0}textarea[data-v-2271d93a]{width:50%;height:50px;text-align:center}", ""]);
+exports.push([module.i, "div[data-v-1e178eda]{border-radius:5px}h1[data-v-1e178eda]{font-size:36px;background-color:#bee8e7}button[data-v-1e178eda],img[data-v-1e178eda]{width:30%}.eachOne[data-v-1e178eda]{width:40%;padding-right:15%;padding-left:15%;padding-top:5px;margin-right:auto;margin-left:auto;margin-bottom:20px;background-color:#f9d9c0}textarea[data-v-1e178eda]{width:50%;height:50px;text-align:center}", ""]);
 
 // exports
 
@@ -40825,7 +40836,7 @@ exports.push([module.i, "div[data-v-2271d93a]{border-radius:5px}h1[data-v-2271d9
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("YOUR ACCOUNT")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('h2',[_vm._v(" Review your previous posts")]),_vm._v(" "),_vm._l((_vm.images),function(image){return _c('div',[(image.reviewer === _vm.theEmail)?_c('div',{staticClass:"eachOne"},[_c('br'),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.removeImg(image)}}},[_vm._v(" Delete this Post ")]),_vm._v(" "),_c('br'),_c('br'),_vm._v(" "),_c('img',{attrs:{"src":image.imageUrl}}),_vm._v(" "),_c('p',[_vm._v(" "+_vm._s(image.reviewText))]),_vm._v(" "),_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.newReview),expression:"newReview"}],attrs:{"type":"text","placeholder":"edit your review"},domProps:{"value":(_vm.newReview)},on:{"keyup":function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.editReview(image)},"input":function($event){if($event.target.composing){ return; }_vm.newReview=$event.target.value}}}),_vm._v(" "),_c('br'),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.editReview(image)}}},[_vm._v(" submit edit ")]),_vm._v(" "),_c('br')]):_vm._e()])})],2)}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("YOUR ACCOUNT")]),_vm._v(" "),_c('br'),_vm._v(" "),_c('h2',[_vm._v(" Review your previous posts")]),_vm._v(" "),(_vm.isAdmin)?_c('div',[_vm._v("Hello Admin")]):_vm._e(),_vm._v(" "),_vm._l((_vm.images),function(image){return _c('div',[(image.reviewer === _vm.theEmail)?_c('div',{staticClass:"eachOne"},[_c('br'),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.removeImg(image)}}},[_vm._v(" Delete this Post ")]),_vm._v(" "),_c('br'),_c('br'),_vm._v(" "),_c('img',{attrs:{"src":image.imageUrl}}),_vm._v(" "),_c('p',[_vm._v(" "+_vm._s(image.reviewText))]),_vm._v(" "),_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.newReview),expression:"newReview"}],attrs:{"type":"text","placeholder":"edit your review"},domProps:{"value":(_vm.newReview)},on:{"keyup":function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.editReview(image)},"input":function($event){if($event.target.composing){ return; }_vm.newReview=$event.target.value}}}),_vm._v(" "),_c('br'),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.editReview(image)}}},[_vm._v(" submit edit ")]),_vm._v(" "),_c('br')]):_vm._e()])})],2)}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
