@@ -11,24 +11,24 @@
 			
 			<p> Filter by Cost:
 			<label for="one">$</label>
-      		<input type="checkbox" id="$" value="One" v-model="costSort">
+      		<input type="checkbox" id="$" value="$" v-model="costSort">
 			<label for="two">$$</label>
-			<input type="checkbox" id="$$" value="Two" v-model="costSort">
+			<input type="checkbox" id="$$" value="$$" v-model="costSort">
 			<label for="two">$$$</label>
-			<input type="checkbox" id="$$$" value="Three" v-model="costSort">
+			<input type="checkbox" id="$$$" value="$$$" v-model="costSort">
 			<br>
 			<span>Picked: {{ costSort }}</span>
 			
 			<p> Filter by Rating:
-			<input type="radio" id="one" value="5 Star" v-model="rateSort">
+			<input type="radio" id="one" value="★ ★ ★ ★ ★" v-model="rateSort">
 			<label for="one">5 Star</label>
-			<input type="radio" id="two" value="4 Star" v-model="rateSort">
+			<input type="radio" id="two" value="★ ★ ★ ★ " v-model="rateSort">
 			<label for="two">4 Star</label>
-			<input type="radio" id="two" value="3 Star" v-model="rateSort">
+			<input type="radio" id="two" value="★ ★ ★ " v-model="rateSort">
 			<label for="two">3 Star</label>
-			<input type="radio" id="two" value="2 Star" v-model="rateSort">
+			<input type="radio" id="two" value="★ ★ " v-model="rateSort">
 			<label for="two">2 Star</label>
-			<input type="radio" id="two" value="1 Star" v-model="rateSort">
+			<input type="radio" id="two" value="★ " v-model="rateSort">
 			<label for="two">1 Star</label>
 			<br>
 			<span>Picked: {{ rateSort }}</span>
@@ -169,27 +169,6 @@ export default {
 		}
 	},
 	
-}
-//	
-//		filteredPeople: function() {
-//			var vm = this;
-//			var category = vm.selectedCategory;
-//			var gender = vm.selectedGender;
-//
-//			if(category === "All" && gender === "All") {
-//				//save performance, juste return the default array:
-//				return vm.people;
-//			} else {
-//				return vm.people.filter(function(person) {
-//					//return the array after passimng it through the filter function:
-//					return  (category === 'All' || person.category === category) && (gender === 'All'  || person.gender === gender);	 
-//
-//				});
-//			}
-//		}
-//	}
-//});
-//	
 	
 	
 	
