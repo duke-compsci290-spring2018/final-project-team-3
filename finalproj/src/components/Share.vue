@@ -16,7 +16,7 @@
 			
 			<br> 
 			<p>Rating + Cost:</p>
-			<select v-model="selected">
+			<select v-model="ratings">
 			  <option disabled value="">Rating?</option>
 			  <option> &#9733;</option>
 			  <option> &#9733;  &#9733;</option>
@@ -26,7 +26,7 @@
 			</select>
 			
 			
-			<select v-model="ratings">
+			<select v-model="cost">
 			  <option disabled value="">Cost?</option>
 			  <option>$</option>
 			  <option>$$</option>
