@@ -11,24 +11,24 @@
 			
 			<p> Filter by Cost:
 			<label for="one">$</label>
-      		<input type="checkbox" id="$" value="One" v-model="picked">
+      		<input type="checkbox" id="$" value="$" v-model="picked">
 			<label for="two">$$</label>
-			<input type="checkbox" id="$$" value="Two" v-model="picked">
+			<input type="checkbox" id="$$" value="$$" v-model="picked">
 			<label for="two">$$$</label>
-			<input type="checkbox" id="$$$" value="Three" v-model="picked">
+			<input type="checkbox" id="$$$" value="$$$" v-model="picked">
 			<br>
 			<span>Picked: {{ picked }}</span>
 			
 			<p> Filter by Rating:
-			<input type="radio" id="one" value="5 Star" v-model="picked1">
+			<input type="radio" id="one" value="★ ★ ★ ★ ★" v-model="picked1">
 			<label for="one">5 Star</label>
-			<input type="radio" id="two" value="4 Star" v-model="picked1">
+			<input type="radio" id="two" value="★ ★ ★ ★ " v-model="picked1">
 			<label for="two">4 Star</label>
-			<input type="radio" id="two" value="3 Star" v-model="picked1">
+			<input type="radio" id="two" value="★ ★ ★ " v-model="picked1">
 			<label for="two">3 Star</label>
-			<input type="radio" id="two" value="2 Star" v-model="picked1">
+			<input type="radio" id="two" value="★ ★ " v-model="picked1">
 			<label for="two">2 Star</label>
-			<input type="radio" id="two" value="1 Star" v-model="picked1">
+			<input type="radio" id="two" value="★ " v-model="picked1">
 			<label for="two">1 Star</label>
 			<br>
 			<span>Picked: {{ picked1 }}</span>
@@ -149,29 +149,8 @@ export default {
 		  return  user.reviewAddress.indexOf(self.city) !== -1 
 		})
 	  }
-	},
+	}
 	
-}
-//	
-//		filteredPeople: function() {
-//			var vm = this;
-//			var category = vm.selectedCategory;
-//			var gender = vm.selectedGender;
-//
-//			if(category === "All" && gender === "All") {
-//				//save performance, juste return the default array:
-//				return vm.people;
-//			} else {
-//				return vm.people.filter(function(person) {
-//					//return the array after passimng it through the filter function:
-//					return  (category === 'All' || person.category === category) && (gender === 'All'  || person.gender === gender);	 
-//
-//				});
-//			}
-//		}
-//	}
-//});
-//	
 	
 	
 	
