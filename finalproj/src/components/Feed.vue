@@ -101,6 +101,7 @@ export default {
 	firebase: {
 		users: usersRef
 	},
+	
 	data () {
 		return {
 			num: 0,
@@ -113,6 +114,7 @@ export default {
 			rateSort:[]
 		}
 	},
+	
 	methods: {
 		removeUser: function(image) {
 			usersRef.child(image['.key']).remove();
@@ -143,7 +145,7 @@ export default {
         // get images in reverse order added
         reversedUsers() {
             return this.users.reverse();
-		}, 
+		},
 		
 		combinedList() {
 			var newArray = this.costSort.concat(this.rateSort);
@@ -162,19 +164,15 @@ export default {
 			console.log(this.selected)
 			return self.reversedUsers.filter(function (user) {
 				for (var i = 0; i < self.selected.length; i++) {
-					console.log(`user.${self.selected[i]}.val()`)
-					return `user.${self.selected[i]}` === true
+//					console.log(`user.${self.selected[i]}.val()`)
+					return `user.${self.selected[i]}` == true
 				}
 			})
 		}
-	},
-	
-	
-	
-	
+	}
+}
+
 </script>
-	
-	
 <style scoped>
 
 	h1 {
