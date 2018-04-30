@@ -8,6 +8,7 @@
 		<div class="form-group">
 			<p> Filter by <strong> Location</strong>:
       		<input type=search placeholder=Search class=form-control v-model="city" /> </p>
+			<br> <p> *Use State Initials (capitalized) or Town/City Names</p>
 			
 			<p> Filter by <strong> Cost</strong>: </p>
 			<label for="one">$</label>
@@ -84,7 +85,7 @@
 				<h3>User: {{ image.reviewer }}</h3>
 				<img :src="image.imageUrl" @click="removeUser(image)">
 				<div class="theReview">
-					<p>Review: {{ image.reviewText }}</p>
+					<p><strong>Review:</strong> {{ image.reviewText }}</p>
 				</div>
 				<p> User rated this {{ image.rating }} stars</p>
 				<p> {{ image.cost }}</p>
