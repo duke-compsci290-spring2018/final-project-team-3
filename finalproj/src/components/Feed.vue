@@ -11,35 +11,35 @@
 			
 			<p> Filter by Cost:
 			<label for="one">$</label>
-      		<input type="checkbox" id="$" value="One" v-model="picked">
+      		<input type="checkbox" id="$" value="One" v-model="costSort">
 			<label for="two">$$</label>
-			<input type="checkbox" id="$$" value="Two" v-model="picked">
+			<input type="checkbox" id="$$" value="Two" v-model="costSort">
 			<label for="two">$$$</label>
-			<input type="checkbox" id="$$$" value="Three" v-model="picked">
+			<input type="checkbox" id="$$$" value="Three" v-model="costSort">
 			<br>
-			<span>Picked: {{ picked }}</span>
+			<span>Picked: {{ costSort }}</span>
 			
 			<p> Filter by Rating:
-			<input type="radio" id="one" value="5 Star" v-model="picked1">
+			<input type="radio" id="one" value="5 Star" v-model="rateSort">
 			<label for="one">5 Star</label>
-			<input type="radio" id="two" value="4 Star" v-model="picked1">
+			<input type="radio" id="two" value="4 Star" v-model="rateSort">
 			<label for="two">4 Star</label>
-			<input type="radio" id="two" value="3 Star" v-model="picked1">
+			<input type="radio" id="two" value="3 Star" v-model="rateSort">
 			<label for="two">3 Star</label>
-			<input type="radio" id="two" value="2 Star" v-model="picked1">
+			<input type="radio" id="two" value="2 Star" v-model="rateSort">
 			<label for="two">2 Star</label>
-			<input type="radio" id="two" value="1 Star" v-model="picked1">
+			<input type="radio" id="two" value="1 Star" v-model="rateSort">
 			<label for="two">1 Star</label>
 			<br>
-			<span>Picked: {{ picked1 }}</span>
+			<span>Picked: {{ rateSort }}</span>
 			
 			
 			<p> Filter by Hair Type: </p>	
 
 			<select  v-model="selected" multiple>
-				<option>Short (length)</option>
-				<option>Long (length)</option>
-				<option>Medium (length)</option>
+				<option>Short</option>
+				<option>Long</option>
+				<option>Medium</option>
 				<option>Curly</option>
 				<option>Wavy</option>
 				<option>Straight</option>
@@ -53,7 +53,7 @@
 				<option>Bearded</option>
 				<option>Bun</option>
 				<option>Pixie</option>
-				<option>Part (middle, side, etc)</option>
+				<option>Part</option>
 				</select>
 
 				<br><br>
@@ -66,7 +66,9 @@
 		<!-- Feed-->
 		<div class="outerDiv">
 <!--		<div v-for="image in reversedUsers" class="eachDiv" :alreadyLiked="alreadyLiked">-->
-			<div class="eachDiv" v-for="image in filteredUsers">
+<!--			<div class="eachDiv" v-for="image in filteredUsers">-->
+			<div class="eachDiv" v-for="image in filterType">
+				
 				<h3>Stylist: {{ image.reviewStylist }}</h3>
 				<h3 @click="setLocation(image)" class="locText">Location: <strong>{{ image.reviewShop }}</strong></h3>  
 				<h3>User: {{ image.reviewer }}</h3>
@@ -107,8 +109,8 @@ export default {
 			hey: "howdy",
 			city: "", 
 			selected: [], 
-			picked: [], 
-			picked1:[]
+			costSort: [], 
+			rateSort:[]
 		}
 	},
 	methods: {
@@ -143,12 +145,28 @@ export default {
             return this.users.reverse();
 		}, 
 		
+		combinedList() {
+			var newArray = this.costSort.concat(this.rateSort);
+			return newArray
+		},
+		
 		filteredUsers: function () {
-		var self = this
-		return self.reversedUsers.filter(function (user) {
-		  return  user.reviewAddress.indexOf(self.city) !== -1 
-		})
-	  }
+			var self = this
+			return self.reversedUsers.filter(function (user) {
+				return user.reviewAddress.indexOf(self.city) !== -1
+			})
+		},
+		
+		filterType: function() {
+			var self = this
+			console.log(this.selected)
+			return self.reversedUsers.filter(function (user) {
+				for (var i = 0; i < self.selected.length; i++) {
+					console.log(`user.${self.selected[i]}.val()`)
+					return `user.${self.selected[i]}` === true
+				}
+			})
+		}
 	},
 	
 }
@@ -261,6 +279,11 @@ export default {
 		padding-bottom: 0;
 		margin-top: 4px;
 		margin-bottom: 4px;
+	}
+	
+	select {
+		width: 10%;
+		height: 80px;
 	}
 	
 	
