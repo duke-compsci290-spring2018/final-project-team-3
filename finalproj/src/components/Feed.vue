@@ -21,7 +21,7 @@
 			<input checked type="radio" id="all" value="" v-model="costSort">
 
 			<br>
-<!--			<span>Picked: {{ costSort }}</span>-->
+			<span>Picked: {{ costSort }}</span>
 			
 			<p> Filter by Rating:
 
