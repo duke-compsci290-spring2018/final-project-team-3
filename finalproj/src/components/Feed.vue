@@ -12,6 +12,7 @@
 			<p> Filter by Cost:
 			<label for="one">$</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
       		<input type="checkbox" id="$" value="$" v-model="costSort">
 			<label for="two">$$</label>
 			<input type="checkbox" id="$$" value="$$" v-model="costSort">
@@ -24,10 +25,18 @@
 			<label for="two">$$$</label>
 			<input type="checkbox" id="$$$" value="Three" v-model="picked">
 >>>>>>> parent of b34c80f... trying to sort by type
+=======
+      		<input type="checkbox" id="$" value="One" v-model="picked">
+			<label for="two">$$</label>
+			<input type="checkbox" id="$$" value="Two" v-model="picked">
+			<label for="two">$$$</label>
+			<input type="checkbox" id="$$$" value="Three" v-model="picked">
+>>>>>>> parent of b34c80f... trying to sort by type
 			<br>
 			<span>Picked: {{ picked }}</span>
 			
 			<p> Filter by Rating:
+<<<<<<< HEAD
 <<<<<<< HEAD
 			<input type="radio" id="one" value="★ ★ ★ ★ ★" v-model="rateSort">
 			<label for="one">5 Star</label>
@@ -38,6 +47,17 @@
 			<input type="radio" id="two" value="★ ★ " v-model="rateSort">
 			<label for="two">2 Star</label>
 			<input type="radio" id="two" value="★ " v-model="rateSort">
+=======
+			<input type="radio" id="one" value="5 Star" v-model="picked1">
+			<label for="one">5 Star</label>
+			<input type="radio" id="two" value="4 Star" v-model="picked1">
+			<label for="two">4 Star</label>
+			<input type="radio" id="two" value="3 Star" v-model="picked1">
+			<label for="two">3 Star</label>
+			<input type="radio" id="two" value="2 Star" v-model="picked1">
+			<label for="two">2 Star</label>
+			<input type="radio" id="two" value="1 Star" v-model="picked1">
+>>>>>>> parent of b34c80f... trying to sort by type
 =======
 			<input type="radio" id="one" value="5 Star" v-model="picked1">
 			<label for="one">5 Star</label>
@@ -165,6 +185,7 @@ export default {
 		
 		filteredUsers: function () {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			var self = this
 			return self.reversedUsers.filter(function (user) {
 				return user.reviewAddress.indexOf(self.city) !== -1
@@ -172,6 +193,8 @@ export default {
 		}
 	}
 =======
+=======
+>>>>>>> parent of b34c80f... trying to sort by type
 		var self = this
 		return self.reversedUsers.filter(function (user) {
 		  return  user.reviewAddress.indexOf(self.city) !== -1 
