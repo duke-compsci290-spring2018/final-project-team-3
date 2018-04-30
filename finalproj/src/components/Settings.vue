@@ -5,7 +5,7 @@
 		<h2> Review your previous posts</h2>
 		
 		<div v-if="isAdmin">Hello Admin</div>
-		
+			<a href="https://goo.gl/forms/95sRqPv50fxwJ7rV2">Here is the google form</a>
 		<div v-for="image in images">
 			<div class="eachOne" v-if="image.reviewer === theEmail">
 				<br>

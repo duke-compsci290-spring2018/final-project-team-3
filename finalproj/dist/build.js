@@ -4973,7 +4973,7 @@ var Component = normalizeComponent(
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Settings_vue__ = __webpack_require__(32);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8365c0c4_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Settings_vue__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4b6d72be_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Settings_vue__ = __webpack_require__(78);
 function injectStyle (ssrContext) {
   __webpack_require__(76)
 }
@@ -4988,12 +4988,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-8365c0c4"
+var __vue_scopeId__ = "data-v-4b6d72be"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Settings_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8365c0c4_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Settings_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4b6d72be_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Settings_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -40816,7 +40816,7 @@ var content = __webpack_require__(77);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("419f0527", content, true, {});
+var update = __webpack_require__(3)("3e6b6289", content, true, {});
 
 /***/ }),
 /* 77 */
@@ -40827,7 +40827,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "div[data-v-8365c0c4]{border-radius:5px}h1[data-v-8365c0c4]{font-size:36px;background-color:#bee8e7}button[data-v-8365c0c4],img[data-v-8365c0c4]{width:30%}.eachOne[data-v-8365c0c4]{width:40%;padding-right:15%;padding-left:15%;padding-top:5px;margin-right:auto;margin-left:auto;margin-bottom:20px;background-color:#f9d9c0}textarea[data-v-8365c0c4]{width:50%;height:50px;text-align:center}", ""]);
+exports.push([module.i, "div[data-v-4b6d72be]{border-radius:5px}h1[data-v-4b6d72be]{font-size:36px;background-color:#bee8e7}button[data-v-4b6d72be],img[data-v-4b6d72be]{width:30%}.eachOne[data-v-4b6d72be]{width:40%;padding-right:15%;padding-left:15%;padding-top:5px;margin-right:auto;margin-left:auto;margin-bottom:20px;background-color:#f9d9c0}textarea[data-v-4b6d72be]{width:50%;height:50px;text-align:center}", ""]);
 
 // exports
 
@@ -40837,7 +40837,7 @@ exports.push([module.i, "div[data-v-8365c0c4]{border-radius:5px}h1[data-v-8365c0
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("YOUR ACCOUNT")]),_vm._v(" "),_c('h2',[_vm._v(" Review your previous posts")]),_vm._v(" "),(_vm.isAdmin)?_c('div',[_vm._v("Hello Admin")]):_vm._e(),_vm._v(" "),_vm._l((_vm.images),function(image){return _c('div',[(image.reviewer === _vm.theEmail)?_c('div',{staticClass:"eachOne"},[_c('br'),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.removeImg(image)}}},[_vm._v(" Delete this Post ")]),_vm._v(" "),_c('br'),_c('br'),_vm._v(" "),_c('img',{attrs:{"src":image.imageUrl}}),_vm._v(" "),_c('p',[_vm._v(" "+_vm._s(image.reviewText))]),_vm._v(" "),_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.newReview),expression:"newReview"}],attrs:{"type":"text","placeholder":"edit your review"},domProps:{"value":(_vm.newReview)},on:{"keyup":function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.editReview(image)},"input":function($event){if($event.target.composing){ return; }_vm.newReview=$event.target.value}}}),_vm._v(" "),_c('br'),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.editReview(image)}}},[_vm._v(" submit edit ")]),_vm._v(" "),_c('br')]):_vm._e()])})],2)}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("YOUR ACCOUNT")]),_vm._v(" "),_c('h2',[_vm._v(" Review your previous posts")]),_vm._v(" "),(_vm.isAdmin)?_c('div',[_vm._v("Hello Admin")]):_vm._e(),_vm._v(" "),_c('a',{attrs:{"href":"https://goo.gl/forms/95sRqPv50fxwJ7rV2"}},[_vm._v("Here is the google form")]),_vm._v(" "),_vm._l((_vm.images),function(image){return _c('div',[(image.reviewer === _vm.theEmail)?_c('div',{staticClass:"eachOne"},[_c('br'),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.removeImg(image)}}},[_vm._v(" Delete this Post ")]),_vm._v(" "),_c('br'),_c('br'),_vm._v(" "),_c('img',{attrs:{"src":image.imageUrl}}),_vm._v(" "),_c('p',[_vm._v(" "+_vm._s(image.reviewText))]),_vm._v(" "),_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.newReview),expression:"newReview"}],attrs:{"type":"text","placeholder":"edit your review"},domProps:{"value":(_vm.newReview)},on:{"keyup":function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.editReview(image)},"input":function($event){if($event.target.composing){ return; }_vm.newReview=$event.target.value}}}),_vm._v(" "),_c('br'),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.editReview(image)}}},[_vm._v(" submit edit ")]),_vm._v(" "),_c('br')]):_vm._e()])})],2)}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
