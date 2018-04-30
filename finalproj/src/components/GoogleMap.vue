@@ -2,7 +2,6 @@
 	<div>
 		<h1>FIND LOCATIONS</h1>
 		<br>
-		
 		<div class="firstDiv">
 			<h3 @click="test">
 				<br>

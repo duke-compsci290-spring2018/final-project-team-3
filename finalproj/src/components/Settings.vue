@@ -1,6 +1,5 @@
 <template>
 	<div>
-		
 		<h1>YOUR ACCOUNT</h1>
 		<br>
 		<h2> Review your previous posts</h2>
@@ -8,7 +7,7 @@
 		<div v-for="image in images">
 			<div class="eachOne" v-if="image.reviewer === theEmail">
 				<br>
-				<button @click="removeImg(image)"> remove this image </button>
+				<button @click="removeImg(image)"> Delete this Post </button>
 				<br><br>
 				<img :src="image.imageUrl">
 				<p> {{ image.reviewText }}</p>
