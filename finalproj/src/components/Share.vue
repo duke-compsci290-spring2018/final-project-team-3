@@ -37,9 +37,9 @@
 			<p>Hair Type: (hold cmd to click multiple)</p>
 			
 			<select class= "checkboxes" v-model="selected" multiple>
-				<option>Short (length)</option>
-				<option>Long (length)</option>
-				<option>Medium (length)</option>
+				<option>Short</option>
+				<option>Long</option>
+				<option>Medium</option>
 				<option>Curly</option>
 				<option>Wavy</option>
 				<option>Straight</option>
@@ -53,7 +53,7 @@
 				<option>Bearded</option>
 				<option>Bun</option>
 				<option>Pixie</option>
-				<option>Part (middle, side, etc)</option>
+				<option>Part</option>
 				</select>
 				<br><br>
 			<span>Selected: {{ selected.toString() }}</span>
@@ -72,11 +72,13 @@
 			</div>
 			
 			
+<!--
 			<div class="form-group">
-				<label for="stylist">How much did it cost?: </label>
+				<label for="cost">How much did it cost?: </label>
 				<br>
-				<input type="text" class="form-stylist" id="stylist" v-model="stylist" placeholder="e.g. $$$">
+				<input type="text" class="form-stylist" id="stylist" v-model="cost" placeholder="e.g. $$$">
 			</div>
+-->
 			
 			<div class="form-group">
 				<label for="shop">Where did you get cut?: </label>
@@ -134,15 +136,51 @@ export default {
 			previewImageUrl: '',
 			isPreview: false,
 			theShop: null,
-			selected: []
+			ratings: null,
+			cost: null,
+			selected: [],
+			totalList: ['Short','Long','Medium','Curly','Wavy','Straight','Kinky','Black','Blonde','Brunette','Red','Fade','Mohawk','Bearded','Bun','Pixie','Part'],
 			
-
+			short: false,
+			long: false,
+			medium: false,
+			curly: false,
+			wavy: false,
+			straight: false,
+			kinky: false,
+			black: false,
+			blonde: false,
+			brunette: false,
+			red: false,
+			fade: false,
+			mohawk: false,
+			bearded: false,
+			bun: false,
+			pixie: false,
+			part: false,
+			newSelected: []
 		}
 	},
 	
 	
 	firebase: {
 		users: usersRef
+	},
+	
+	computed: {
+		
+//		makeTypeList: function(mylist) {
+//			for (var i = 0; i < mylist.length; i++) {
+//				if (this.selected.indexOf(mylist[i]) !== -1) {
+//					this.newSelected.push(true)
+//				} else {
+//					this.newSelected.push(false)
+//				}
+//			}
+//			console.log(this.newSelected)
+//			return this.newSelected
+//			
+//		}
 	},
 	
 	methods: {
@@ -168,6 +206,20 @@ export default {
 				this.previewImageUrl = input.files[0]
 			}
 		},
+		
+		makeTypeList: function() {
+			console.log(this.totalList);
+			for (var i = 0; i < this.totalList.length; i++) {
+				if (this.selected.indexOf(this.totalList[i]) !== -1) {
+					this.newSelected.push(true)
+				} else {
+					this.newSelected.push(false)
+				}
+			}
+			console.log(this.newSelected)
+//			return this.newSelected
+		},
+		
 		removeUser: function(user) {
 			usersRef.child(user['.key']).remove();
 		},
@@ -178,7 +230,10 @@ export default {
             if (this.newReview && input.files.length > 0) {
 				console.log(this.newReview)
 				console.log(input.files[0])
-                this.storeImage(this.newReview, input.files[0], this.stylist, this.shop)
+				console.log(this.totalList)
+//				this.makeTypeList(this.totalList)
+				this.makeTypeList();
+				this.storeImage(this.newReview, input.files[0], this.stylist, this.shop, this.newSelected)
             }
             // reset values displayed in form so user knows to input new data
             this.newReview = '',
@@ -186,7 +241,7 @@ export default {
             input.value = '',
 			this.currentPlace = null
 		},
-		storeImage (review, imageFile, stylist, shop) {
+		storeImage (review, imageFile, stylist, shop, selected) {
 			storageRef.child('images/' + imageFile.name)
 					  .put(imageFile)
 					  .then(snapshot => {
@@ -201,18 +256,86 @@ export default {
 									reviewLng: this.shop.geometry.location.lng(),
 									reviewAddress: this.shop.formatted_address,
 									reviewPhone: this.shop.formatted_phone_number,
-									imageLikes: 0
+									imageLikes: 0,
+//									types: 0,
+									short: this.newSelected[0],
+									long: this.newSelected[1],
+									medium: this.newSelected[2],
+									curly: this.newSelected[3],
+									wavy: this.newSelected[4],
+									straight: this.newSelected[5],
+									kinky: this.newSelected[6],
+									black: this.newSelected[7],
+									blonde: this.newSelected[8],
+									brunette: this.newSelected[9],
+									red: this.newSelected[10],
+									fade: this.newSelected[11],
+									mohawk: this.newSelected[12],
+									bearded: this.newSelected[13],
+									bun: this.newSelected[14],
+									pixie: this.newSelected[15],
+									part: this.newSelected[16],
+									rating: this.ratings,
+									cost: this.cost
+									
 //									caption: `${review} shared by ${this.user.name}`
 								}
 								// vue-images component does not play nicely with Firebase so need to manually add to both
 								usersRef.push(
 									toAdd
 								)
+//								.then(function(image) {
+//									usersRef.child(image['.key']).child('types').push({
+//										short: this.selected[0],
+//										long: this.selected[1],
+//										medium: this.selected[2],
+//										curly: this.selected[3],
+//										wavy: this.selected[4],
+//										straight: this.selected[5],
+//										kinky: this.selected[6],
+//										black: this.selected[7],
+//										blonde: this.selected[8],
+//										brunette: this.selected[9],
+//										red: this.selected[10],
+//										fade: this.selected[11],
+//										mohawk: this.selected[12],
+//										bearded: this.selected[13],
+//										bun: this.selected[14],
+//										pixie: this.selected[15],
+//										part: this.selected[16]
+//										
+//										
+//									});
+//								})
+//								usersRef.child(image['.key']).child('types').push({
+//									short: this.newSelected[0],
+//									long: this.newSelected[1],
+//									medium: this.newSelected[2],
+//									curly: this.newSelected[3],
+//									wavy: this.newSelected[4],
+//									straight: this.newSelected[5],
+//									kinky: this.newSelected[6],
+//									black: this.newSelected[7],
+//									blonde: this.newSelected[8],
+//									brunette: this.newSelected[9],
+//									red: this.newSelected[10],
+//									fade: this.newSelected[11],
+//									mohawk: this.newSelected[12],
+//									bearded: this.newSelected[13],
+//									bun: this.newSelected[14],
+//									pixie: this.newSelected[15],
+//									part: this.newSelected[16]
+//										
+//										
+//								})
+								
 								this.users.push(
 									toAdd
 								)
 							})
-        }
+        },
+		
+
 	}
 }
 
