@@ -20,7 +20,7 @@
 
 
 			<br>
-			<span>Picked: {{ picked }}</span>
+			<span>Picked: {{ costSort }}</span>
 			
 			<p> Filter by Rating:
 
@@ -42,9 +42,9 @@
 			<p> Filter by Hair Type: </p>	
 
 			<select  v-model="selected" multiple>
-				<option>Short (length)</option>
-				<option>Long (length)</option>
-				<option>Medium (length)</option>
+				<option>Short</option>
+				<option>Long</option>
+				<option>Medium</option>
 				<option>Curly</option>
 				<option>Wavy</option>
 				<option>Straight</option>
@@ -58,7 +58,7 @@
 				<option>Bearded</option>
 				<option>Bun</option>
 				<option>Pixie</option>
-				<option>Part (middle, side, etc)</option>
+				<option>Part</option>
 				</select>
 
 				<br><br>
@@ -82,7 +82,7 @@
 				<p> {{ image.rating }}</p>
 				<p> {{ image.cost }}</p>
 				<p> {{ image.type }}</p>
-				<p>{{ image.imageLikes }} likes!</p>
+				<p> {{ image.imageLikes }} likes!</p>
 				<button @click="likes(image)">Like</button>
 				</div>
 		</div>
@@ -113,8 +113,8 @@ export default {
 			hey: "howdy",
 			city: "", 
 			selected: [], 
-			picked: [], 
-			picked1:[]
+			rateSort: [], 
+			costSort:[]
 		}
 	},
 	
@@ -163,7 +163,7 @@ export default {
 			return self.reversedUsers.filter(function (user) {
 				for (var i = 0; i < self.selected.length; i++) {
 //					console.log(`user.${self.selected[i]}.val()`)
-					return `user.${self.selected[i]}` == true
+					return `user.${self.selected[i]}`
 				}
 			})
 		}
