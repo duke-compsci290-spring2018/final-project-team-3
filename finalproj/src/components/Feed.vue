@@ -1,7 +1,8 @@
 <template>
 	<div>
 		<h1>FEED</h1>
-		<h2 class="desc">Get inspired!</h2>
+		<br>
+		<h2 >Get inspired!</h2>
 		
 		<!--- Filters --->
 		<div class="form-group">
@@ -10,27 +11,27 @@
 			
 			<p> Filter by Cost:
 			<label for="one">$</label>
-      		<input type="checkbox" id="one" value="One" v-model="picked">
+      		<input type="checkbox" id="$" value="One" v-model="picked">
 			<label for="two">$$</label>
-			<input type="checkbox" id="two" value="Two" v-model="picked">
+			<input type="checkbox" id="$$" value="Two" v-model="picked">
 			<label for="two">$$$</label>
-			<input type="checkbox" id="two" value="Two" v-model="picked">
+			<input type="checkbox" id="$$$" value="Three" v-model="picked">
 			<br>
 			<span>Picked: {{ picked }}</span>
 			
 			<p> Filter by Rating:
-			<input type="radio" id="one" value="One" v-model="picked">
+			<input type="radio" id="one" value="5 Star" v-model="picked1">
 			<label for="one">5 Star</label>
-			<input type="radio" id="two" value="Two" v-model="picked">
+			<input type="radio" id="two" value="4 Star" v-model="picked1">
 			<label for="two">4 Star</label>
-			<input type="radio" id="two" value="Two" v-model="picked">
+			<input type="radio" id="two" value="3 Star" v-model="picked1">
 			<label for="two">3 Star</label>
-			<input type="radio" id="two" value="Two" v-model="picked">
+			<input type="radio" id="two" value="2 Star" v-model="picked1">
 			<label for="two">2 Star</label>
-			<input type="radio" id="two" value="Two" v-model="picked">
+			<input type="radio" id="two" value="1 Star" v-model="picked1">
 			<label for="two">1 Star</label>
 			<br>
-			<span>Picked: {{ picked }}</span>
+			<span>Picked: {{ picked1 }}</span>
 			
 			
 			<p> Filter by Hair Type: </p>	
@@ -105,7 +106,9 @@ export default {
 			theLoc: null,
 			hey: "howdy",
 			city: "", 
-			selected: []
+			selected: [], 
+			picked: [], 
+			picked1:[]
 		}
 	},
 	methods: {

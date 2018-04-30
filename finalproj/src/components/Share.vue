@@ -1,9 +1,7 @@
 <template>
 	<div>
-		
 		<h1>SHARE A REVIEW</h1>
 		<br>
-		
 		<h2> Ratings</h2>
 		
 		<form class="form-inline" @submit.prevent="addImage">

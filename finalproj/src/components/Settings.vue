@@ -1,6 +1,5 @@
 <template>
 	<div>
-		
 		<h1>YOUR ACCOUNT</h1>
 		<br>
 		<h2> Review your previous posts</h2>

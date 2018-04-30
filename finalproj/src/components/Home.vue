@@ -1,6 +1,5 @@
 <template>
 	<div>
-
 	<!--		Picture changes when hovered over-->
 		<div class="camPic" v-if="!loggingIn">
 			<div v-if="picOne">
