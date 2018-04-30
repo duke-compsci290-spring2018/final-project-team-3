@@ -3,11 +3,11 @@
 		<h1>FEED</h1>
 		<h2 class="desc">Get inspired!</h2>
 		<div class="form-group">
-      		<input type=search placeholder=Search class=form-control v-model="search" />
+      		<input type=search placeholder=Search class=form-control v-model="city" />
 		</div>
 		<div class="outerDiv">
-			<div v-for="image in reversedUsers" class="eachDiv" :alreadyLiked="alreadyLiked">
-<!--				<div v-for="image in reversedUsers | filterBy search in reviewShop "> -->
+<!--		<div v-for="image in reversedUsers" class="eachDiv" :alreadyLiked="alreadyLiked">-->
+			<div class="eachDiv" v-for="image in filteredUsers">
 				<h3>Stylist: {{ image.reviewStylist }}</h3>
 				<h3 @click="setLocation(image)" class="locText">Location: <strong>{{ image.reviewShop }}</strong></h3>  
 				<h3>User: {{ image.reviewer }}</h3>
@@ -15,12 +15,11 @@
 				<div class="theReview">
 					<p>Review: {{ image.reviewText }}</p>
 				</div>
-				
 				<p>{{ image.imageLikes }} likes!</p>
 				<button @click="likes(image)">Like</button>
 				</div>
-<!--			</div>-->
 		</div>
+<!--		</div>-->
 	</div>
 </template>
 	
@@ -43,7 +42,8 @@ export default {
 			num: 0,
 			alreadyLiked: false, 
 			theLoc: null,
-			hey: "howdy"
+			hey: "howdy",
+			city: "",  
 		}
 	},
 	methods: {
@@ -76,9 +76,15 @@ export default {
         // get images in reverse order added
         reversedUsers() {
             return this.users.reverse();
-		}
+		}, 
 		
-    },
+		filteredUsers: function () {
+		var self = this
+		return self.reversedUsers.filter(function (user) {
+		  return user.reviewAddress.indexOf(self.city) !== -1
+		})
+	  }
+	},
 	
 	
 }
