@@ -21,12 +21,18 @@ Vue.use(VueGoogleMaps, {
   }
 });
 
+var admin = "admin@admin.com";
+
 var isUser;
+var isAdmin;
 
 Firebase.auth().onAuthStateChanged(user => {
 	if(user) {
 //		this.$router.push('/');
 		isUser = true;
+		if (user.email === admin) {
+			isAdmin = true;
+		}
 	} else {
 //		this.$router.push('/login')
 		isUser = false;
@@ -39,8 +45,8 @@ Vue.use(VueRouter)
 const routes = [
 	{ path: '/', component: Home },
 	{ path: '/login', component: Login },
-	{ path: '/feed', component: Feed, props: true},
-//	{ path: '/find', component: Find },
+	{ path: '/feed', component: Feed, props: true, meta: {
+		requiresAuth: true}},
 	{ path: '/share', component: Share, meta: {
 		requiresAuth: true
 	}},
@@ -48,7 +54,8 @@ const routes = [
 		requiresAuth: true
 	} },
 	{ path: '/authentication', component: Authentication },
-	{ path: '/map', component: GoogleMap, name: 'googlemap', props: true}
+	{ path: '/map', component: GoogleMap, name: 'googlemap', props: true, meta: {
+		requiresAuth: true}}
 ]
 
 

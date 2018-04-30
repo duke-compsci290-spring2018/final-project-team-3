@@ -4,6 +4,8 @@
 		<br>
 		<h2> Review your previous posts</h2>
 		
+		<div v-if="isAdmin">Hello Admin</div>
+		
 		<div v-for="image in images">
 			<div class="eachOne" v-if="image.reviewer === theEmail">
 				<br>
@@ -37,8 +39,9 @@ export default {
 			theEmail: '',
 			newReview: '',
 			haveNone: true, 
-			name:null, 
+			name: null, 
 			homeTown:null, 
+			isAdmin: false
 		}
 	},
 	created() {
@@ -46,6 +49,10 @@ export default {
 		Firebase.auth().onAuthStateChanged(function(user) {
 			if (user) {
 				user = Firebase.auth().currentUser;
+				if (user.email === "admin@admin.com") {
+					console.log("ADMIN IS IN")
+					_this.isAdmin = true;
+				}
 				console.log('user in settings');
 				console.log(user.email);
 				_this.theEmail = user.email;

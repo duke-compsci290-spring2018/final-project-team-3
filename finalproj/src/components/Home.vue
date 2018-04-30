@@ -24,10 +24,10 @@
 		</div>
 		<div class="whoAreWe">
 			<h3 class="homeTitle">Who are we?</h3>
-				<p class="homeText">We are two sophomores studying computer science at Duke University. This is our final project for CS290: Web Development. King's Cuts is an app to help solve the issue of knowing where to get your hair cut in unfamiliar environments. With an instagram-like feed, we are offering a refreshing way to review barbers and get inspired.</p>
+				<p class="homeText">We are two sophomores studying computer science at Duke University. This is our final project for CS290: Web Development. Kingbus's Cuts is an app to help solve the issue of knowing where to get your hair cut in unfamiliar environments. With an instagram-like feed, we are offering a refreshing way to review barbers and get inspired.</p>
 		</div>
 		<div> 
-		<h3 class="homeTitle"> How it Works: </h3>
+		<h3 class="homeTitle"> How it Works</h3>
 			<p class="homeText">First, create an account. Then, scroll through the "Feed" to get inspired and like other users' reviews. Posts will first be sorted by most recent posts, then by most liked. Filter through the review posts to find stylists best fitted for you. </p>
 		</div>
 	</div>
