@@ -8,8 +8,8 @@
 		<div class="form-group">
 			<p> Filter by <strong> Location</strong>:
       		<input type=search placeholder=Search class=form-control v-model="city" /> </p>
-			<br> <p> *Use State Initials (capitalized) or Town/City Names</p>
-			
+			 <p> *Use State Initials (capitalized) or Town/City Names</p>
+			<br>
 			<p> Filter by <strong> Cost</strong>: </p>
 			<label for="one">$</label>
 
@@ -22,7 +22,7 @@
 			<input checked type="radio" id="all" value="" v-model="costSort">
 
 			<br>
-			<span>Picked: {{ costSort }}</span>
+<!--			<span>Picked: {{ costSort }}</span>-->
 			
 			<p> Filter by  <strong> Rating</strong>:</p>
 
