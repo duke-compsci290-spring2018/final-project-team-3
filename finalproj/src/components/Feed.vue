@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<h1>FEED</h1>
-		<br>
-		<h2 >Get inspired!</h2>
+<!--		<br>-->
+		<h2>Inspired...? Click on the location to find out more!</h2>
 		<!--- Filters --->
 		<div class="form-group"> 
 		  <div class="row">
@@ -218,7 +218,7 @@ export default {
 	}
 	
 	h2 {
-		font-size: 30px;
+/*		font-size: 30px;*/
 	}
 	
 	.allReviews {
