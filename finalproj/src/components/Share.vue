@@ -16,11 +16,16 @@
 			<p>Rating + Cost:</p>
 			<select v-model="ratings">
 			  <option disabled value="">Rating?</option>
-			  <option> &#9733;</option>
-			  <option> &#9733;  &#9733;</option>
-			  <option> &#9733;  &#9733;  &#9733;</option>
-			  <option>  &#9733;  &#9733; &#9733; &#9733; </option>
-			  <option> &#9733; &#9733; &#9733; &#9733; &#9733; </option>
+<!--			  <option>&#9733;&#9734;&#9734;&#9734;&#9734;</option>-->
+				<option>1</option>
+<!--			  <option>&#9733;&#9733;&#9734;&#9734;&#9734;</option>-->
+				<option>2</option>
+<!--			  <option>&#9733;&#9733;&#9733;&#9734;&#9734;</option>-->
+				<option>3</option>
+<!--			  <option>&#9733;&#9733;&#9733;&#9733;&#9734;</option>-->
+				<option>4</option>
+<!--			  <option>&#9733;&#9733;&#9733;&#9733;&#9733; </option>-->
+				<option>5</option>
 			</select>
 			
 			
@@ -133,9 +138,9 @@ export default {
 			shopName: '',
 			previewImageUrl: '',
 			isPreview: false,
-			theShop: null,
-			ratings: null,
-			cost: null,
+			theShop: '',
+			ratings: 0,
+			cost: 0,
 			selected: [],
 			totalList: ['Short','Long','Medium','Curly','Wavy','Straight','Kinky','Black','Blonde','Brunette','Red','Fade','Mohawk','Bearded','Bun','Pixie','Part'],
 			
@@ -241,23 +246,23 @@ export default {
 									reviewPhone: this.shop.formatted_phone_number,
 									imageLikes: 0,
 //									types: 0,
-									short: this.newSelected[0],
-									long: this.newSelected[1],
-									medium: this.newSelected[2],
-									curly: this.newSelected[3],
-									wavy: this.newSelected[4],
-									straight: this.newSelected[5],
-									kinky: this.newSelected[6],
-									black: this.newSelected[7],
-									blonde: this.newSelected[8],
-									brunette: this.newSelected[9],
-									red: this.newSelected[10],
-									fade: this.newSelected[11],
-									mohawk: this.newSelected[12],
-									bearded: this.newSelected[13],
-									bun: this.newSelected[14],
-									pixie: this.newSelected[15],
-									part: this.newSelected[16],
+//									short: this.newSelected[0],
+//									long: this.newSelected[1],
+//									medium: this.newSelected[2],
+//									curly: this.newSelected[3],
+//									wavy: this.newSelected[4],
+//									straight: this.newSelected[5],
+//									kinky: this.newSelected[6],
+//									black: this.newSelected[7],
+//									blonde: this.newSelected[8],
+//									brunette: this.newSelected[9],
+//									red: this.newSelected[10],
+//									fade: this.newSelected[11],
+//									mohawk: this.newSelected[12],
+//									bearded: this.newSelected[13],
+//									bun: this.newSelected[14],
+//									pixie: this.newSelected[15],
+//									part: this.newSelected[16],
 									rating: this.ratings,
 									cost: this.cost
 									

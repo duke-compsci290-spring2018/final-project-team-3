@@ -12,31 +12,35 @@
 			<p> Filter by Cost:
 			<label for="one">$</label>
 
-      		<input type="checkbox" id="$" value="$" v-model="costSort">
+      		<input type="radio" id="$" value="$" v-model="costSort">
 			<label for="two">$$</label>
-			<input type="checkbox" id="$$" value="$$" v-model="costSort">
-			<label for="two">$$$</label>
-			<input type="checkbox" id="$$$" value="$$$" v-model="costSort">
-
+			<input type="radio" id="$$" value="$$" v-model="costSort">
+			<label for="three">$$$</label>
+			<input type="radio" id="$$$" value="$$$" v-model="costSort">
+			<label for="all">all</label>
+			<input checked type="radio" id="all" value="" v-model="costSort">
 
 			<br>
-			<span>Picked: {{ costSort }}</span>
+<!--			<span>Picked: {{ costSort }}</span>-->
 			
 			<p> Filter by Rating:
 
-			<input type="radio" id="one" value="★ ★ ★ ★ ★" v-model="rateSort">
-			<label for="one">5 Star</label>
-			<input type="radio" id="two" value="★ ★ ★ ★ " v-model="rateSort">
-			<label for="two">4 Star</label>
-			<input type="radio" id="two" value="★ ★ ★ " v-model="rateSort">
-			<label for="two">3 Star</label>
-			<input type="radio" id="two" value="★ ★ " v-model="rateSort">
+<!--			<input type="radio" id="five" value="&#9733;&#9733;&#9733;&#9733;&#9733;" v-model="rateSort">-->
+			<input type="radio" id="five" value="5" v-model="rateSort">
+			<label for="five">5 Star</label>
+<!--			<input type="radio" id="four" value="&#9733;&#9733;&#9733;&#9733;&#9734;" v-model="rateSort">-->
+			<input type="radio" id="four" value="4" v-model="rateSort">
+			<label for="four">4 Star</label>
+			<input type="radio" id="three" value="3" v-model="rateSort">
+			<label for="three">3 Star</label>
+			<input type="radio" id="two" value="2" v-model="rateSort">
 			<label for="two">2 Star</label>
-			<input type="radio" id="two" value="★ " v-model="rateSort">
-
-			<label for="two">1 Star</label>
+			<input type="radio" id="one" value="1" v-model="rateSort">
+			<label for="one">1 Star</label>
+			<input type="radio" id="all" value="all" v-model="rateSort">
+			<label for="one">See all</label>
 			<br>
-			<span>Picked: {{ rateSort }}</span>
+			<span>Rating chosen: {{ rateSort }}</span>
 			
 			
 			<p> Filter by Hair Type: </p>	
@@ -71,7 +75,9 @@
 		<!-- Feed-->
 		<div class="outerDiv">
 <!--		<div v-for="image in reversedUsers" class="eachDiv" :alreadyLiked="alreadyLiked">-->
-			<div class="eachDiv" v-for="image in filteredUsers">
+<!--			<div class="eachDiv" v-for="image in filteredUsers">-->
+<!--			<div class="eachDiv" v-for="image in filterType">-->
+			<div class="eachDiv" v-for="image in filteredCost">
 				<h3>Stylist: {{ image.reviewStylist }}</h3>
 				<h3 @click="setLocation(image)" class="locText">Location: <strong>{{ image.reviewShop }}</strong></h3>  
 				<h3>User: {{ image.reviewer }}</h3>
@@ -79,7 +85,7 @@
 				<div class="theReview">
 					<p>Review: {{ image.reviewText }}</p>
 				</div>
-				<p> {{ image.rating }}</p>
+				<p> User rated this {{ image.rating }} stars</p>
 				<p> {{ image.cost }}</p>
 				<p> {{ image.type }}</p>
 				<p> {{ image.imageLikes }} likes!</p>
@@ -157,16 +163,56 @@ export default {
 			})
 		},
 		
-		filterType: function() {
-			var self = this
-			console.log(user.this.kinky.val())
-			return self.reversedUsers.filter(function (user) {
-				for (var i = 0; i < self.selected.length; i++) {
-//					console.log(`user.${self.selected[i]}.val()`)
-					return `user.${self.selected[i]}`.val()
+		filteredOther: function() {
+			var self = this;
+			return self.filteredUsers.filter(function (user) {
+				if (self.rateSort != "all") {
+					return user.rating.indexOf(self.rateSort) !== -1
+				} else {
+					return self.users.reverse();
 				}
 			})
+		},
+		
+		filteredCost: function() {
+			var self = this;
+			return self.filteredOther.filter(function (user) {
+				if (self.costSort.length === user.cost.length) {
+					return true
+				} else if (self.costSort.length == 0) {
+					return self.users.reverse()
+				}
+					
+			})
 		}
+		
+		
+//		filterType: function() {
+//			var self = this
+//			console.log('should')
+////			console.log(user.this.kinky.val())
+//			return self.reversedUsers.filter(function (user) {
+//				
+////				console.log(user.`${self.selected[0]}`.val())
+//
+//				for (var i = 0; i < self.selected.length; i++) {
+////					var theType = `${self.selected[i]}`.toLowerCase()
+//					var theType = self.selected[i].toLowerCase()
+//					console.log(theType)
+////					console.log(user.theType)
+//
+////					var otherType = user.`${theType}`
+////					console.log(otherType)
+////					console.log(`${user.theType}`)
+////					console.log(`user.${self.selected[i]}.val()`)
+////					return `user.${self.selected[i]}.val()`
+//					return user.{{theType}} == true
+//					
+////					return `user.${self.selected[i]}`.val()
+//					
+//				}
+//			})
+//		}
 
 
 
