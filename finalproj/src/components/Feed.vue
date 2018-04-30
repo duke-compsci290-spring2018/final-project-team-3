@@ -159,11 +159,11 @@ export default {
 		
 		filterType: function() {
 			var self = this
-			console.log(this.selected)
+			console.log(user.this.kinky.val())
 			return self.reversedUsers.filter(function (user) {
 				for (var i = 0; i < self.selected.length; i++) {
 //					console.log(`user.${self.selected[i]}.val()`)
-					return `user.${self.selected[i]}`
+					return `user.${self.selected[i]}`.val()
 				}
 			})
 		}
@@ -260,6 +260,11 @@ export default {
 		padding-bottom: 0;
 		margin-top: 4px;
 		margin-bottom: 4px;
+	}
+	
+	select {
+		width: 10%;
+		height: 80px;
 	}
 	
 	
