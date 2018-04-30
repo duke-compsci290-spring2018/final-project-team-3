@@ -11,15 +11,24 @@
 			
 			<p> Filter by Cost:
 			<label for="one">$</label>
+<<<<<<< HEAD
       		<input type="checkbox" id="$" value="$" v-model="costSort">
 			<label for="two">$$</label>
 			<input type="checkbox" id="$$" value="$$" v-model="costSort">
 			<label for="two">$$$</label>
 			<input type="checkbox" id="$$$" value="$$$" v-model="costSort">
+=======
+      		<input type="checkbox" id="$" value="One" v-model="picked">
+			<label for="two">$$</label>
+			<input type="checkbox" id="$$" value="Two" v-model="picked">
+			<label for="two">$$$</label>
+			<input type="checkbox" id="$$$" value="Three" v-model="picked">
+>>>>>>> parent of b34c80f... trying to sort by type
 			<br>
-			<span>Picked: {{ costSort }}</span>
+			<span>Picked: {{ picked }}</span>
 			
 			<p> Filter by Rating:
+<<<<<<< HEAD
 			<input type="radio" id="one" value="★ ★ ★ ★ ★" v-model="rateSort">
 			<label for="one">5 Star</label>
 			<input type="radio" id="two" value="★ ★ ★ ★ " v-model="rateSort">
@@ -29,17 +38,28 @@
 			<input type="radio" id="two" value="★ ★ " v-model="rateSort">
 			<label for="two">2 Star</label>
 			<input type="radio" id="two" value="★ " v-model="rateSort">
+=======
+			<input type="radio" id="one" value="5 Star" v-model="picked1">
+			<label for="one">5 Star</label>
+			<input type="radio" id="two" value="4 Star" v-model="picked1">
+			<label for="two">4 Star</label>
+			<input type="radio" id="two" value="3 Star" v-model="picked1">
+			<label for="two">3 Star</label>
+			<input type="radio" id="two" value="2 Star" v-model="picked1">
+			<label for="two">2 Star</label>
+			<input type="radio" id="two" value="1 Star" v-model="picked1">
+>>>>>>> parent of b34c80f... trying to sort by type
 			<label for="two">1 Star</label>
 			<br>
-			<span>Picked: {{ rateSort }}</span>
+			<span>Picked: {{ picked1 }}</span>
 			
 			
 			<p> Filter by Hair Type: </p>	
 
 			<select  v-model="selected" multiple>
-				<option>Short</option>
-				<option>Long</option>
-				<option>Medium</option>
+				<option>Short (length)</option>
+				<option>Long (length)</option>
+				<option>Medium (length)</option>
 				<option>Curly</option>
 				<option>Wavy</option>
 				<option>Straight</option>
@@ -53,7 +73,7 @@
 				<option>Bearded</option>
 				<option>Bun</option>
 				<option>Pixie</option>
-				<option>Part</option>
+				<option>Part (middle, side, etc)</option>
 				</select>
 
 				<br><br>
@@ -66,9 +86,7 @@
 		<!-- Feed-->
 		<div class="outerDiv">
 <!--		<div v-for="image in reversedUsers" class="eachDiv" :alreadyLiked="alreadyLiked">-->
-<!--			<div class="eachDiv" v-for="image in filteredUsers">-->
-			<div class="eachDiv" v-for="image in filterType">
-				
+			<div class="eachDiv" v-for="image in filteredUsers">
 				<h3>Stylist: {{ image.reviewStylist }}</h3>
 				<h3 @click="setLocation(image)" class="locText">Location: <strong>{{ image.reviewShop }}</strong></h3>  
 				<h3>User: {{ image.reviewer }}</h3>
@@ -109,8 +127,8 @@ export default {
 			hey: "howdy",
 			city: "", 
 			selected: [], 
-			costSort: [], 
-			rateSort:[]
+			picked: [], 
+			picked1:[]
 		}
 	},
 	methods: {
@@ -146,12 +164,45 @@ export default {
 		}, 
 		
 		filteredUsers: function () {
+<<<<<<< HEAD
 			var self = this
 			return self.reversedUsers.filter(function (user) {
 				return user.reviewAddress.indexOf(self.city) !== -1
 			})
 		}
 	}
+=======
+		var self = this
+		return self.reversedUsers.filter(function (user) {
+		  return  user.reviewAddress.indexOf(self.city) !== -1 
+		})
+	  }
+	},
+	
+}
+//	
+//		filteredPeople: function() {
+//			var vm = this;
+//			var category = vm.selectedCategory;
+//			var gender = vm.selectedGender;
+//
+//			if(category === "All" && gender === "All") {
+//				//save performance, juste return the default array:
+//				return vm.people;
+//			} else {
+//				return vm.people.filter(function(person) {
+//					//return the array after passimng it through the filter function:
+//					return  (category === 'All' || person.category === category) && (gender === 'All'  || person.gender === gender);	 
+//
+//				});
+//			}
+//		}
+//	}
+//});
+//	
+	
+	
+>>>>>>> parent of b34c80f... trying to sort by type
 	
 </script>
 	
@@ -239,11 +290,6 @@ export default {
 		padding-bottom: 0;
 		margin-top: 4px;
 		margin-bottom: 4px;
-	}
-	
-	select {
-		width: 10%;
-		height: 80px;
 	}
 	
 	
