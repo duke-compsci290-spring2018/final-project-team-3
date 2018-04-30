@@ -6,10 +6,10 @@
 		
 		<!--- Filters --->
 		<div class="form-group">
-			<p> Filter by Location:
+			<p> Filter by <strong> Location</strong>:
       		<input type=search placeholder=Search class=form-control v-model="city" /> </p>
 			
-			<p> Filter by Cost:
+			<p> Filter by <strong> Cost</strong>: </p>
 			<label for="one">$</label>
 
       		<input type="radio" id="$" value="$" v-model="costSort">
@@ -23,7 +23,7 @@
 			<br>
 <!--			<span>Picked: {{ costSort }}</span>-->
 			
-			<p> Filter by Rating:
+			<p> Filter by  <strong> Rating</strong>:</p>
 
 <!--			<input type="radio" id="five" value="&#9733;&#9733;&#9733;&#9733;&#9733;" v-model="rateSort">-->
 			<input type="radio" id="five" value="5" v-model="rateSort">
@@ -40,9 +40,9 @@
 			<input type="radio" id="all" value="all" v-model="rateSort">
 			<label for="one">See all</label>
 			<br>
-			<span>Rating chosen: {{ rateSort }}</span>
+<!--			<span>Rating chosen: {{ rateSort }}</span>-->
 			
-			
+<!--
 			<p> Filter by Hair Type: </p>	
 
 			<select  v-model="selected" multiple>
@@ -67,6 +67,7 @@
 
 				<br><br>
 			<span> Selected: {{ selected }}</span>
+-->
 			
 		</div>
 		
